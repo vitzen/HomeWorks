@@ -1,8 +1,8 @@
 ﻿using System;
 
-//Домашнее задание 2.1
+//Домашнее задание 2.2
 
-namespace hometask2._2
+namespace homework2._2
 {
     class Program
     {

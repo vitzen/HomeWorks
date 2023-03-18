@@ -2,7 +2,7 @@
 
 //Домашнее задание 2.1
 
-namespace hometask2._1
+namespace homework2._1
 {
     class Program
     {
