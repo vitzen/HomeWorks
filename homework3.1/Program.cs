@@ -6,16 +6,15 @@ using System.Threading.Channels;
 // Создать консольный проект, который будет считывать данные (2 числа)
 // Сделать над ними все возможные операции и вывести результат
 
-namespace hometask3._1
+namespace homework3._1
 {
     class Program
     {
         public static void Main(string[] args)
         {
-
             int num1 = 0;
             int num2 = 0;
-            
+
             // Проверка первого числа на правильность ввода
             do
             {
