@@ -1,3 +1,21 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using System;
 
-Console.WriteLine("Hello, World!");
+//Домашнее задание 2.1
+
+namespace hometask2._1
+{
+    class Program
+    {
+        static void Main()
+        {
+            string extended1 = "Вызван статический метод";
+
+            // Вызов метода, как расширяющего
+            extended1.ExtensionMethod();
+
+
+            // Delay.
+            Console.ReadKey();
+        }
+    }
+}
