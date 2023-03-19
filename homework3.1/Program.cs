@@ -12,12 +12,15 @@ namespace homework3._1
     {
         public static void Main(string[] args)
         {
-            // Проверка первого числа на правильность ввода
+            // double num1 = 0;
+            // double num2 = 0;
+            
+            // Проверка первого и второго числа на правильность ввода
             do
             {
+                
                 Console.WriteLine("Для арифметической операции введите с клавиатуры первое число");
                 string firstConsoleNumber = Console.ReadLine();
-
                 bool numberOne = Int32.TryParse(firstConsoleNumber, out int num1);
 
 
@@ -30,10 +33,9 @@ namespace homework3._1
                     if (numberTwo)
                     {
                         Console.WriteLine("введите арифметическую операцию");
-                        // Блок арифметических операций
                         string ArithmeticOperation = Console.ReadLine();
 
-
+                        // Блок арифметических операций
                         switch (ArithmeticOperation)
                         {
                             case "+":
@@ -68,7 +70,7 @@ namespace homework3._1
                     Console.WriteLine("Вы ввели некорректные данные, введите 1-ое число");
                 }
 
-                // break;
+                break;
 
                 // Проверка второго числа на правильность ввода
             } while (true);
