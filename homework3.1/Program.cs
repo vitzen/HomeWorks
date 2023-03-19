@@ -23,59 +23,56 @@ namespace homework3._1
 
                 if (numberOne)
                 {
-                    // Console.WriteLine(num1);
                     Console.WriteLine("введите с клавиатуры второе число");
-                    break;
+                    string secondConsoleNumber = Console.ReadLine();
+                    bool numberTwo = Int32.TryParse(secondConsoleNumber, out int num2);
+
+                    if (numberTwo)
+                    {
+                        Console.WriteLine("введите арифметическую операцию");
+                        // Блок арифметических операций
+                        string ArithmeticOperation = Console.ReadLine();
+
+
+                        switch (ArithmeticOperation)
+                        {
+                            case "+":
+                                Console.WriteLine($"Сумма двух чисел равна = {num1 + num2}");
+                                break;
+                            case "-":
+                                Console.WriteLine($"Разность двух чисел равна = {num1 - num2}");
+                                break;
+                            case "*":
+                                Console.WriteLine($"Результат от умножения двух чисел равен = {num1 * num2}");
+                                break;
+                            case "/":
+                                Console.WriteLine($"Результат от деления двух чисел равен = {num1 / num2}");
+                                break;
+                            case "%":
+                                Console.WriteLine($"Остаток от деления двух чисел равен = {num1 % num2}");
+                                break;
+                            default:
+                                Console.WriteLine("Вы ввели некорректную арифметическую операцию");
+                                break;
+                        }
+                    }
+
+
+                    else
+                    {
+                        Console.WriteLine("Вы ввели некорректные данные, введите 2-ое число корректно");
+                    }
                 }
                 else
                 {
                     Console.WriteLine("Вы ввели некорректные данные, введите 1-ое число");
                 }
 
+                // break;
 
                 // Проверка второго числа на правильность ввода
-
-                string secondConsoleNumber = Console.ReadLine();
-
-                bool numberTwo = Int32.TryParse(secondConsoleNumber, out int num2);
-
-                if (numberTwo)
-                {
-                    Console.WriteLine("введите арифметическую операцию");
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Вы ввели некорректные данные, введите 2-ое число корректно");
-                }
-
-
-                // Блок арифметических операций
-                string ArithmeticOperation = Console.ReadLine();
-
-
-                switch (ArithmeticOperation)
-                {
-                    case "+":
-                        Console.WriteLine($"Сумма двух чисел равна = {num1 + num2}");
-                        break;
-                    case "-":
-                        Console.WriteLine($"Разность двух чисел равна = {num1 - num2}");
-                        break;
-                    case "*":
-                        Console.WriteLine($"Результат от умножения двух чисел равен = {num1 * num2}");
-                        break;
-                    case "/":
-                        Console.WriteLine($"Результат от деления двух чисел равен = {num1 / num2}");
-                        break;
-                    case "%":
-                        Console.WriteLine($"Остаток от деления двух чисел равен = {num1 % num2}");
-                        break;
-                    default:
-                        Console.WriteLine("Вы ввели некорректную арифметическую операцию");
-                        break;
-                }
             } while (true);
+
 
             // Delay.
             Console.ReadLine();
