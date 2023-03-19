@@ -6,27 +6,26 @@ namespace homework3._2
     {
         public static void Main(string[] args)
         {
-            int countOfStrings = 0;
+            int countOfStrings = 0; // Счетчик количества строк
             string[] firstString;
+            string[] oldArray;
+            string userString;
 
             // Создаем в памяти место для массива    
-            
+
             firstString = new string [countOfStrings];
 
-           
 
             do
             {
                 Console.WriteLine("Введите первую строку из произвольных символов");
-                
-                
-                
-                
-                if (firstString != "")
-                {
-                }
-            }
+                userString = Console.ReadLine();
 
+                if (userString != "")
+                {
+                    countOfStrings++;
+                }
+            } while (userString != "")
 
 
             Console.WriteLine("Введите вторую строку из произвольных символов");
