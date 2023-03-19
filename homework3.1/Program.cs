@@ -14,21 +14,20 @@ namespace homework3._1
         {
             // double num1 = 0;
             // double num2 = 0;
-            
+
             // Проверка первого и второго числа на правильность ввода
             do
             {
-                
                 Console.WriteLine("Для арифметической операции введите с клавиатуры первое число");
                 string firstConsoleNumber = Console.ReadLine();
-                bool numberOne = Int32.TryParse(firstConsoleNumber, out int num1);
+                bool numberOne = Double.TryParse(firstConsoleNumber, out double num1);
 
 
                 if (numberOne)
                 {
                     Console.WriteLine("введите с клавиатуры второе число");
                     string secondConsoleNumber = Console.ReadLine();
-                    bool numberTwo = Int32.TryParse(secondConsoleNumber, out int num2);
+                    bool numberTwo = Double.TryParse(secondConsoleNumber, out double num2);
 
                     if (numberTwo)
                     {
@@ -48,7 +47,17 @@ namespace homework3._1
                                 Console.WriteLine($"Результат от умножения двух чисел равен = {num1 * num2}");
                                 break;
                             case "/":
-                                Console.WriteLine($"Результат от деления двух чисел равен = {num1 / num2}");
+                                if (num2 != 0)
+                                {
+                                    Console.WriteLine($"Результат от деления двух чисел равен = {num1 / num2}");
+                                    
+                                }
+
+                                else
+                                {
+                                    Console.WriteLine("На ноль делить нельзя");
+                                }
+
                                 break;
                             case "%":
                                 Console.WriteLine($"Остаток от деления двух чисел равен = {num1 % num2}");
