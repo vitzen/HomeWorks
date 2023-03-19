@@ -12,9 +12,6 @@ namespace homework3._1
     {
         public static void Main(string[] args)
         {
-            int num1 = 0;
-            int num2 = 0;
-
             // Проверка первого числа на правильность ввода
             do
             {
@@ -34,14 +31,14 @@ namespace homework3._1
                 {
                     Console.WriteLine("Вы ввели некорректные данные, введите 1-ое число");
                 }
-            } while (true);
 
-            // Проверка второго числа на правильность ввода
-            do
-            {
+
+                // Проверка второго числа на правильность ввода
+
                 string secondConsoleNumber = Console.ReadLine();
 
                 bool numberTwo = Int32.TryParse(secondConsoleNumber, out int num2);
+
                 if (numberTwo)
                 {
                     Console.WriteLine("введите арифметическую операцию");
@@ -51,36 +48,37 @@ namespace homework3._1
                 {
                     Console.WriteLine("Вы ввели некорректные данные, введите 2-ое число корректно");
                 }
+
+
+                // Блок арифметических операций
+                string ArithmeticOperation = Console.ReadLine();
+
+
+                switch (ArithmeticOperation)
+                {
+                    case "+":
+                        Console.WriteLine($"Сумма двух чисел равна = {num1 + num2}");
+                        break;
+                    case "-":
+                        Console.WriteLine($"Разность двух чисел равна = {num1 - num2}");
+                        break;
+                    case "*":
+                        Console.WriteLine($"Результат от умножения двух чисел равен = {num1 * num2}");
+                        break;
+                    case "/":
+                        Console.WriteLine($"Результат от деления двух чисел равен = {num1 / num2}");
+                        break;
+                    case "%":
+                        Console.WriteLine($"Остаток от деления двух чисел равен = {num1 % num2}");
+                        break;
+                    default:
+                        Console.WriteLine("Вы ввели некорректную арифметическую операцию");
+                        break;
+                }
             } while (true);
 
-            // Блок арифметических операций
-            string ArithmeticOperation = Console.ReadLine();
-
-
-            switch (ArithmeticOperation)
-            {
-                case "+":
-                    Console.WriteLine($"Сумма двух чисел равна = {num1 + num2}");
-                    break;
-                case "-":
-                    Console.WriteLine($"Разность двух чисел равна = {num1 - num2}");
-                    break;
-                case "*":
-                    Console.WriteLine($"Результат от умножения двух чисел равен = {num1 * num2}");
-                    break;
-                case "/":
-                    Console.WriteLine($"Результат от деления двух чисел равен = {num1 / num2}");
-                    break;
-                case "%":
-                    Console.WriteLine($"Остаток от деления двух чисел равен = {num1 % num2}");
-                    break;
-                default:
-                    Console.WriteLine("Вы ввели некорректную арифметическую операцию");
-                    break;
-            }
-
             // Delay.
-            Console.ReadKey();
+            Console.ReadLine();
         }
     }
 }
