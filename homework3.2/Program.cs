@@ -25,7 +25,11 @@ namespace homework3._2
                 {
                     countOfStrings++;
                 }
-            } while (userString != "")
+
+                firstString = new string[countOfStrings];
+
+
+            } while (userString != "");
 
 
             Console.WriteLine("Введите вторую строку из произвольных символов");
