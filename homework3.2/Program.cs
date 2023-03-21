@@ -10,35 +10,56 @@ namespace homework3._2
             string[] firstString;
             string[] oldArray;
             string userString;
+            int i;
 
             // Создаем в памяти место для массива    
-
-            firstString = new string [countOfStrings];
+            oldArray = new string [countOfStrings];
 
 
             do
             {
-                Console.WriteLine("Введите первую строку из произвольных символов");
+                Console.WriteLine("Введите строку из произвольных символов");
                 userString = Console.ReadLine();
 
                 if (userString != "")
                 {
-                    countOfStrings++;
+                    ++countOfStrings;
+
+
+                    firstString = new string[countOfStrings];
+                    for (i = 0; i < firstString.Length - 1; i++)
+                    {
+                        firstString[i] = oldArray[i];
+                        firstString[countOfStrings] = userString;
+                        firstString = oldArray;
+                    }
                 }
-
-                firstString = new string[countOfStrings];
-
-
-            } while (userString != "");
+            } while (userString != "" && countOfStrings < 1);
 
 
-            Console.WriteLine("Введите вторую строку из произвольных символов");
-            string secondString = Console.ReadLine();
+            // Console.WriteLine("Введите вторую строку из произвольных символов");
+            // string secondString = Console.ReadLine();
 
             // Блок арифметических операций
             Console.WriteLine(
                 "Введите номер операции со строками: \n 1 - склеивание строк \n 2 - Подсчитать количество символов в каждой строке \n");
             string operationWithStrings = Console.ReadLine();
+            switch (operationWithStrings)
+            {
+                case "1":
+                {
+                    Console.WriteLine(firstString + ...);
+                    break;
+                }
+                case "2":
+                {
+                    Console.WriteLine(firstString.Length);
+                    break;
+                }
+                default:
+                    Console.WriteLine("Введите корректный номер операции");
+                    break;
+            }
 
 
             // Delay.
