@@ -6,60 +6,17 @@ namespace homework3._2
     {
         public static void Main(string[] args)
         {
-            int countOfStrings = 0; // Счетчик количества строк
-            string[] firstString;
-            string[] oldArray;
-            string userString;
-            int i;
+            int opNumber = 0;
+            //Блок ввода строк
+            Console.WriteLine("Программа для выполнения операций со строками: \n Введите первую строку");
+            string inputString1 = Console.ReadLine();
+            Console.WriteLine("Введите вторую строку");
+            string inputString2 = Console.ReadLine();
 
-            // Создаем в памяти место для массива    
-            oldArray = new string [countOfStrings];
-
-
-            do
-            {
-                Console.WriteLine("Введите строку из произвольных символов");
-                userString = Console.ReadLine();
-
-                if (userString != "")
-                {
-                    ++countOfStrings;
-
-
-                    firstString = new string[countOfStrings];
-                    for (i = 0; i < firstString.Length - 1; i++)
-                    {
-                        firstString[i] = oldArray[i];
-                        firstString[countOfStrings] = userString;
-                        firstString = oldArray;
-                    }
-                }
-            } while (userString != "" && countOfStrings < 1);
-
-
-            // Console.WriteLine("Введите вторую строку из произвольных символов");
-            // string secondString = Console.ReadLine();
-
-            // Блок арифметических операций
-            Console.WriteLine(
-                "Введите номер операции со строками: \n 1 - склеивание строк \n 2 - Подсчитать количество символов в каждой строке \n");
-            string operationWithStrings = Console.ReadLine();
-            switch (operationWithStrings)
-            {
-                case "1":
-                {
-                    Console.WriteLine(firstString + ...);
-                    break;
-                }
-                case "2":
-                {
-                    Console.WriteLine(firstString.Length);
-                    break;
-                }
-                default:
-                    Console.WriteLine("Введите корректный номер операции");
-                    break;
-            }
+            //Блок ввода номера операции со строками
+            Console.WriteLine("Введите с клавиатуры номер операции для работы со строками и нажмите ENTER:");
+            string numberOfOperation = Console.ReadLine();
+            bool operation = Int32.TryParse(string numberOfOperation, out int opNumber);
 
 
             // Delay.
