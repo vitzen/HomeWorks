@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "homework4.1", "homework4.1\homework4.1.csproj", "{1B464B82-E3DE-4B7A-ABB1-EF6777AA8E9B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "homeworks4.2", "homeworks4.2\homeworks4.2.csproj", "{96FD2937-3A30-4CD4-AD74-DCD2217FA7B8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "homework4.2", "homework4.2\homework4.2.csproj", "{96FD2937-3A30-4CD4-AD74-DCD2217FA7B8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "homework4.3", "homework4.3\homework4.3.csproj", "{E8A45558-DEBF-407F-8F51-963533B54D29}"
 EndProject
