@@ -10,13 +10,14 @@ namespace homework4._1
         static void Main(string[] args)
         {
             //Ввод с консоли
+
             Console.WriteLine("Введите размерность (количество элементов) массива");
             string inputFromConsole = Console.ReadLine();
-            bool consoleInput = Int32.TryParse(inputFromConsole, out int arrayCount);
+            bool consoleInput = Int32.TryParse(inputFromConsole, out int arrayElementsCount);
 
             if (consoleInput)
             {
-                int[] myArray = new int[arrayCount];
+                int[] myArray = new int[arrayElementsCount];
                 for (int i = 0; i < myArray.Length; i++)
                 {
                     Console.WriteLine("Введите число");
@@ -24,10 +25,20 @@ namespace homework4._1
                     bool numberInput = Int32.TryParse(number, out int num);
                     if (numberInput)
                     {
-                        myArray[i] = myArray[num];
+                        myArray[i] = num;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Некорректно введенное число, Запускаем программу заново");
                     }
                 }
+
+                // Полученный после ввода массив данных
+                Console.WriteLine($"Элементы вашего массива: {string.Join(" ", myArray)}");
+                int sumOfArrayElements = myArray.Sum();
+                Console.WriteLine($"Сумма всех элементов в массиве равна = {sumOfArrayElements} ");
             }
+
             else
             {
                 Console.WriteLine("Введите корректное число элементов в вашем массиве");
