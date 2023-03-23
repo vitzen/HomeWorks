@@ -1,5 +1,6 @@
 ﻿// Домашнее задание
 // 4. В заданном одномерном массиве, состоящем из n целых чисел, подсчитать количество четных элементов.
+
 using System;
 
 namespace homework4._4
@@ -14,40 +15,30 @@ namespace homework4._4
 
             if (num)
             {
-                int[] myArray = new int[]; 
-                for (int i = 0; i < UPPER; i++)
+                int[] myArray = new int[ArrayCountNumber];
+                for (int i = 0; i < myArray.Length; i++)
                 {
-                    
+                    Console.WriteLine("Введите элемент массива");
+                    string element = Console.ReadLine();
+                    bool arrayElement = Int32.TryParse(element, out int number);
+                    if (arrayElement)
+                    {
+                        myArray[i] = number;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Введите корректное число");
+                    }
                 }
-                Console.WriteLine("Введите целочисленные элементы массива");
-                
-                
-                
-                
-                
-                
-                
-                
+
+                Console.WriteLine(myArray);
             }
+
+
             else
             {
-                Console.WriteLine("Неправильно введено число, попробуйте заново");
+                Console.WriteLine("Введите верное число");
             }
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
 
             // Delay
             Console.ReadKey();
