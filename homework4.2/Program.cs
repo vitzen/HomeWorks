@@ -34,10 +34,11 @@ namespace homework4._2
                 }
 
                 Console.WriteLine(
-                    $"Элементы вашего массива: {string.Join(" ", myArray)}"); //Выводим на консоль элементы массива
-                double
-                    result = (myArray.Sum() / arrayElementsCount); //Подсчет среднего-арифметического значения среди элементов массива
-                Console.WriteLine($"Среднее арифметическое значение всех элументов нащего массива = {result}");
+                    $"Элементы вашего массива: {string.Join(" | ", myArray)}"); //Выводим на консоль элементы массива
+
+                var result = (double)(myArray.Sum()) / arrayElementsCount;
+
+                Console.WriteLine($"Среднее арифметическое значение всех элементов нащего массива = {result}");
             }
             else
             {
