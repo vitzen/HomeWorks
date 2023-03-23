@@ -13,6 +13,8 @@ namespace homework4._4
             string inputNumber = Console.ReadLine();
             bool num = Int32.TryParse(inputNumber, out int ArrayCountNumber);
 
+
+            //Блок инициализации массива и заполнения его элементами
             if (num)
             {
                 int[] myArray = new int[ArrayCountNumber];
@@ -31,7 +33,18 @@ namespace homework4._4
                     }
                 }
 
-                Console.WriteLine(myArray);
+                Console.WriteLine($"Элементы вашего массива: {string.Join(" ", myArray)}");
+                //Блок подсчета суммы четных эементов массива
+                int sum = 0;
+                for (int j = 0; j < myArray.Length; j++)
+                {
+                    if (myArray[j] % 2 == 0)
+                    {
+                        sum += myArray[j];
+                    }
+                }
+
+                Console.WriteLine($"Сумма четных элементов массива равна: {sum}");
             }
 
 
