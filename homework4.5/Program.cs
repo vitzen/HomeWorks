@@ -12,18 +12,19 @@ namespace homework4._5
             //Блок ввода количества элементов массива
             Console.WriteLine("Введите количество элементов массива");
             string inputNumber = Console.ReadLine();
-            bool num = Int32.TryParse(inputNumber, out int array_CounterNumber);
+            bool num = Int32.TryParse(inputNumber, out int myArray_CounterNumber);
 
 
             //Блок инициализаторов массивов
-            int[] myArray = new int[array_CounterNumber];
-            int[] newArray = new int[array_CounterNumber];
+            int newArrayCounterNumber = myArray_CounterNumber;
+            int[] myArray = new int[myArray_CounterNumber];
+            int[] newArray = new int[newArrayCounterNumber];
             
 
             if (num)
             {
                 //Блок ввода элементов массива
-                for (int i = 0; i < array_CounterNumber; i++)
+                for (int i = 0; i < myArray_CounterNumber; i++)
                 {
                     Console.WriteLine("Введите элемент массива");
                     string inputElement = Console.ReadLine();
@@ -42,9 +43,9 @@ namespace homework4._5
                 Console.WriteLine($"Элементы вашего массива: {String.Join(" | ", myArray)}");
                 
                 int indexOfNewArray = 0;
-                for (int j= 0; j < newArray.Length; j++)
+                for (int i= 0; i < newArrayCounterNumber; i++)
                 {
-                    int currentNumber = newArray[j];
+                    int currentNumber = myArray[i];
                     if (currentNumber > 0)
                     {
                         newArray[indexOfNewArray++] = currentNumber;
