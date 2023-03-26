@@ -16,34 +16,33 @@ namespace homework4._8d
 
             if (inputCounter)
             {
-                int[] evenArray = new int[inputCounterOfArrays];
-                int[] oddArray = new int[inputCounterOfArrays];
+                double[] myArray = new double[inputCounterOfArrays];
                 int evenCounter = 0;
                 int oddCounter = 0;
 
                 //Блок ввода чисел
-                for (int i = 0; i < evenArray.Length; i++)
+                for (int i = 0; i < myArray.Length; i++)
                 {
                     Console.WriteLine("Введите число");
                     string number = Console.ReadLine();
                     bool num = Int32.TryParse(number, out int numberForArrays);
-                    if (num && inputCounterOfArrays % 2 == 0)
+                    
+                    // Блок проверки числа на отрицательное или положительное
+                    if (num && numberForArrays > 0 && numberForArrays % 2 == 0)
                     {
-                        evenArray[i] = inputCounterOfArrays;
+                        myArray[i] = numberForArrays;
                         evenCounter++;
                     }
-                    else if (num && inputCounterOfArrays % 2 == 1)
+                    else if (num && numberForArrays > 0 && numberForArrays % 2 == 1)
                     {
-                        oddArray[i] = inputCounterOfArrays;
+                        myArray[i] = numberForArrays;
                         oddCounter++;
                     }
                 }
 
 
-                Console.WriteLine($"Ваш список четных чисел: --> {String.Join(" | ", evenArray)}\n" +
-                                  $"Количество четных чисел равно = {evenCounter}");
-
-                Console.WriteLine($"Ваш список нечетных чисел: --> {String.Join(" | ", oddArray)}\n" +
+                Console.WriteLine($"Ваш список чисел: --> {String.Join(" | ", myArray)}\n" +
+                                  $"Количество четных чисел равно = {evenCounter}\n" +
                                   $"Количество нечетных чисел равно = {oddCounter}");
             }
             else
