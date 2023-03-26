@@ -26,7 +26,7 @@ namespace homework4._8d
                     Console.WriteLine("Введите число");
                     string number = Console.ReadLine();
                     bool num = Int32.TryParse(number, out int numberForArrays);
-                    
+
                     // Блок проверки числа на отрицательное или положительное
                     if (num && numberForArrays > 0 && numberForArrays % 2 == 0)
                     {
