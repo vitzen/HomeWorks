@@ -16,13 +16,6 @@ namespace homework4._9d
                 for (int j = 1; j < 10; j++)
                 {
                     myarray[i, j] = i * j;
-                }
-            }
-
-            for (int i = 1; i < 10; i++) //Выводим таблицу умножения
-            {
-                for (int j = 1; j < 10; j++)
-                {
                     Console.Write($"{myarray[i, j]}\t");
                 }
 
