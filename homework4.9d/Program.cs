@@ -9,26 +9,26 @@ namespace homework4._9d
     {
         static void Main(string[] args)
         {
-          
+            int[,] myarray = new int [10, 10]; //Заполняем массив числами от 0 до 9
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 1; i < 10; i++)
             {
-                Console.Write(i);
-               for (int j = 0; j < 10; j++)
+                for (int j = 1; j < 10; j++)
                 {
-                    Console.WriteLine((i * j)/3);
-                    
+                    myarray[i, j] = i * j;
                 }
             }
 
-            
-            
-            
-            
-            
-            
-            
-            
+            for (int i = 1; i < 10; i++) //Выводим таблицу умножения
+            {
+                for (int j = 1; j < 10; j++)
+                {
+                    Console.Write($"{myarray[i, j]}\t");
+                }
+
+                Console.WriteLine();
+            }
+
 
             // Delay
             Console.ReadKey();
