@@ -1,33 +1,16 @@
-﻿// Домашнее задание (ПЕРЕДЕЛАТЬ ЗАДАНИЕ НА МЕТОДЫ)
+﻿// Домашнее задание
 //1. Найти сумму элементов одномерного массива. Размер произвольный. Элементы вводятся с клавиатуры.
- 
 
 namespace homework5._1
 {
     class Program
     {
-        static void Main()
+        static int[] CalculateMethod(string inputFromConsole)
         {
-            /// Метод для подсчета суммы элементов одномерного массива
-            static int[] CalculateNethod(bool argument, int inputNumberArgument)
-            {
-                return;
-            }
-            
-            
-            
-            //Ввод с консоли
-
-            Console.WriteLine("Введите размерность (количество элементов) массива");
-            string inputFromConsole = Console.ReadLine();
             bool consoleInput = Int32.TryParse(inputFromConsole, out int arrayElementsCount);
-
-            //int result = CalculateNethod(bool consoleInput, int arrayElementsCount);
-            
-
+            int[] myArray = new int[arrayElementsCount];
             if (consoleInput)
             {
-                int[] myArray = new int[arrayElementsCount];
                 for (int i = 0; i < myArray.Length; i++)
                 {
                     Console.WriteLine("Введите число");
@@ -44,15 +27,29 @@ namespace homework5._1
                 }
 
                 // Полученный после ввода массив данных
-                Console.WriteLine($"Элементы вашего массива: {string.Join(" ", myArray)}");
-                int sumOfArrayElements = myArray.Sum();
-                Console.WriteLine($"Сумма всех элементов в массиве равна = {sumOfArrayElements} ");
+
+                // int sumOfArrayElements = myArray.Sum();
+                // Console.WriteLine($"Элементы вашего массива: {string.Join(" ", myArray)}");
+                // Console.WriteLine($"Сумма всех элементов в массиве равна = {sumOfArrayElements} ");
             }
 
             else
             {
                 Console.WriteLine("Введите корректное число элементов в вашем массиве");
             }
+
+            return myArray;
+        }
+
+        static void Main()
+        {
+            //Ввод с консоли
+
+            Console.WriteLine("Введите размерность (количество элементов) массива");
+            string inp = Console.ReadLine();
+            CalculateMethod(string inp);
+
+            
 
 
             // Delay
