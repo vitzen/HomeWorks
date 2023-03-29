@@ -26,8 +26,6 @@ namespace homework5._1
                         Console.WriteLine("Некорректно введенное число, Запускаем программу заново");
                     }
                 }
-
-                int sumOfArrayElements = myArray.Sum();
             }
 
             else
@@ -35,6 +33,7 @@ namespace homework5._1
                 Console.WriteLine("Введите корректное число элементов в вашем массиве");
             }
 
+            int sumOfArrayElements = myArray.Sum();
             return (myArray, sumOfArrayElements);
         }
 
@@ -58,10 +57,10 @@ namespace homework5._1
         static void Main()
         {
             Console.WriteLine("Программа для подсчета суммы элементов в массиве");
-            InputArraySizeMethod();
 
-            // Console.WriteLine($"Элементы вашего массива: {string.Join(" ", myArray)}");
-            // Console.WriteLine($"Сумма всех элементов в массиве равна = {sumOfArrayElements} ");
+
+            Console.WriteLine($"Элементы вашего массива: {string.Join(" ", myArray)}");
+            Console.WriteLine($"Сумма всех элементов в массиве равна = {sumOfArrayElements} ");
 
 
             // Delay
