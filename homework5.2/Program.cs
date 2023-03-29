@@ -3,7 +3,7 @@
 
 using System;
 
-namespace homework4._2
+namespace homework5._2
 {
     class Program
     {
@@ -33,8 +33,7 @@ namespace homework4._2
                     }
                 }
 
-                Console.WriteLine(
-                    $"Элементы вашего массива: {string.Join(" | ", myArray)}"); //Выводим на консоль элементы массива
+                Console.WriteLine($"Элементы вашего массива: {string.Join(" | ", myArray)}"); //Выводим на консоль элементы массива
 
                 var result = (double)(myArray.Sum()) / arrayElementsCount;
 

@@ -5,7 +5,7 @@ namespace homework5._1
 {
     class Program
     {
-        static (int[], int sumOfArrayElements)  CalculateMethod(string consoleInput)
+        static (int[], int sumOfArrayElements) CalculateMethod(string consoleInput)
         {
             //int sumOfArrayElements = 0;
             bool consoleInputNumber = Int32.TryParse(consoleInput, out int arrayElementsCount);
@@ -28,7 +28,6 @@ namespace homework5._1
                 }
 
                 int sumOfArrayElements = myArray.Sum();
-                
             }
 
             else
