@@ -1,21 +1,58 @@
-﻿// Домашнее задание (ПЕРЕДЕЛАТЬ ЗАДАНИЕ НА МЕТОДЫ)
+﻿// Домашнее задание
 //1. Найти сумму элементов одномерного массива. Размер произвольный. Элементы вводятся с клавиатуры.
 
-namespace homework5._1
+namespace homework4._1
 {
     class Program
     {
+        static void PrintMetod(string inputArgument1, string inputArgument2)
+        {
+            bool consoleInput = Int32.TryParse(inputArgument1, out int arrayElementsCount);
+            if (consoleInput)
+            {
+                
+                
+            }
+            
+            
+            
+            
+            
+        }
+
+        
+        
+        
+        
+        
+        
+        static void CalculateMethod()
+        {
+            int[] myArray = new int[arrayElementsCount];
+        }
+
+
         static void Main()
         {
-            //Ввод с консоли
-
-            Console.WriteLine("Введите размерность (количество элементов) массива");
-            string inputFromConsole = Console.ReadLine();
+            //Ввод с консоли данных пользователя
+            Console.WriteLine("Программа для подсчета суммы элементов одномерного массива \n" +
+                              "Введите размерность (количество элементов) массива");
+            string inputFromConsole = Console.ReadLine(); //Ввод с консоли размерности массива
+           
+            Console.WriteLine("Введите число"); //Ввод с консоли чисел
+            string number = Console.ReadLine();
+            
+            PrintMetod(inputFromConsole, number);
+            
+            
+            
+            
+            
             bool consoleInput = Int32.TryParse(inputFromConsole, out int arrayElementsCount);
 
             if (consoleInput)
             {
-                int[] myArray = new int[arrayElementsCount];
+                
                 for (int i = 0; i < myArray.Length; i++)
                 {
                     Console.WriteLine("Введите число");
