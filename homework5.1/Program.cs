@@ -1,4 +1,4 @@
-﻿// Домашнее задание (ПЕРЕДЕЛАТЬ ЗАДАНИЕ НА МЕТОДЫ)
+﻿// Домашнее задание
 //1. Найти сумму элементов одномерного массива. Размер произвольный. Элементы вводятся с клавиатуры.
 
 namespace homework5._1
@@ -6,73 +6,82 @@ namespace homework5._1
     class Program
     {
         /// <summary>
-        /// Метод отвечающий за преобразование введенных с консоли пользователем чисел
+        /// Парсим все символы от пользователя
         /// </summary>
-        /// <param name="inputArgument1"></param>
-        /// <param name="inputArgument2"></param>
-        static int PrintMetod(string inputArgument1, string inputArgument2)
+        public static void ParsingMethod()
         {
-            bool consoleInput = Int32.TryParse(inputArgument1, out int arrayElementsCount);
-            bool numberInput = Int32.TryParse(inputArgument2, out int arrayElements);
-            if (consoleInput && numberInput)
+            
+        }
+        
+        /// <summary>
+        /// Операции с массивом
+        /// </summary>
+        public static void CalculateMethod()
+        {
+            
+        }
+        
+        /// <summary>
+        /// Выводим на консоль
+        /// </summary>
+        public static void PrintMethod()
+        {
+            
+        }
+        
+        
+        public static void Main()
+        {
+            //Программа для подсчета суммы элементов одномерного массива
+
+            Console.WriteLine("Введите размерность (количество элементов) массива");
+            string inputFromConsole = Console.ReadLine();
+            Console.WriteLine("Введите число");
+            string number = Console.ReadLine();
+            
+            ParsingMethod(inputFromConsole, number);
+            
+            
+            
+            
+            
+            
+            
+            
+            bool consoleInput = Int32.TryParse(inputFromConsole, out int arrayElementsCount);
+
+            if (consoleInput)
             {
-                CalculateMethod(arrayElementsCount, arrayElements);
+                int[] myArray = new int[arrayElementsCount];
+                for (int i = 0; i < myArray.Length; i++)
+                {
+                    Console.WriteLine("Введите число");
+                    string number = Console.ReadLine();
+                    bool numberInput = Int32.TryParse(number, out int num);
+                    if (numberInput)
+                    {
+                        myArray[i] = num;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Некорректно введенное число, Запускаем программу заново");
+                    }
+                }
+
+                // Полученный после ввода массив данных
+                Console.WriteLine($"Элементы вашего массива: {string.Join(" ", myArray)}");
+                int sumOfArrayElements = myArray.Sum();
+                Console.WriteLine($"Сумма всех элементов в массиве равна = {sumOfArrayElements} ");
             }
+
             else
             {
-                Console.WriteLine("Введите корректное число");
+                Console.WriteLine("Введите корректное число элементов в вашем массиве");
             }
 
-            return arrayElementsCount;
-        }
 
-        /// <summary>
-        /// Метод для операций с элементами массива
-        /// </summary>
-        /// <param name="inputArgument1"></param>
-        /// <param name="inputArgument2"></param>
-        static int[] CalculateMethod(int inputArgument3, int inputArgument4)
-        {
-            int[] myArray = new int[inputArgument3];
-            for (int i = 0; i < myArray.Length; i++)
-            {
-                myArray[i] = inputArgument4;
-            }
-
-            return myArray;
+            // Delay
+            Console.ReadKey();
         }
     }
-
-
-    public static void Main()
-    {
-        int inputCounter = 0; //Размерность массива / счетчик
-        
-        //Ввод с консоли данных пользователя
-        Console.WriteLine("Программа для подсчета суммы элементов одномерного массива \n" +
-                          "Введите размерность (количество элементов) массива");
-        string inputFromConsole = Console.ReadLine(); //Ввод с консоли размерности массива
-
-        Console.WriteLine("Введите число"); //Ввод с консоли чисел
-        string number = Console.ReadLine();
-        do
-        {
-            int inputCounter = PrintMetod(inputFromConsole, number);
-        } 
-        while (expression);
-        
-
-
-        // Полученный после ввода массив данных
-        
-        //Console.WriteLine($"Элементы вашего массива: {string.Join(" ", myArray)}");
-        int sumOfArrayElements = myArray.Sum();
-        Console.WriteLine($"Сумма всех элементов в массиве равна = {sumOfArrayElements} ");
-
-
-        // Delay
-        Console.ReadKey();
-    }
-}
-
 }
