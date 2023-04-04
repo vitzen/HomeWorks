@@ -17,7 +17,7 @@ namespace homework6._2
             string inputSymbol = Console.ReadLine();
             
             
-            
+            //
             // Delay
             Console.ReadKey();
         }
