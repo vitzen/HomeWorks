@@ -21,7 +21,7 @@ public class Car //Класс автомобиль
     private double _carMileage; //Пробег
     private CarColorState _color; //Цвет автомобиля
 
-    
+     
 
     /// <summary>
     /// Получить пробег
@@ -33,11 +33,12 @@ public class Car //Класс автомобиль
     }
 
     /// <summary>
-    /// Получить пробег через 100км
+    /// Получить пробег через 100 миль
     /// </summary>
-    public void Go_100_Mile()
+    public double Go_100_Mile()
     {
         _carMileage += 100;
+        return _carMileage;
     }
 
     /// <summary>
@@ -52,6 +53,6 @@ public class Car //Класс автомобиль
     public override string ToString()
     {
         return
-            $"CarColorState: {_color}, ManufactureName: {_manufactureName}, ManufactureYear: {_manufactureYear}, EnginePower: {_enginePower}, CarMileage: {_carMileage}, CarAge: {_carAge}";
+            $"CarColorState: {_color}, ManufactureName: {_manufactureName}, ManufactureYear: {_manufactureYear}, EnginePower: {_enginePower}, CarMileage: {_carMileage}";
     }
 }

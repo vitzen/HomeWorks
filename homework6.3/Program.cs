@@ -9,7 +9,7 @@ namespace homework6._3
     {
         public static void Main()
         {
-            Car peugeot = new Car(Car.CarColorState.Blue, "Honda Civic", 2005, 100, 100);
+            Car peugeot = new Car()
 
 
             // Delay
