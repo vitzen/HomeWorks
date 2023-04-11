@@ -21,7 +21,20 @@ public class Car //Класс автомобиль
     private double _carMileage; //Пробег
     private CarColorState _color; //Цвет автомобиля
 
-     
+    public Car(string manufactureName, int manufactureYear, int enginePower, double carMileage, CarColorState color)
+    {
+        _manufactureName = manufactureName;
+        _manufactureYear = manufactureYear;
+        _enginePower = enginePower;
+        _carMileage = carMileage;
+        _color = color;
+    }
+
+    public Car(int enginePower)
+    {
+        _enginePower = enginePower;
+    }
+
 
     /// <summary>
     /// Получить пробег
