@@ -2,7 +2,6 @@
 //Добавить к класс Car логику работы с топливом.
 
 using System;
-using System.Xml;
 
 namespace homework6._3
 {
@@ -10,12 +9,16 @@ namespace homework6._3
     {
         public static void Main()
         {
-            Car peugeot = new Car;
-            
-            Console.WriteLine();
+            Car peugeot = new Car(Car.CarColorState.Black, "Peugeot 307", 2021, 100, 100);
+            Car volvo = new Car(Car.CarColorState.Blue, "Volvo s60", 2022, 120, 135);
+            Car toyota = new Car(Car.CarColorState.Metallic, "Toyota RAV4", 2023, 123, 100);
 
-            // Delay
-            Console.ReadKey();
+            
+
+
+
+                // Delay
+               // Console.Readkey();
         }
     }
 }
