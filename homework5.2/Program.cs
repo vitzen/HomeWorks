@@ -9,40 +9,62 @@ namespace homework5._2
     {
         static void Main(string[] args)
         {
-            //Воод размерности массива
-            Console.WriteLine("Введите размерность (количество элементов) массива");
-            string inputFromConsole = Console.ReadLine();
-            bool consoleInput = Int32.TryParse(inputFromConsole, out int arrayElementsCount);
-
-            //Блок инициализации массива и заполнения массива числами
-            if (consoleInput)
+            /// Метод парсинга размера массива
+            static int InputArrayCountMethod(string inputFromConsole)
             {
-                int[] myArray = new int[arrayElementsCount];
-                for (int i = 0; i < myArray.Length; i++)
+                bool consoleInput = Int32.TryParse(inputFromConsole, out int arrayElementsCount);
+                if (!consoleInput)
                 {
-                    Console.WriteLine("Введите число");
-                    string inputNumberFromConsole = Console.ReadLine();
-                    bool number = Int32.TryParse(inputNumberFromConsole, out int numberOfArray);
-                    if (number)
-                    {
-                        myArray[i] = numberOfArray; //Записываем в массив наши числа
-                    }
-                    else
-                    {
-                        Console.WriteLine("Некорректно введенное число, пробуйте заново!!!");
-                    }
+                    Console.WriteLine($"Введите корректное значение");
                 }
 
-                Console.WriteLine($"Элементы вашего массива: {string.Join(" | ", myArray)}"); //Выводим на консоль элементы массива
-
-                var result = (double)(myArray.Sum()) / arrayElementsCount;
-
-                Console.WriteLine($"Среднее арифметическое значение всех элементов нащего массива = {result}");
+                return arrayElementsCount;
             }
-            else
+
+            /// Метод парсинга вводимых значений эелемнтов массива
+            static int InputArrayElementsMethod(string number)
             {
-                Console.WriteLine("Некорректно введенное число, Запускаем программу заново");
+                bool numberInput = Int32.TryParse(number, out int num);
+                if (!numberInput)
+                {
+                    Console.WriteLine($"Введите корректное значение");
+                }
+
+                return num;
             }
+
+            /// Метод для решения арифметических задач
+            static double CalculateMethod(int[] newArray, int inputElementsCount)
+            {
+                double result = (double)(newArray.Sum()) / inputElementsCount;
+                return result;
+            }
+
+            /// Метод для вывода решения
+            static void PrintResultMethod(int[] newArray, double result)
+            {
+                Console.WriteLine($"Элементы вашего массива: {string.Join(" ", newArray)}");
+                Console.WriteLine($"Среднее арифметическое2 всех элементов в массиве равна = {result} ");
+            }
+
+
+            //Воод размерности массива
+            Console.WriteLine("Программа для нахождения среднего арифметическое элементов одномерного массива \n" +
+                              "Введите размерность (количество элементов) массива");
+            string inputFromConsole = Console.ReadLine();
+            int inputElementsCount = InputArrayCountMethod(inputFromConsole);
+
+            int[] array = new int[inputElementsCount];
+            for (int i = 0; i < array.Length; i++)
+            {
+                Console.WriteLine("Введите число");
+                string inputNumberFromConsole = Console.ReadLine();
+                int element = InputArrayElementsMethod(inputNumberFromConsole);
+                array[i] = element; //Записываем в массив наши числа
+            }
+
+            double result = CalculateMethod(array, inputElementsCount);
+            PrintResultMethod(array, result);
 
 
             // Delay
