@@ -56,7 +56,6 @@ namespace homework5._3
             }
 
 
-            //Воод размерности массива
             Console.WriteLine("Введите размерность (количество элементов) массива");
             string inputFromConsole = Console.ReadLine();
             int inputElementsCount = InputArrayCountMethod(inputFromConsole);
