@@ -2,6 +2,7 @@
 // 5. Массив А вводится с клавиатуры. Сформировать новый массив В, состоящий из положительных элементов массива А. Размер произвольный.
 
 using System;
+
 namespace homework5._5
 {
     class Program
@@ -15,9 +16,9 @@ namespace homework5._5
             string inputNumber = Console.ReadLine();
             int consoleInput = InputArrayCountMethod(inputNumber);
 
-            int newArrayCounterNumber = consoleInput;
+            //int newArrayCounterNumber = consoleInput;
             int[] array_A = new int[consoleInput];
-            int[] array_B = new int[newArrayCounterNumber];
+            //int[] array_B = new int[newArrayCounterNumber];
 
 
             for (int i = 0; i < array_A.Length; i++)
@@ -29,10 +30,10 @@ namespace homework5._5
                 array_A[i] = element;
             }
 
-            int[] array_C = CalculateMethod(array_A, newArrayCounterNumber);
+            int[] array_D = CalculateMethod(array_A);
 
-            PrintResultMethod(array_C);
-            
+            PrintResultMethod(array_D);
+
             /// Метод парсинга размера массива
             static int InputArrayCountMethod(string inputFromConsole)
             {
@@ -58,35 +59,34 @@ namespace homework5._5
             }
 
             /// Метод для решения арифметических задач
-            static int[] CalculateMethod(int[] array_B, int newArrayCounterNumber)
+            static int[] CalculateMethod(int[] array_B)
             {
-                //int[] array_B = new int[newArrayCounterNumber];
                 int indexOfNewArray = 0;
-                for (int i = 0; i < newArrayCounterNumber; i++)
+                // int[] array_C = new int[indexOfNewArray];
+                
+                
+                for (int i = 0; i < array_B.Length; i++)
                 {
                     int currentNumber = array_B[i];
                     if (currentNumber > 0)
                     {
-                        array_B[indexOfNewArray++] = currentNumber;
+                        array_C[indexOfNewArray++] = currentNumber;
                     }
                 }
 
-                return array_B;
+                
+                return array_C;
             }
 
             /// Метод для вывода решения
             static void PrintResultMethod(int[] array_D)
             {
                 Console.WriteLine($"Элементы нового массива: {string.Join(" ", array_D)}");
-                
             }
 
 
-            
-
-        // Delay
-        Console.ReadKey();
+            // Delay
+            Console.ReadKey();
+        }
     }
-}
-
 }
