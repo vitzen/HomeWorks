@@ -2,7 +2,7 @@
 // 5. Массив А вводится с клавиатуры. Сформировать новый массив В, состоящий из положительных элементов массива А. Размер произвольный.
 
 using System;
-
+?????????????????????????????????????????????????????????????????????????????????????????????????
 namespace homework5._5
 {
     class Program
@@ -34,18 +34,26 @@ namespace homework5._5
             }
 
             /// Метод для решения арифметических задач
-            static int CalculateMethod(int[] newArray)
+            static int[] CalculateMethod(int[] array_B, int newArrayCounterNumber)
             {
-                int sum = 0;
-                for (int j = 0; j < newArray.Length; j++)
+                int indexOfNewArray = 0;
+                for (int i = 0; i < newArrayCounterNumber; i++)
                 {
-                    if (newArray[j] % 2 == 0)
+                    int currentNumber = array_B[i];
+                    if (currentNumber > 0)
                     {
-                        sum += newArray[j];
+                        array_B[indexOfNewArray++] = currentNumber;
                     }
                 }
 
-                return sum;
+                return array_B;
+            }
+
+            /// Метод для вывода решения
+            static void PrintResultMethod(int[] array_C)
+            {
+                Console.WriteLine($"Элементы нового массива: {string.Join(" ", array_C)}");
+                
             }
 
 
@@ -67,38 +75,14 @@ namespace homework5._5
                 string inputElement = Console.ReadLine();
                 int element = InputArrayElementsMethod(inputElement);
 
-                if (element)
-                {
-                    array[i] = arrayElement;
-                }
-                else
-                {
-                    Console.WriteLine("Введите корректное число в качестве элемента массива");
-                }
+                array_B[i] = element;
             }
 
-            //Блок вывода элементов получившегося массива
-            Console.WriteLine($"Элементы вашего массива: {String.Join(" | ", myArray)}");
+            int[] array_C = CalculateMethod(array_B, newArrayCounterNumber);
 
-            int indexOfNewArray = 0;
-            for (int i = 0; i < newArrayCounterNumber; i++)
-            {
-                int currentNumber = myArray[i];
-                if (currentNumber > 0)
-                {
-                    newArray[indexOfNewArray++] = currentNumber;
-                }
-            }
+            PrintResultMethod(array_C);
 
-            //Блок вывода элементов получившегося массива
-            Console.WriteLine($"Элементы нового массива: {String.Join(" | ", newArray)}");
-        }
-        else
-
-        {
-            Console.WriteLine("Введите корректное число");
-        }
-
+            
 
         // Delay
         Console.ReadKey();
