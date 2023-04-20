@@ -27,8 +27,8 @@ namespace homework5._5
                 array_A[i] = element;
             }
 
-            int[] array_D = CalculateMethod(array_A);
-            PrintResultMethod(array_D);
+            var result = CalculateMethod(array_A);
+            PrintResultMethod(result);
 
             /// Метод парсинга размера массива
             static int InputArrayCountMethod(string inputFromConsole)
@@ -61,33 +61,31 @@ namespace homework5._5
                 int newArrayElementsCount = 0;
 
 
-                for (int i = 0; i < array_B.Length; i++)
+                for (int i = 0; i < array_B.Length; i++) //Цикл подсчета количества положительных элементов в новом массиве
                 {
-                    int currentNumber = array_B[i];
-                    if (currentNumber > 0)
+                    if (array_B[i] > 0)
                     {
                         newArrayElementsCount++;
                     }
                 }
 
-                int[] array_C = new int[newArrayElementsCount];
-                for (int i = 0; i < array_C.Length; i++)
+                int[] array_C = new int[newArrayElementsCount]; //Инициализация нового массива с новым количеством элементов
+                for (int j = 0; j < array_C.Length; j++) //Цикл для заполнения нового массива положительными элементами
                 {
-                    int currentNumber = array_C[i];
+                    int currentNumber = array_B[j];
                     if (currentNumber > 0)
                     {
                         array_C[indexOfNewArray++] = currentNumber;
                     }
                 }
 
-
                 return array_C;
             }
 
             /// Метод для вывода решения
-            static void PrintResultMethod(int[] array_E)
+            static void PrintResultMethod(int[] printResult)
             {
-                Console.WriteLine($"Элементы нового массива: {string.Join(" ", array_E)}");
+                Console.WriteLine($"Элементы нового массива: {string.Join(" ", printResult)}");
             }
 
 
