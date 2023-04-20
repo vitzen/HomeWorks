@@ -16,10 +16,7 @@ namespace homework5._5
             string inputNumber = Console.ReadLine();
             int consoleInput = InputArrayCountMethod(inputNumber);
 
-            //int newArrayCounterNumber = consoleInput;
             int[] array_A = new int[consoleInput];
-            //int[] array_B = new int[newArrayCounterNumber];
-
 
             for (int i = 0; i < array_A.Length; i++)
             {
@@ -31,7 +28,6 @@ namespace homework5._5
             }
 
             int[] array_D = CalculateMethod(array_A);
-
             PrintResultMethod(array_D);
 
             /// Метод парсинга размера массива
@@ -62,26 +58,36 @@ namespace homework5._5
             static int[] CalculateMethod(int[] array_B)
             {
                 int indexOfNewArray = 0;
-                // int[] array_C = new int[indexOfNewArray];
-                
-                
+                int newArrayElementsCount = 0;
+
+
                 for (int i = 0; i < array_B.Length; i++)
                 {
                     int currentNumber = array_B[i];
+                    if (currentNumber > 0)
+                    {
+                        newArrayElementsCount++;
+                    }
+                }
+
+                int[] array_C = new int[newArrayElementsCount];
+                for (int i = 0; i < array_C.Length; i++)
+                {
+                    int currentNumber = array_C[i];
                     if (currentNumber > 0)
                     {
                         array_C[indexOfNewArray++] = currentNumber;
                     }
                 }
 
-                
+
                 return array_C;
             }
 
             /// Метод для вывода решения
-            static void PrintResultMethod(int[] array_D)
+            static void PrintResultMethod(int[] array_E)
             {
-                Console.WriteLine($"Элементы нового массива: {string.Join(" ", array_D)}");
+                Console.WriteLine($"Элементы нового массива: {string.Join(" ", array_E)}");
             }
 
 
