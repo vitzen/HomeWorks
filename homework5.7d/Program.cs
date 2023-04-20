@@ -4,21 +4,27 @@
 
 using System;
 
-namespace homework4._7d
+namespace homework5._7d
 {
     class Program
     {
         static void Main(string[] args)
         {
-            // Блок ввода чисел
-            Console.WriteLine("Ввести общее количество элементов/чисел Фибоначчи");
-            string inputFromConsole = Console.ReadLine();
-            bool countFromConsole = Int32.TryParse(inputFromConsole, out int consoleNumbers);
-
-            if (countFromConsole)
+            /// Метод парсинга размера массива
+            static int InputArrayCountMethod(string inputFromConsole)
             {
-                int[] fibonachyArray = new int[consoleNumbers];
-                //int current = 0;
+                bool consoleInput = Int32.TryParse(inputFromConsole, out int arrayElementsCount);
+                if (!consoleInput)
+                {
+                    Console.WriteLine($"Введите корректное значение");
+                }
+
+                return arrayElementsCount;
+            }
+
+            static int[] CalculateMethod(int countOfArray)
+            {
+                int[] fibonachyArray = new int[countOfArray];
 
                 for (int i = 0; i < fibonachyArray.Length; i++)
                 {
@@ -37,12 +43,24 @@ namespace homework4._7d
                     }
                 }
 
-                Console.WriteLine($"Ряд чисел Фибоначчи начиная с нуля --> {String.Join(" | ", fibonachyArray)}");
+                return fibonachyArray;
             }
-            else
+
+            /// Метод для вывода решения
+            static void PrintResultMethod(int[] newArray)
             {
-                Console.WriteLine("Введите корректное число набора чисел");
+                Console.WriteLine($"Ряд чисел Фибоначчи начиная с нуля --> {String.Join(" | ", newArray)}");
             }
+
+
+            // Программа
+            Console.WriteLine("Программа для вывода на экран ряда чисел Фибоначчи, состоящего из N элементов\n" +
+                              "Ввести общее количество элементов/чисел Фибоначчи");
+            string inputFromConsole = Console.ReadLine();
+            int consoleInput = InputArrayCountMethod(inputFromConsole);
+            int[] fibonacchiArray = CalculateMethod(consoleInput);
+            PrintResultMethod(fibonacchiArray);
+
 
             // Delay
             Console.ReadKey();
