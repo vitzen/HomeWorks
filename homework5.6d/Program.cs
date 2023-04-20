@@ -3,7 +3,7 @@
 // Домашнее задание (ПЕРЕДЕЛАТЬ ЗАДАНИЕ НА МЕТОДЫ)
 
 using System;
-
+??????????????????????????????????????????????????????????????????????????????????????
 namespace homework5._6d
 {
     class Program
@@ -35,77 +35,52 @@ namespace homework5._6d
             }
 
             /// Метод для решения арифметических задач
-            static int CalculateMethod(int[] newArray)
+            static (int, int[]) CalculateMethod(int[] newArray)
             {
-                int sum = 0;
-                for (int j = 0; j < newArray.Length; j++)
+                var myArray = newArray;
+                int countOfEasyNumbers = 0;
+                for (int i = 0; i < myArray.Length; i++)
                 {
-                    if (newArray[j] % 2 == 0)
+                    if ((myArray[i] > 0) && ((myArray[i] / myArray[i] == 1) || (myArray[i] / 1 == myArray[i])))
                     {
-                        sum += newArray[j];
+                        countOfEasyNumbers++;
                     }
                 }
 
-                return sum;
+                return (countOfEasyNumbers, myArray);
             }
 
             /// Метод для вывода решения
-            static void PrintResultMethod(int[] newArray, int finishResult)
+            static void PrintResultMethod(int counter, int[] ourArray)
             {
-                Console.WriteLine($"Элементы вашего массива: {string.Join(" ", newArray)}");
-                Console.WriteLine($"Сумма четных лементов массива равна = {finishResult} ");
+                Console.WriteLine($"Элементы вашего массива: {string.Join(" ", ourArray)}");
+                Console.WriteLine($"Количество простых числео в массиве = {counter} ");
             }
 
 
-            // Блок ввода размерности массива
+            // Программа
             Console.WriteLine("Программа для подсчета количества простых чисел \n" +
                               "Введите количество чисел для подсчета суммы:");
             string inputConsoleCounter = Console.ReadLine();
             int consoleInput = InputArrayCountMethod(inputConsoleCounter);
 
 
-            int[] inputArray = new int[inputArrayCounter];
-            int sum = 0;
+            int[] inputArray = new int[consoleInput];
 
-            // Блок ввода элементов массива
-            for (int i = 0; i < inputArrayCounter; i++)
+            for (int i = 0; i < inputArray.Length; i++)
             {
                 Console.WriteLine("Введите число");
                 string inputConsoleNumber = Console.ReadLine();
-                bool number = Int32.TryParse(inputConsoleNumber, out int inputNumber);
-
-                if (number)
-                {
-                    inputArray[i] = inputNumber;
-                    if ((inputNumber > 0) && (inputNumber / inputNumber == 1) && (inputNumber / 1 == inputNumber))
-                    {
-                        sum += inputNumber;
-                    }
-                    else
-                    {
-                        Console.WriteLine(
-                            "Простые числа не могут быть отрицательными или равны 0, повторите ввод заново");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Введите корректное число для работы программы");
-                }
+                int element = InputArrayElementsMethod(inputConsoleNumber);
+                inputArray[i] = element;
             }
 
-            Console.WriteLine($"Введенные вами числа для подсчета : {String.Join(" | ", inputArray)}");
-            Console.WriteLine($"Сумма простых чисел равна : {sum}");
+            (var countOfEasyNumbers, inputArray) = CalculateMethod(inputArray);
+            PrintResultMethod(countOfEasyNumbers, inputArray);
+
+
+            // Delay
+            Console.ReadKey();
         }
-        else
-
-        {
-            Console.WriteLine("Введите корректное число");
-        }
-
-
-        // Delay
-        Console.ReadKey();
     }
-}
-
 }
