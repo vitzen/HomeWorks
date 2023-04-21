@@ -3,7 +3,7 @@
 // Домашнее задание (ПЕРЕДЕЛАТЬ ЗАДАНИЕ НА МЕТОДЫ)
 
 using System;
-??????????????????????????????????????????????????????????????????????????????????????
+
 namespace homework5._6d
 {
     class Program
@@ -37,30 +37,52 @@ namespace homework5._6d
             /// Метод для решения арифметических задач
             static (int, int[]) CalculateMethod(int[] newArray)
             {
-                var myArray = newArray;
+                //var myArray = newArray;
                 int countOfEasyNumbers = 0;
-                for (int i = 0; i < myArray.Length; i++)
+                for (int i = 0; i < newArray.Length; i++)
                 {
-                    if ((myArray[i] > 0) && ((myArray[i] / myArray[i] == 1) || (myArray[i] / 1 == myArray[i])))
+                    for (int j = 1; j < i + 2; j++)
+                    {
+                        if (i % j == 0 & i % 1 == 0)
+                        {
+                        }
+                    }
+
+
+                    if ((newArray[i] > 0) && ((newArray[i] / newArray[i] == 1) || (newArray[i] / 1 == newArray[i])))
+                        //     Console.Write("Введите конец диапазона от 2 до : ");
+                        // int end=int.Parse(Console.ReadLine());
+                        // for(int i=2; i<=end; i++) {
+                        //     bool b=true;
+                        //     for(int j=2; j<i; j++) {
+                        //         if(i%j==0 & i%1==0)
+                        // {
+                        //             b=false;
+                        //  }
+                        //     }
+                        //     if(b) {
+                        //         Console.Write("{0} ", i);
+
+
                     {
                         countOfEasyNumbers++;
                     }
                 }
 
-                return (countOfEasyNumbers, myArray);
+                return (countOfEasyNumbers, newArray);
             }
 
             /// Метод для вывода решения
             static void PrintResultMethod(int counter, int[] ourArray)
             {
                 Console.WriteLine($"Элементы вашего массива: {string.Join(" ", ourArray)}");
-                Console.WriteLine($"Количество простых числео в массиве = {counter} ");
+                Console.WriteLine($"Количество простых чисел в массиве = {counter} ");
             }
 
 
             // Программа
             Console.WriteLine("Программа для подсчета количества простых чисел \n" +
-                              "Введите количество чисел для подсчета суммы:");
+                              "Введите размер массива:");
             string inputConsoleCounter = Console.ReadLine();
             int consoleInput = InputArrayCountMethod(inputConsoleCounter);
 
