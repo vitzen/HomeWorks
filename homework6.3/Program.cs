@@ -13,12 +13,17 @@ namespace homework6._3
             Car volvo = new Car(Car.CarColorState.Blue, "Volvo s60", 2022, 120, 135);
             Car toyota = new Car(Car.CarColorState.Metallic, "Toyota RAV4", 2023, 123, 100);
 
-            
+            peugeot.GetMilage();
+            volvo.GetMilage();
+            toyota.GetMilage();
+            Console.WriteLine($"Пробег автомобиля Peugeot: {peugeot.GetMilage()}\n" +
+                              $"Пробег автомобиля Volvo: {volvo.GetMilage()}\n" +
+                              $"Пробег автомобиля Toyta: {toyota.GetMilage()}");
 
 
 
-                // Delay
-               // Console.Readkey();
+            // Delay
+            // Console.Readkey();
         }
     }
 }

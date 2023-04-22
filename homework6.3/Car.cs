@@ -33,28 +33,26 @@ public class Car //Класс автомобиль
     }
     
 
-    /// <summary>
-    /// Получить пробег
-    /// </summary>
-    /// <returns></returns>
+ 
+    /// Метод для получения пробега
+
     public double GetMilage()
     {
         return _carMileage;
     }
 
-    /// <summary>
+
     /// Получить пробег через 100 миль
-    /// </summary>
+
     public double Go_100_Mile()
     {
         _carMileage += 100;
         return _carMileage;
     }
 
-    /// <summary>
+  
     /// Получить возраст автомобиля на данный момент времени
-    /// </summary>
-    /// <returns></returns>
+  
     public int CarAgeYear()
     {
         return (DateTime.Now.Year - _manufactureYear);
