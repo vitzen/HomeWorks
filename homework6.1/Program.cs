@@ -7,12 +7,8 @@ namespace homework6._1
 {
     class Program
     {
-        ///
-        /// <summary>
+        
         /// Метод, осуществляющий парсинг символа от пользователя
-        /// </summary>
-        /// <param name="n"></param>
-        /// <returns></returns>
         public static void Parsing(string inputFromUser)
         {
             string unknownInput = inputFromUser;
@@ -27,21 +23,16 @@ namespace homework6._1
             }      
         }
         
-        /// <summary>
+        
         /// Алгоритм поиска n-т-ого элемента в ряду Фибоначчи
-        /// </summary>
-        /// <param name="n"></param>
-        /// <returns></returns>
         public static int Fibonachi(int n)
         {
             if (n == 0 || n == 1) return n;
             return Fibonachi(n - 1) + Fibonachi(n - 2);
         }
 
-        /// <summary>
+        
         /// Метод для вывода на консоль
-        /// </summary>
-        /// <param name="fibonachResult"></param>
         public static void Print(int fibonachResult)
         {
             Console.WriteLine($"n-ое число Фибоначчи = {fibonachResult}");
