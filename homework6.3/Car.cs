@@ -1,4 +1,5 @@
 using System;
+using System.Reflection.Emit;
 
 
 namespace homework6._3;
@@ -7,13 +8,9 @@ public class Car //Класс автомобиль
 {
     public enum CarColorState
     {
-        White,
         Metallic,
         Black,
         Blue,
-        Yellow,
-        Green,
-        Red
     }
 
     private CarColorState _color; //Цвет автомобиля
@@ -23,17 +20,19 @@ public class Car //Класс автомобиль
     private double _carMileage; //Пробег
     private double _gas_Consumption; //расход бензина на 100км
 
-    public Car(CarColorState color, string manufactureName, int manufactureYear, int enginePower, double carMileage)
+    public Car(CarColorState color, string manufactureName, int manufactureYear, int enginePower, double carMileage,
+        double gasConsumption)
     {
         _color = color;
         _manufactureName = manufactureName;
         _manufactureYear = manufactureYear;
         _enginePower = enginePower;
         _carMileage = carMileage;
+        _gas_Consumption = gasConsumption; //Расход бензина с учетом 10л/100км
     }
 
 
-    /// Метод для получения пробега
+    /// Получить пробег по умолчанию (на новом автомобиле)
     public double GetMilage()
     {
         return _carMileage;
@@ -53,6 +52,9 @@ public class Car //Класс автомобиль
     {
         return (DateTime.Now.Year - _manufactureYear);
     }
+    
+    // Метод рассчета расходования бензина
+    public 
 
     public override string ToString()
     {
