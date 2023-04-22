@@ -4,7 +4,7 @@
 
 using System;
 
-namespace homework4._8d
+namespace homework5._8d
 {
     class Program
     {
@@ -60,8 +60,8 @@ namespace homework4._8d
             /// Метод для вывода решения
             static void PrintResultMethod(double even, double odd)
             {
-                Console.WriteLine($"Четные числа вашего массива: {even}");
-                Console.WriteLine($"Нечетные числа вашего массива: {odd}");
+                Console.WriteLine($"Количество Четных чисел вашего массива: {even}");
+                Console.WriteLine($"Количество Нечетных чисел вашего массива: {odd}");
             }
 
 

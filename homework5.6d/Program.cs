@@ -35,37 +35,29 @@ namespace homework5._6d
             }
 
             /// Метод для решения арифметических задач
-            static (int, int[]) CalculateMethod(int[] newArray)
+            static (int, int[]) CalculateMethod(int[] newArray, int myCount)
             {
                 //var myArray = newArray;
-                int countOfEasyNumbers = 0;
+                int countOfEasyNumbers = myCount;
+
+
                 for (int i = 0; i < newArray.Length; i++)
                 {
-                    for (int j = 1; j < i + 2; j++)
+                    if (newArray[i] == 0 || newArray[i] == 1)
                     {
-                        if (i % j == 0 & i % 1 == 0)
-                        {
-                        }
+                        countOfEasyNumbers--;
                     }
 
-
-                    if ((newArray[i] > 0) && ((newArray[i] / newArray[i] == 1) || (newArray[i] / 1 == newArray[i])))
-                        //     Console.Write("Введите конец диапазона от 2 до : ");
-                        // int end=int.Parse(Console.ReadLine());
-                        // for(int i=2; i<=end; i++) {
-                        //     bool b=true;
-                        //     for(int j=2; j<i; j++) {
-                        //         if(i%j==0 & i%1==0)
-                        // {
-                        //             b=false;
-                        //  }
-                        //     }
-                        //     if(b) {
-                        //         Console.Write("{0} ", i);
-
-
+                    else if (newArray[i] > 1)
                     {
-                        countOfEasyNumbers++;
+                        for (int j = 2; j < newArray[i]; j++)
+                        {
+                            if (newArray[i] % j == 0)
+                            {
+                                countOfEasyNumbers--;
+                                break;
+                            }
+                        }
                     }
                 }
 
@@ -97,7 +89,7 @@ namespace homework5._6d
                 inputArray[i] = element;
             }
 
-            (var countOfEasyNumbers, inputArray) = CalculateMethod(inputArray);
+            (var countOfEasyNumbers, inputArray) = CalculateMethod(inputArray, consoleInput);
             PrintResultMethod(countOfEasyNumbers, inputArray);
 
 
