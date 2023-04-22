@@ -1,4 +1,4 @@
-namespace homework6._4;
+namespace homework6._2;
 
 public class MyMethodsClass
 {
@@ -27,16 +27,32 @@ public class MyMethodsClass
     }
 
     /// Метод для решения арифметических задач
-    public int CalculateMethod(int[] newArray)
+    public (double, double) CalculateMethod(double[] newArray)
     {
-        int sumOfArrayElements = newArray.Sum();
-        return sumOfArrayElements;
+        double[] evenOddArray = newArray;
+        double evenCounter = 0;
+        double oddCounter = 0;
+        for (int i = 0; i < evenOddArray.Length; i++)
+        {
+            if (evenOddArray[i] > 0 && (evenOddArray[i] % 2 == 0))
+            {
+                evenCounter++;
+            }
+            else if ((evenOddArray[i] > 0 && (evenOddArray[i] % 2 == 1)))
+
+            {
+                oddCounter++;
+            }
+        }
+
+        return (evenCounter, oddCounter);
     }
 
+
     /// Метод для вывода решения
-    public void PrintResultMethod(int[] newArray, int sumOfArrayElements)
+    public void PrintResultMethod(double even, double odd)
     {
-        Console.WriteLine($"Элементы вашего массива: {string.Join(" ", newArray)}");
-        Console.WriteLine($"Сумма всех элементов в массиве равна = {sumOfArrayElements} ");
+        Console.WriteLine($"Четные числа вашего массива: {even}");
+        Console.WriteLine($"Нечетные числа вашего массива: {odd}");
     }
 }

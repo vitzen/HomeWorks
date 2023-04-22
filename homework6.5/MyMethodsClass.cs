@@ -1,4 +1,4 @@
-namespace homework6._4;
+namespace homework6._5;
 
 public class MyMethodsClass
 {
@@ -27,16 +27,16 @@ public class MyMethodsClass
     }
 
     /// Метод для решения арифметических задач
-    public int CalculateMethod(int[] newArray)
+    public double CalculateMethod(int[] newArray, int inputElementsCount)
     {
-        int sumOfArrayElements = newArray.Sum();
-        return sumOfArrayElements;
+        double result = (double)(newArray.Sum()) / inputElementsCount;
+        return result;
     }
 
     /// Метод для вывода решения
-    public void PrintResultMethod(int[] newArray, int sumOfArrayElements)
+    public void PrintResultMethod(int[] newArray, double result)
     {
         Console.WriteLine($"Элементы вашего массива: {string.Join(" ", newArray)}");
-        Console.WriteLine($"Сумма всех элементов в массиве равна = {sumOfArrayElements} ");
+        Console.WriteLine($"Среднее арифметическое2 всех элементов в массиве равна = {result} ");
     }
 }

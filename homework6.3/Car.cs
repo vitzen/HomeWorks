@@ -15,7 +15,7 @@ public class Car //Класс автомобиль
         Green,
         Red
     }
-    
+
     private CarColorState _color; //Цвет автомобиля
     private string _manufactureName; //Название/марка автомобиля
     private int _manufactureYear; //Год выпуска
@@ -31,11 +31,9 @@ public class Car //Класс автомобиль
         _enginePower = enginePower;
         _carMileage = carMileage;
     }
-    
 
- 
+
     /// Метод для получения пробега
-
     public double GetMilage()
     {
         return _carMileage;
@@ -43,16 +41,14 @@ public class Car //Класс автомобиль
 
 
     /// Получить пробег через 100 миль
-
     public double Go_100_Mile()
     {
         _carMileage += 100;
         return _carMileage;
     }
 
-  
+
     /// Получить возраст автомобиля на данный момент времени
-  
     public int CarAgeYear()
     {
         return (DateTime.Now.Year - _manufactureYear);

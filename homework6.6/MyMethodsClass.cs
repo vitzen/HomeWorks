@@ -1,4 +1,4 @@
-namespace homework6._4;
+namespace homework6._6;
 
 public class MyMethodsClass
 {
@@ -29,14 +29,22 @@ public class MyMethodsClass
     /// Метод для решения арифметических задач
     public int CalculateMethod(int[] newArray)
     {
-        int sumOfArrayElements = newArray.Sum();
-        return sumOfArrayElements;
+        int minNumber = newArray[0];
+        for (int i = 1; i < newArray.Length; i++)
+        {
+            if (newArray[i] < minNumber)
+            {
+                minNumber = newArray[i];
+            }
+        }
+
+        return minNumber;
     }
 
     /// Метод для вывода решения
-    public void PrintResultMethod(int[] newArray, int sumOfArrayElements)
+    public void PrintResultMethod(int[] newArray, int result)
     {
         Console.WriteLine($"Элементы вашего массива: {string.Join(" ", newArray)}");
-        Console.WriteLine($"Сумма всех элементов в массиве равна = {sumOfArrayElements} ");
+        Console.WriteLine($"Наименьший элемент в массиве равен = {result} ");
     }
 }

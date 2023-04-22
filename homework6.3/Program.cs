@@ -21,7 +21,6 @@ namespace homework6._3
                               $"Пробег автомобиля Toyta: {toyota.GetMilage()}");
 
 
-
             // Delay
             // Console.Readkey();
         }
