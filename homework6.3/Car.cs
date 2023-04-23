@@ -18,19 +18,18 @@ public class Car //Класс автомобиль
     private int _manufactureYear; //Год выпуска
     private int _enginePower; //Мощность двигателя
     private double _carMileage; //Пробег
-    private int _fuelTankCapacity; //Емкость топливного бака в литрах
-    private double _gas_Consumption; //расход бензина на 100км
+    private int _defaultFuelValue; //Количество топлива
+
 
     public Car(CarColorState color, string manufactureName, int manufactureYear, int enginePower, double carMileage,
-        int fuelTankCapacity, double gasConsumption)
+        int defaultFuelValue)
     {
         _color = color;
         _manufactureName = manufactureName;
         _manufactureYear = manufactureYear;
         _enginePower = enginePower;
         _carMileage = carMileage;
-        _fuelTankCapacity = fuelTankCapacity;
-        _gas_Consumption = gasConsumption;
+        _defaultFuelValue = defaultFuelValue;
     }
 
 
@@ -55,23 +54,29 @@ public class Car //Класс автомобиль
         return (DateTime.Now.Year - _manufactureYear);
     }
 
-    // Логика работы с топливом
-    // public int Refuel {
-    //     get
-    //     {
-    //         
-    //     }
-    //     set
-    //     {
-    //         if (_fuelTankCapacity < 30)
-    //         {
-    //             
-    //         } 
-    //     }
-    // }
+    //Получить объем топлива
+    public int GetFuelValue()
+    {
+        return _defaultFuelValue;
+    }
+
+    //Заправить топлива
+    public int Refuel(int addSomeFuel)
+    {
+        _defaultFuelValue += addSomeFuel;
+        return _defaultFuelValue;
+    }
+
+    //Потратить топливо
+    public int Usefuel(int useSomeFuel)
+    {
+        _defaultFuelValue -= useSomeFuel;
+        return _defaultFuelValue;
+    }
 
     public override string ToString()
     {
-        return $"Color: {_color}, ManufactureName: {_manufactureName}, ManufactureYear: {_manufactureYear}, EnginePower: {_enginePower}, CarMileage: {_carMileage}, FuelTankCapacity: {_fuelTankCapacity}, GasConsumption: {_gas_Consumption}";
+        return
+            $"Color: {_color}, ManufactureName: {_manufactureName}, ManufactureYear: {_manufactureYear}, EnginePower: {_enginePower}, CarMileage: {_carMileage}, FuelTankCapacity: {_defaultFuelValue}";
     }
 }
