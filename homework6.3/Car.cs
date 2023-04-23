@@ -55,7 +55,19 @@ public class Car //Класс автомобиль
     }
 
     // Логика работы с топливом
-
+    public int Refuel {
+        get
+        {
+            
+        }
+        set
+        {
+            if (_fuelTankCapacity < 30)
+            {
+                
+            } 
+        }
+    }
 
     public override string ToString()
     {
