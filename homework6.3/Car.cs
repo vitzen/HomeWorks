@@ -18,17 +18,18 @@ public class Car //Класс автомобиль
     private int _manufactureYear; //Год выпуска
     private int _enginePower; //Мощность двигателя
     private double _carMileage; //Пробег
+    private int _fuelTankCapacity; //Емкость топливного бака в литрах
     private double _gas_Consumption; //расход бензина на 100км
 
-    public Car(CarColorState color, string manufactureName, int manufactureYear, int enginePower, double carMileage,
-        double gasConsumption)
+    public Car(CarColorState color, string manufactureName, int manufactureYear, int enginePower, double carMileage, int fuelTankCapacity, double gasConsumption)
     {
         _color = color;
         _manufactureName = manufactureName;
         _manufactureYear = manufactureYear;
         _enginePower = enginePower;
         _carMileage = carMileage;
-        _gas_Consumption = gasConsumption; //Расход бензина с учетом 10л/100км
+        _fuelTankCapacity = fuelTankCapacity;
+        _gas_Consumption = gasConsumption;
     }
 
 
@@ -39,10 +40,10 @@ public class Car //Класс автомобиль
     }
 
 
-    /// Получить пробег через 100 миль
-    public double Go_100_Mile()
+    /// Получить пробег через N миль
+    public double GoSomeMile(int mile)
     {
-        _carMileage += 100;
+        _carMileage += mile;
         return _carMileage;
     }
 
@@ -52,9 +53,9 @@ public class Car //Класс автомобиль
     {
         return (DateTime.Now.Year - _manufactureYear);
     }
-    
-    // Метод рассчета расходования бензина
-    public 
+
+    // Логика работы с топливом
+
 
     public override string ToString()
     {

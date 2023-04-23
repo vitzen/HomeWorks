@@ -9,18 +9,40 @@ namespace homework6._3
     {
         public static void Main()
         {
-            Car peugeot = new Car(Car.CarColorState.Black, "Peugeot 307", 2021, 100, 100, 9);
-            Car volvo = new Car(Car.CarColorState.Blue, "Volvo s60", 2022, 120, 135, 10);
-            Car toyota = new Car(Car.CarColorState.Metallic, "Toyota RAV4", 2023, 123, 100, 11);
+            Car peugeot = new Car(Car.CarColorState.Black, "Peugeot 307", 2021, 100, 100, 30, 10);
+            Car volvo = new Car(Car.CarColorState.Blue, "Volvo s60", 2022, 120, 135, 40, 12);
+            Car toyota = new Car(Car.CarColorState.Metallic, "Toyota RAV4", 2023, 123, 100, 45, 15);
+
+            Console.WriteLine($"Выводим всю информацию об имеющихся автомобилях в салоне:\n" +
+                              $" {peugeot}\n" +
+                              $" {volvo}\n" +
+                              $" {toyota}\n");
 
             peugeot.GetMilage();
             volvo.GetMilage();
             toyota.GetMilage();
-            Console.WriteLine($"Пробег автомобиля Peugeot: {peugeot.GetMilage()}\n" +
-                              $"Пробег автомобиля Volvo: {volvo.GetMilage()}\n" +
-                              $"Пробег автомобиля Toyta: {toyota.GetMilage()}");
-            
-            peugeot.
+            Console.WriteLine($"Изначальный робег (с завода) автомобиля Peugeot: {peugeot.GetMilage()}\n" +
+                              $"Изначальный робег (с завода) автомобиля Volvo: {volvo.GetMilage()}\n" +
+                              $"Изначальный робег (с завода) автомобиля Toyta: {toyota.GetMilage()}\n");
+
+            //Автомобили совершили тестовый пробег
+            peugeot.GoSomeMile(327);
+            volvo.GoSomeMile(289);
+            toyota.GoSomeMile(32);
+
+            peugeot.GetMilage();
+            volvo.GetMilage();
+            toyota.GetMilage();
+            Console.WriteLine($"Пробег после test drive автомобиля Peugeot: {peugeot.GetMilage()}\n" +
+                              $"Пробег после test drive автомобиля Volvo: {volvo.GetMilage()}\n" +
+                              $"Пробег после test drive автомобиля Toyta: {toyota.GetMilage()}\n");
+
+            peugeot.CarAgeYear();
+            volvo.CarAgeYear();
+            toyota.CarAgeYear();
+            Console.WriteLine($"Возраст автомобиля Peugeot: {peugeot.CarAgeYear()}\n" +
+                              $"Возраставтомобиля Volvo: {volvo.CarAgeYear()}\n" +
+                              $"Возраст автомобиля Toyta: {toyota.CarAgeYear()}");
 
 
             // Delay
