@@ -21,7 +21,8 @@ public class Car //Класс автомобиль
     private int _fuelTankCapacity; //Емкость топливного бака в литрах
     private double _gas_Consumption; //расход бензина на 100км
 
-    public Car(CarColorState color, string manufactureName, int manufactureYear, int enginePower, double carMileage, int fuelTankCapacity, double gasConsumption)
+    public Car(CarColorState color, string manufactureName, int manufactureYear, int enginePower, double carMileage,
+        int fuelTankCapacity, double gasConsumption)
     {
         _color = color;
         _manufactureName = manufactureName;
@@ -55,23 +56,22 @@ public class Car //Класс автомобиль
     }
 
     // Логика работы с топливом
-    public int Refuel {
-        get
-        {
-            
-        }
-        set
-        {
-            if (_fuelTankCapacity < 30)
-            {
-                
-            } 
-        }
-    }
+    // public int Refuel {
+    //     get
+    //     {
+    //         
+    //     }
+    //     set
+    //     {
+    //         if (_fuelTankCapacity < 30)
+    //         {
+    //             
+    //         } 
+    //     }
+    // }
 
     public override string ToString()
     {
-        return
-            $"CarColorState: {_color}, ManufactureName: {_manufactureName}, ManufactureYear: {_manufactureYear}, EnginePower: {_enginePower}, CarMileage: {_carMileage}";
+        return $"Color: {_color}, ManufactureName: {_manufactureName}, ManufactureYear: {_manufactureYear}, EnginePower: {_enginePower}, CarMileage: {_carMileage}, FuelTankCapacity: {_fuelTankCapacity}, GasConsumption: {_gas_Consumption}";
     }
 }
