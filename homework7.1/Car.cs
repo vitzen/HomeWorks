@@ -111,6 +111,6 @@ public class Car //Класс автомобиль
             $"CarMileage: {_carMileage}\n" +
             $"DefaultFuelValue: {_defaultFuelValue}\n" +
             $"GasolineСonsumption: {_gasolineСonsumption}\n" +
-            $"GasolineСonsumption: {_gasolineСonsumption}";
+            $"GasolineСonsumption: {_gasolineСonsumption}\n";
     }
 }
