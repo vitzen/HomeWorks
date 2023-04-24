@@ -38,24 +38,6 @@ public class Car //Класс автомобиль
         _gasolineСonsumption = gasolineСonsumption;
     }
 
-    //Свойство -  расход бензина (N-л/100км)
-    public int GasolineСonsumption
-    {
-        get
-        {
-            if (_gasolineСonsumption < 10)
-            {
-                Console.WriteLine("Расход бензина невысокий < 10л/100км");
-            }
-            else
-            {
-                Console.WriteLine("Расход бензина высокий > 12л/100км");
-            }
-
-            return _gasolineСonsumption;
-        }
-        set { _gasolineСonsumption = value; }
-    }
 
     /// Получить пробег по умолчанию (на новом автомобиле)
     public int GetMilage()
@@ -98,8 +80,30 @@ public class Car //Класс автомобиль
         return _defaultFuelValue;
     }
 
+    //Свойство -  расход бензина (N-л/100км)
+    public int GasolineСonsumption
+    {
+        get
+        {
+            if (_gasolineСonsumption < 10)
+            {
+                Console.Write(
+                    $"Расход бензина невысокий < 10л/100км и составляет для нашего автомобиля {_manufactureName}: ");
+            }
+            else
+            {
+                Console.Write(
+                    $"Расход бензина высокий > 10л/100км и составляет для нашего автомобиля {_manufactureName}: ");
+            }
+
+            return _gasolineСonsumption;
+        }
+        set { _gasolineСonsumption = value; }
+    }
+
     public override string ToString()
     {
-        return $"Color: {_color}, ManufactureName: {_manufactureName}, ManufactureYear: {_manufactureYear}, EnginePower: {_enginePower}, CarMileage: {_carMileage}, DefaultFuelValue: {_defaultFuelValue}, GasolineСonsumption: {_gasolineСonsumption}, GasolineСonsumption: {GasolineСonsumption}";
+        return
+            $"Color: {_color}, ManufactureName: {_manufactureName}, ManufactureYear: {_manufactureYear}, EnginePower: {_enginePower}, CarMileage: {_carMileage}, DefaultFuelValue: {_defaultFuelValue}, GasolineСonsumption: {_gasolineСonsumption}, GasolineСonsumption: {GasolineСonsumption}";
     }
 }
