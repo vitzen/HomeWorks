@@ -17,12 +17,13 @@ public class Car //Класс автомобиль
     private string _manufactureName; //Название/марка автомобиля
     private int _manufactureYear; //Год выпуска
     private int _enginePower; //Мощность двигателя
-    private double _carMileage; //Пробег
+    private int _carMileage; //Пробег
     private int _defaultFuelValue; //Количество топлива
+    private int _gasolineСonsumption; //Расход бензина с учетом формулы (N-количество литров/100 км)
 
 
-    public Car(CarColorState color, string manufactureName, int manufactureYear, int enginePower, double carMileage,
-        int defaultFuelValue)
+    public Car(CarColorState color, string manufactureName, int manufactureYear, int enginePower, int carMileage,
+        int defaultFuelValue) //Пользовательский конструктор полей
     {
         _color = color;
         _manufactureName = manufactureName;
@@ -32,16 +33,30 @@ public class Car //Класс автомобиль
         _defaultFuelValue = defaultFuelValue;
     }
 
+    public Car(int gasolineСonsumption) //Пользовательский конструктор для поля расхода бензина (N-л/100км)
+    {
+        _gasolineСonsumption = gasolineСonsumption;
+    }
+
+    //Свойство -  расход бензина (N-л/100км)
+    public int GasolineСonsumption 
+    {
+        get
+        {
+            return _gasolineСonsumption;
+        }
+        set { _gasolineСonsumption = value; }
+    }
 
     /// Получить пробег по умолчанию (на новом автомобиле)
-    public double GetMilage()
+    public int GetMilage()
     {
         return _carMileage;
     }
 
 
     /// Получить пробег через N миль
-    public double GoSomeMile(int mile)
+    public int GoSomeMile(int mile)
     {
         _carMileage += mile;
         return _carMileage;

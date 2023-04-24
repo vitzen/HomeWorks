@@ -3,9 +3,10 @@
 //добавляем ему констркуторов, свойств, методов (набор - по желанию)
 
 using System;
-using homework7._1;
+using System.Reflection.Emit;
 
-namespace homework67._1
+
+namespace homework7._1
 {
     class Program
     {
@@ -71,6 +72,10 @@ namespace homework67._1
                 $"Обьем топлива после перегона авто в автосалон г.Москва/ автомобиля Peugeot: {peugeot.GetFuelValue()}\n" +
                 $"Обьем топлива после перегона авто в автосалон г.Москва/ автомобиля Volvo: {volvo.GetFuelValue()}\n" +
                 $"Обьем топлива после перегона авто в автосалон г.Москва/ автомобиля Toyta: {toyota.GetFuelValue()}\n");
+
+            
+            peugeot.GasolineСonsumption = 12;
+           
 
             // Delay
             // Console.Readkey();
