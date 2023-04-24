@@ -69,9 +69,9 @@ namespace homework7._1
             volvo.GetFuelValue();
             toyota.GetFuelValue();
             Console.WriteLine(
-                $"Обьем топлива после перегона авто в автосалон г.Москва/ автомобиля Peugeot: {peugeot.GetFuelValue()}\n" +
-                $"Обьем топлива после перегона авто в автосалон г.Москва/ автомобиля Volvo: {volvo.GetFuelValue()}\n" +
-                $"Обьем топлива после перегона авто в автосалон г.Москва/ автомобиля Toyta: {toyota.GetFuelValue()}\n");
+                 $"Обьем топлива после перегона авто в автосалон г.Москва/ автомобиля Peugeot: {peugeot.GetFuelValue()}\n" +
+                 $"Обьем топлива после перегона авто в автосалон г.Москва/ автомобиля Volvo: {volvo.GetFuelValue()}\n" +
+                 $"Обьем топлива после перегона авто в автосалон г.Москва/ автомобиля Toyta: {toyota.GetFuelValue()}\n");
 
 
             peugeot.GasolineСonsumption = 12;
