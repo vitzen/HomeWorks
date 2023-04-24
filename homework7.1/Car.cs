@@ -104,6 +104,13 @@ public class Car //Класс автомобиль
     public override string ToString()
     {
         return
-            $"Color: {_color}, ManufactureName: {_manufactureName}, ManufactureYear: {_manufactureYear}, EnginePower: {_enginePower}, CarMileage: {_carMileage}, DefaultFuelValue: {_defaultFuelValue}, GasolineСonsumption: {_gasolineСonsumption}, GasolineСonsumption: {_gasolineСonsumption}";
+            $"Color: {_color}\n" +
+            $"ManufactureName: {_manufactureName}\n" +
+            $"ManufactureYear: {_manufactureYear}\n" +
+            $"EnginePower: {_enginePower}\n" +
+            $"CarMileage: {_carMileage}\n" +
+            $"DefaultFuelValue: {_defaultFuelValue}\n" +
+            $"GasolineСonsumption: {_gasolineСonsumption}\n" +
+            $"GasolineСonsumption: {_gasolineСonsumption}";
     }
 }
