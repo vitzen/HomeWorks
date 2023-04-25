@@ -33,7 +33,10 @@ public class Car //Класс автомобиль
         _defaultFuelValue = defaultFuelValue;
     }
 
-    public Car(int gasolineСonsumption) //Пользовательский конструктор для поля расхода бензина (N-л/100км)
+    //Пользовательский конструктор для поля расхода бензина (N-л/100км)
+    public Car(CarColorState color, string manufactureName, int manufactureYear, int enginePower, int carMileage,
+        int defaultFuelValue, int gasolineСonsumption)
+        : this(color, manufactureName, manufactureYear, enginePower, carMileage, defaultFuelValue)
     {
         _gasolineСonsumption = gasolineСonsumption;
     }
