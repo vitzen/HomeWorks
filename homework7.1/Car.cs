@@ -14,7 +14,7 @@ public class Car //Класс автомобиль
     }
 
     private CarColorState _color; //Цвет автомобиля
-    private string _manufactureName; //Название/марка автомобиля
+    private readonly string _manufactureName; //Название/марка автомобиля
     private int _manufactureYear; //Год выпуска
     private int _enginePower; //Мощность двигателя
     private int _carMileage; //Пробег
