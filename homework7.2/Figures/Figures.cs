@@ -10,4 +10,5 @@ public class Figures
         White,
         Black,
     }
+
 }

@@ -28,4 +28,9 @@ public class Square : Figures
         get { return _mySquareColor; }
         set { _mySquareColor = value; }
     }
+
+    public override string ToString()
+    {
+        return $"Name: {_name}, SideLength: {_sideLength}, MySquareColor: {_mySquareColor}";
+    }
 }

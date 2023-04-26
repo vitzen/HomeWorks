@@ -39,4 +39,9 @@ public class Triangle : Figures
         get { return _myTriangleColor; }
         set { _myTriangleColor = value; }
     }
+
+    public override string ToString()
+    {
+        return $"Name: {_name}, BaseSideOfTriangle: {_baseSideOfTriangle}, SecondSideOfTriangle: {_secondSideOfTriangle}, ThirdSideOfTriangle: {_thirdSideOfTriangle}, Perpendicular: {_perpendicular}, MyTriangleColor: {_myTriangleColor}";
+    }
 }
