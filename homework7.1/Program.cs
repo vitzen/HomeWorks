@@ -77,8 +77,6 @@ namespace homework7._1
             peugeot.GasolineСonsumption = 12;
             volvo.GasolineСonsumption = 9;
             toyota.GasolineСonsumption = 13;
-
-            Console.WriteLine(peugeot.GasolineСonsumption);
         }
     }
 }

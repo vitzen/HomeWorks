@@ -86,22 +86,22 @@ public class Car //Класс автомобиль
     //Свойство -  расход бензина (N-л/100км)
     public int GasolineСonsumption
     {
-        get
+        get { return _gasolineСonsumption; }
+        set
         {
-            if (_gasolineСonsumption < 10)
+            if (_gasolineСonsumption <= 10)
             {
-                Console.Write(
-                    $"Расход бензина невысокий < 10л/100км и составляет для нашего автомобиля {_manufactureName}: ");
+                _gasolineСonsumption = value;
+                Console.WriteLine(
+                    $"Расход бензина невысокий < 10л/100км и составляет для нашего автомобиля {_manufactureName}: {_gasolineСonsumption}");
             }
             else
             {
-                Console.Write(
-                    $"Расход бензина высокий > 10л/100км и составляет для нашего автомобиля {_manufactureName}: ");
+                _gasolineСonsumption = value;
+                Console.WriteLine(
+                    $"Расход бензина высокий > 10л/100км и составляет для нашего автомобиля {_manufactureName}: {_gasolineСonsumption}");
             }
-
-            return _gasolineСonsumption;
         }
-        set { _gasolineСonsumption = value; }
     }
 
     public override string ToString()
