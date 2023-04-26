@@ -7,15 +7,16 @@ public class Triangle : Figures
     private double _secondSideOfTriangle;
     private double _thirdSideOfTriangle;
     private double _perpendicular;
-
+    private ColorState _myTriangleColor;
 
     public Triangle(double baseSideOfTriangle, double secondSideOfTriangle, double thirdSideOfTriangle,
-        double perpendicular)
+        double perpendicular, ColorState myTriangleColor)
     {
         _baseSideOfTriangle = baseSideOfTriangle;
         _secondSideOfTriangle = secondSideOfTriangle;
         _thirdSideOfTriangle = thirdSideOfTriangle;
         _perpendicular = perpendicular;
+        _myTriangleColor = myTriangleColor;
     }
 
     public string SetTriangleName
@@ -31,5 +32,11 @@ public class Triangle : Figures
             _baseSideOfTriangle = value;
             _perpendicular = value;
         }
+    }
+
+    public ColorState GetColorOfTriangle
+    {
+        get { return _myTriangleColor; }
+        set { _myTriangleColor = value; }
     }
 }
