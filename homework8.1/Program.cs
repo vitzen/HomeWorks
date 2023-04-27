@@ -19,7 +19,6 @@
  */
 
 using System;
-using System.Reflection.Emit;
 
 
 namespace homework8._1
@@ -28,8 +27,6 @@ namespace homework8._1
     {
         public static void Main()
         {
-            
-            
         }
     }
 }
