@@ -6,23 +6,26 @@ public class MyMethodsClass
     public int Parsing(string inputFromUser)
     {
         string unknownInput = inputFromUser;
-        bool a = false;
+        //bool a = false;
         bool input = Int32.TryParse(unknownInput, out int nElement);
         int succefulParsingNumber = 0;
 
 
-        do
-        {
-            if (input)
-            {
-                Console.WriteLine("Введите корректное число а не символ");
-            }
-            else
-            {
-                succefulParsingNumber = nElement;
-                a = true;
-            }
-        } while (a == false);
+        // do
+        // {
+        //     if (!input)
+        //     {
+        //         Console.WriteLine("Введите корректное число а не символ");
+        //         
+        //     }
+        //     else
+        //     {
+        //         succefulParsingNumber = nElement;
+        //         a = true;
+        //     }
+        //
+        //     
+        // } while (a == false);
 
 
         return succefulParsingNumber;
