@@ -61,7 +61,7 @@ public class MyMethodsClass
     }
 
 
-    /// Метод для решения арифметических задач
+    // Метод для решения арифметических задач
     public static int CalculateMethod(int[] newArray)
     {
         int sum = 0;
@@ -76,7 +76,7 @@ public class MyMethodsClass
         return sum;
     }
 
-    /// Метод для вывода решения
+    // Метод для вывода решения
     public static void PrintResultMethod(int[] newArray, int finishResult)
     {
         Console.WriteLine($"Элементы вашего массива: {string.Join(" ", newArray)}");

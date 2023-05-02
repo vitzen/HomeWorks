@@ -60,7 +60,7 @@ public class MyMethodsClass
         return myArray;
     }
 
-    /// Метод для решения арифметических задач
+    // Метод для решения арифметических задач
     public static (int, int) CalculateMethod(int[] newArray)
     {
         int[] evenOddArray = newArray;
@@ -83,7 +83,7 @@ public class MyMethodsClass
     }
 
 
-    /// Метод для вывода решения
+    // Метод для вывода решения
     public static void PrintResultMethod(int even, int odd)
     {
         Console.WriteLine($"Количество Четных чисел вашего массива: {even}");

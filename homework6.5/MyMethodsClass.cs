@@ -60,14 +60,14 @@ public class MyMethodsClass
         return myArray;
     }
 
-    /// Метод для решения арифметических задач
+    // Метод для решения арифметических задач
     public static double CalculateMethod(int[] newArray, int inputElementsCount)
     {
         double result = (double)(newArray.Sum()) / inputElementsCount;
         return result;
     }
 
-    /// Метод для вывода решения
+    // Метод для вывода решения
     public static void PrintResultMethod(int[] newArray, double result)
     {
         Console.WriteLine($"Элементы вашего массива: {string.Join(" ", newArray)}");

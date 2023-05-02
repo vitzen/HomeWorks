@@ -33,14 +33,14 @@ public class Car //Класс автомобиль
     }
 
 
-    /// Получить пробег по умолчанию (на новом автомобиле)
+    // Получить пробег по умолчанию (на новом автомобиле)
     public double GetMilage()
     {
         return _carMileage;
     }
 
 
-    /// Получить пробег через N миль
+    // Получить пробег через N миль
     public double GoSomeMile(int mile)
     {
         _carMileage += mile;
@@ -48,7 +48,7 @@ public class Car //Класс автомобиль
     }
 
 
-    /// Получить возраст автомобиля на данный момент времени
+    // Получить возраст автомобиля на данный момент времени
     public int CarAgeYear()
     {
         return (DateTime.Now.Year - _manufactureYear);

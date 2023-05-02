@@ -60,7 +60,7 @@ public class MyMethodsClass
         return myArray;
     }
 
-    /// Метод для решения арифметических задач
+    // Метод для решения арифметических задач
     public static (int, int[]) CalculateMethod(int[] newArray, int myCount)
     {
         int countOfEasyNumbers = myCount;
@@ -88,7 +88,7 @@ public class MyMethodsClass
         return (countOfEasyNumbers, newArray);
     }
 
-    /// Метод для вывода решения
+    // Метод для вывода решения
     public static void PrintResultMethod(int counter, int[] ourArray)
     {
         Console.WriteLine($"Элементы вашего массива: {string.Join(" ", ourArray)}\n");

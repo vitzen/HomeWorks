@@ -29,6 +29,7 @@ public class MyMethodsClass
         return arrayElementsCount;
     }
 
+    // Метод арифметических операций
     public static int[] CalculateMethod(int countOfArray)
     {
         int[] fibonachyArray = new int[countOfArray];
@@ -53,7 +54,7 @@ public class MyMethodsClass
         return fibonachyArray;
     }
 
-    /// Метод для вывода решения
+    // Метод для вывода решения
     public static void PrintResultMethod(int[] newArray)
     {
         Console.WriteLine($"Ряд чисел Фибоначчи начиная с нуля --> {String.Join(" | ", newArray)}");
