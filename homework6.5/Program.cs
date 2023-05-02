@@ -12,23 +12,15 @@ namespace homework6._5
         {
             //Воод размерности массива
             MyMethodsClass myMethodsClass = new MyMethodsClass();
-            Console.WriteLine("Программа для нахождения среднего арифметическое элементов одномерного массива \n" +
-                              "Введите размерность (количество элементов) массива");
-            string inputFromConsole = Console.ReadLine();
-            int inputElementsCount = myMethodsClass.InputArrayCountMethod(inputFromConsole);
+            Console.WriteLine("Программа для нахождения среднего арифметическое элементов одномерного массива \n");
 
-            int[] array = new int[inputElementsCount];
-            for (int i = 0; i < array.Length; i++)
-            {
-                Console.WriteLine("Введите число");
-                string inputNumberFromConsole = Console.ReadLine();
-                int element = myMethodsClass.InputArrayElementsMethod(inputNumberFromConsole);
-                array[i] = element; //Записываем в массив наши числа
-            }
+            int inputElementsCount = myMethodsClass.InputArrayCountMethod();
+
+            int[] array = MyMethodsClass.InputArrayElementsMethod(inputElementsCount);
 
             double result = myMethodsClass.CalculateMethod(array, inputElementsCount);
-            myMethodsClass.PrintResultMethod(array, result);
 
+            myMethodsClass.PrintResultMethod(array, result);
 
             // Delay
             Console.ReadKey();
