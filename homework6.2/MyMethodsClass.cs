@@ -4,7 +4,7 @@ public class MyMethodsClass
 {
     // Метод, отвечающий за ввод строки с клавиатуры от пользователя,
     // и осуществляющий дальнейший парсинг в int число
-    public int InputArrayCountMethod()
+    public static int InputArrayCountMethod()
     {
         bool inputFromUser = false;
         int arrayElementsCount = 0;
@@ -61,7 +61,7 @@ public class MyMethodsClass
     }
 
     // Метод для решения арифметических задач
-    public (int, int) CalculateMethod(int[] newArray)
+    public static (int, int) CalculateMethod(int[] newArray)
     {
         int[] evenOddArray = newArray;
         int evenCounter = 0;
@@ -84,7 +84,7 @@ public class MyMethodsClass
 
 
     // Метод для вывода решения
-    public void PrintResultMethod(double even, double odd)
+    public static void PrintResultMethod(double even, double odd)
     {
         Console.WriteLine($"Четные числа вашего массива: {even}");
         Console.WriteLine($"Нечетные числа вашего массива: {odd}");

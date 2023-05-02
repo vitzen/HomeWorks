@@ -4,7 +4,7 @@ public class MyMethodsClass
 {
     // Метод, отвечающий за ввод строки с клавиатуры от пользователя,
     // и осуществляющий дальнейший парсинг в int число
-    public int InputArrayCountMethod()
+    public static int InputArrayCountMethod()
     {
         bool inputFromUser = false;
         int arrayElementsCount = 0;
@@ -61,14 +61,14 @@ public class MyMethodsClass
     }
 
     /// Метод для решения арифметических задач
-    public double CalculateMethod(int[] newArray, int inputElementsCount)
+    public static double CalculateMethod(int[] newArray, int inputElementsCount)
     {
         double result = (double)(newArray.Sum()) / inputElementsCount;
         return result;
     }
 
     /// Метод для вывода решения
-    public void PrintResultMethod(int[] newArray, double result)
+    public static void PrintResultMethod(int[] newArray, double result)
     {
         Console.WriteLine($"Элементы вашего массива: {string.Join(" ", newArray)}");
         Console.WriteLine($"Среднее арифметическое значение всех элементов в массиве равно = {result} ");

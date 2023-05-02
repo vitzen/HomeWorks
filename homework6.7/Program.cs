@@ -12,24 +12,14 @@ namespace homework6._7
             MyMethodsClass myMethodsClass = new MyMethodsClass();
 
 
-            Console.WriteLine("Программа для подсчета суммы четных эементов массива \n" +
-                              "Введите размерность (количество элементов) массива");
-            string inputNumber = Console.ReadLine();
-            int consoleInput = myMethodsClass.InputArrayCountMethod(inputNumber);
+            Console.WriteLine("Программа для подсчета суммы четных эементов массива \n");
 
-            int[] array = new int[consoleInput];
-            for (int i = 0; i < array.Length; i++)
-            {
-                Console.WriteLine("Введите элемент массива");
-                string inputNumberFromConsole = Console.ReadLine();
-                int element = myMethodsClass.InputArrayElementsMethod(inputNumberFromConsole);
+            int consoleInput = MyMethodsClass.InputArrayCountMethod();
 
-                array[i] = element;
-            }
+            int[] array = MyMethodsClass.InputArrayElementsMethod(consoleInput);
 
-            int result = myMethodsClass.CalculateMethod(array);
-            myMethodsClass.PrintResultMethod(array, result);
-
+            int result = MyMethodsClass.CalculateMethod(array);
+            MyMethodsClass.PrintResultMethod(array, result);
 
             // Delay
             Console.ReadKey();

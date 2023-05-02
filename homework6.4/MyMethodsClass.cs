@@ -4,7 +4,7 @@ public class MyMethodsClass
 {
     // Метод, отвечающий за ввод строки с клавиатуры от пользователя,
     // и осуществляющий дальнейший парсинг в int число
-    public int InputArrayCountMethod()
+    public static int InputArrayCountMethod()
     {
         bool inputFromUser = false;
         int arrayElementsCount = 0;
@@ -32,7 +32,7 @@ public class MyMethodsClass
     // Метод, отвечающий за ввод строки с клавиатуры от пользователя,
     // и осуществляющий дальнейший парсинг в int числа
     // Сбор чисел в массив
-    public int[] InputArrayElementsMethod(int number)
+    public static int[] InputArrayElementsMethod(int number)
     {
         int[] myArray = new int[number];
         for (int i = 0; i < myArray.Length; i++)
@@ -61,14 +61,14 @@ public class MyMethodsClass
     }
 
     // Метод для решения арифметических задач
-    public int CalculateMethod(int[] newArray)
+    public static int CalculateMethod(int[] newArray)
     {
         int sumOfArrayElements = newArray.Sum();
         return sumOfArrayElements;
     }
 
     // Метод для вывода решения
-    public void PrintResultMethod(int[] newArray, int sumOfArrayElements)
+    public static void PrintResultMethod(int[] newArray, int sumOfArrayElements)
     {
         Console.WriteLine($"Элементы вашего массива: {string.Join(" ", newArray)}");
         Console.WriteLine($"Сумма всех элементов в массиве равна = {sumOfArrayElements} ");

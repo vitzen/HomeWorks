@@ -11,25 +11,15 @@ namespace homework6._6
         {
             MyMethodsClass myMethodsClass = new MyMethodsClass();
 
-            Console.WriteLine("Введите размерность (количество элементов) массива");
-            string inputFromConsole = Console.ReadLine();
-            int inputElementsCount = myMethodsClass.InputArrayCountMethod(inputFromConsole);
+            Console.WriteLine("Программа для поиска наименьшего элемента одномерного массива");
 
+            int inputElementsCount = MyMethodsClass.InputArrayCountMethod();
 
-            int[] array = new int[inputElementsCount];
+            int[] array = MyMethodsClass.InputArrayElementsMethod(inputElementsCount);
 
+            int result = MyMethodsClass.CalculateMethod(array);
 
-            for (int i = 0; i < array.Length; i++)
-            {
-                Console.WriteLine("Введите число");
-                string inputNumberFromConsole = Console.ReadLine();
-                int element = myMethodsClass.InputArrayElementsMethod(inputNumberFromConsole);
-
-                array[i] = element; //Записываем в массив наши числа
-            }
-
-            int result = myMethodsClass.CalculateMethod(array);
-            myMethodsClass.PrintResultMethod(array, result);
+            MyMethodsClass.PrintResultMethod(array, result);
 
             Console.ReadKey();
         }

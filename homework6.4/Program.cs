@@ -12,13 +12,13 @@ namespace homework6._4
             Console.WriteLine("Программа для нахождения суммы элементов одномерного массива \n");
 
 
-            int inputElementsCount = myMethodsClass.InputArrayCountMethod();
+            int inputElementsCount = MyMethodsClass.InputArrayCountMethod();
 
-            int[] myArray = myMethodsClass.InputArrayElementsMethod(inputElementsCount);
+            int[] myArray = MyMethodsClass.InputArrayElementsMethod(inputElementsCount);
 
-            int result = myMethodsClass.CalculateMethod(myArray);
+            int result = MyMethodsClass.CalculateMethod(myArray);
 
-            myMethodsClass.PrintResultMethod(myArray, result);
+            MyMethodsClass.PrintResultMethod(myArray, result);
 
 
             // Delay

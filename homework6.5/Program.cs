@@ -14,13 +14,13 @@ namespace homework6._5
             MyMethodsClass myMethodsClass = new MyMethodsClass();
             Console.WriteLine("Программа для нахождения среднего арифметическое элементов одномерного массива \n");
 
-            int inputElementsCount = myMethodsClass.InputArrayCountMethod();
+            int inputElementsCount = MyMethodsClass.InputArrayCountMethod();
 
             int[] array = MyMethodsClass.InputArrayElementsMethod(inputElementsCount);
 
-            double result = myMethodsClass.CalculateMethod(array, inputElementsCount);
+            double result = MyMethodsClass.CalculateMethod(array, inputElementsCount);
 
-            myMethodsClass.PrintResultMethod(array, result);
+            MyMethodsClass.PrintResultMethod(array, result);
 
             // Delay
             Console.ReadKey();

@@ -6,7 +6,7 @@ public class MyMethodsClass
 {
     // Метод, отвечающий за ввод строки с клавиатуры от пользователя,
     // и осуществляющий дальнейший парсинг в int число
-    public int GetIntFromInput()
+    public static int GetIntFromInput()
     {
         bool inputFromUser = false;
         int nElement = 0;

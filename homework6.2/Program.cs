@@ -15,12 +15,12 @@ namespace homework6._2
 
             Console.WriteLine("Программа, подсчитывающая количество четных и нечетных чисел в массиве\n");
 
-            int consoleInput = myMethodsClass.InputArrayCountMethod();
+            int consoleInput = MyMethodsClass.InputArrayCountMethod();
             int[] array = MyMethodsClass.InputArrayElementsMethod(consoleInput);
 
 
-            (int even, int odd) = myMethodsClass.CalculateMethod(array);
-            myMethodsClass.PrintResultMethod(even, odd);
+            (int even, int odd) = MyMethodsClass.CalculateMethod(array);
+            MyMethodsClass.PrintResultMethod(even, odd);
 
             // Delay
             Console.ReadKey();
