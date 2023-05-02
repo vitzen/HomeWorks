@@ -9,23 +9,16 @@ namespace homework6._4
         {
             //Программа для нахождения суммы элементов одномерного массива
             MyMethodsClass myMethodsClass = new MyMethodsClass();
-            Console.WriteLine("Программа для нахождения суммы элементов одномерного массива \n" +
-                              "Введите размерность (количество элементов) массива");
-            string inputFromConsole = Console.ReadLine();
-            int inputElementsCount = myMethodsClass.InputArrayCountMethod(inputFromConsole);
+            Console.WriteLine("Программа для нахождения суммы элементов одномерного массива \n");
 
-            int[] array = new int[inputElementsCount];
-            for (int i = 0; i < array.Length; i++)
-            {
-                Console.WriteLine("Введите число");
-                string number = Console.ReadLine();
-                int element = myMethodsClass.InputArrayElementsMethod(number);
-                array[i] = element;
-            }
 
-            int result = myMethodsClass.CalculateMethod(array);
+            int inputElementsCount = myMethodsClass.InputArrayCountMethod();
 
-            myMethodsClass.PrintResultMethod(array, result);
+            int[] myArray = myMethodsClass.InputArrayElementsMethod(inputElementsCount);
+
+            int result = myMethodsClass.CalculateMethod(myArray);
+
+            myMethodsClass.PrintResultMethod(myArray, result);
 
 
             // Delay

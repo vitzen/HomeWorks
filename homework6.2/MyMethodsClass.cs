@@ -29,7 +29,9 @@ public class MyMethodsClass
         return arrayElementsCount;
     }
 
-    // Метод парсинга вводимых значений элемнтов массива
+    // Метод, отвечающий за ввод строки с клавиатуры от пользователя,
+    // и осуществляющий дальнейший парсинг в int число
+    // Сбор чисел в массив
     public static int[] InputArrayElementsMethod(int elementsNumber)
     {
         int[] myArray = new int[elementsNumber];
