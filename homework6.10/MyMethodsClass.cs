@@ -2,19 +2,34 @@ namespace homework6._10;
 
 public class MyMethodsClass
 {
-    /// Метод парсинга размера массива
-    public int InputArrayCountMethod(string inputFromConsole)
+    // Метод, отвечающий за ввод строки с клавиатуры от пользователя,
+    // и осуществляющий дальнейший парсинг в int число
+    public static int InputArrayCountMethod()
     {
-        bool consoleInput = Int32.TryParse(inputFromConsole, out int arrayElementsCount);
-        if (!consoleInput)
+        bool inputFromUser = false;
+        int arrayElementsCount = 0;
+
+        do
         {
-            Console.WriteLine($"Введите корректное значение");
-        }
+            Console.WriteLine("Введите число (количество элементов) ряда Фибоначчи");
+            string inputSymbol = Console.ReadLine();
+            bool input = Int32.TryParse(inputSymbol, out int outputElement);
+            if (input == false)
+            {
+                Console.WriteLine("Введенное вами число с клавиатуры неверно, попробуйте заново");
+            }
+            else
+            {
+                arrayElementsCount = outputElement;
+                inputFromUser = true;
+                break;
+            }
+        } while (inputFromUser == false);
 
         return arrayElementsCount;
     }
 
-    public int[] CalculateMethod(int countOfArray)
+    public static int[] CalculateMethod(int countOfArray)
     {
         int[] fibonachyArray = new int[countOfArray];
 
@@ -39,7 +54,7 @@ public class MyMethodsClass
     }
 
     /// Метод для вывода решения
-    public void PrintResultMethod(int[] newArray)
+    public static void PrintResultMethod(int[] newArray)
     {
         Console.WriteLine($"Ряд чисел Фибоначчи начиная с нуля --> {String.Join(" | ", newArray)}");
     }

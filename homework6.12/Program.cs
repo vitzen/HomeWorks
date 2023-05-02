@@ -13,7 +13,7 @@ namespace homework6._12
             //Программа
             MyMethodsClass myMethodsClass = new MyMethodsClass();
             Console.WriteLine("Таблица умножения полученная с помощью двухмерного массива");
-            myMethodsClass.CalculateMethod();
+            MyMethodsClass.CalculateMethod();
 
 
             // Delay

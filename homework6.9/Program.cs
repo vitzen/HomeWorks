@@ -10,27 +10,15 @@ namespace homework6._9
     {
         static void Main(string[] args)
         {
-
             MyMethodsClass myMethodsClass = new MyMethodsClass();
-            // Программа
-            Console.WriteLine("Программа для подсчета количества простых чисел \n" +
-                              "Введите размер массива:");
-            string inputConsoleCounter = Console.ReadLine();
-            int consoleInput = myMethodsClass.InputArrayCountMethod(inputConsoleCounter);
+            Console.WriteLine("Программа для подсчета количества простых чисел \n");
 
+            int consoleInput = MyMethodsClass.InputArrayCountMethod();
 
-            int[] inputArray = new int[consoleInput];
+            int[] array = MyMethodsClass.InputArrayElementsMethod(consoleInput);
 
-            for (int i = 0; i < inputArray.Length; i++)
-            {
-                Console.WriteLine("Введите число");
-                string inputConsoleNumber = Console.ReadLine();
-                int element = myMethodsClass.InputArrayElementsMethod(inputConsoleNumber);
-                inputArray[i] = element;
-            }
-
-            (var countOfEasyNumbers, inputArray) = myMethodsClass.CalculateMethod(inputArray, consoleInput);
-            myMethodsClass.PrintResultMethod(countOfEasyNumbers, inputArray);
+            (var countOfEasyNumbers, int[] newArray) = MyMethodsClass.CalculateMethod(array, consoleInput);
+            MyMethodsClass.PrintResultMethod(countOfEasyNumbers, newArray);
 
 
             // Delay

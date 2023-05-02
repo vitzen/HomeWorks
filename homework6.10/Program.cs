@@ -12,13 +12,13 @@ namespace homework6._10
         {
             MyMethodsClass myMethodsClass = new MyMethodsClass();
 
-            // Программа
-            Console.WriteLine("Программа для вывода на экран ряда чисел Фибоначчи, состоящего из N элементов\n" +
-                              "Ввести общее количество элементов/чисел Фибоначчи");
-            string inputFromConsole = Console.ReadLine();
-            int consoleInput = myMethodsClass.InputArrayCountMethod(inputFromConsole);
-            int[] fibonacchiArray = myMethodsClass.CalculateMethod(consoleInput);
-            myMethodsClass.PrintResultMethod(fibonacchiArray);
+            Console.WriteLine("Программа для вывода на экран ряда чисел Фибоначчи, состоящего из N элементов\n");
+
+            int consoleInput = MyMethodsClass.InputArrayCountMethod();
+
+            int[] fibonacchiArray = MyMethodsClass.CalculateMethod(consoleInput);
+
+            MyMethodsClass.PrintResultMethod(fibonacchiArray);
 
 
             // Delay
