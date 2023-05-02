@@ -2,32 +2,66 @@ namespace homework6._8;
 
 public class MyMethodsClass
 {
-    /// Метод парсинга размера массива
-    public int InputArrayCountMethod(string inputFromConsole)
+    // Метод, отвечающий за ввод строки с клавиатуры от пользователя,
+    // и осуществляющий дальнейший парсинг в int число
+    public static int InputArrayCountMethod()
     {
-        bool consoleInput = Int32.TryParse(inputFromConsole, out int arrayElementsCount);
-        if (!consoleInput)
+        bool inputFromUser = false;
+        int arrayElementsCount = 0;
+
+        do
         {
-            Console.WriteLine($"Введите корректное значение");
-        }
+            Console.WriteLine("Введите число (количество элементов) массива");
+            string inputSymbol = Console.ReadLine();
+            bool input = Int32.TryParse(inputSymbol, out int outputElement);
+            if (input == false)
+            {
+                Console.WriteLine("Введенное вами число с клавиатуры неверно, попробуйте заново");
+            }
+            else
+            {
+                arrayElementsCount = outputElement;
+                inputFromUser = true;
+                break;
+            }
+        } while (inputFromUser == false);
 
         return arrayElementsCount;
     }
 
-    /// Метод парсинга вводимых значений эелемнтов массива
-    public int InputArrayElementsMethod(string number)
+    // Метод, отвечающий за ввод строки с клавиатуры от пользователя,
+    // и осуществляющий дальнейший парсинг в int числа
+    // Сбор чисел в массив
+    public static int[] InputArrayElementsMethod(int number)
     {
-        bool numberInput = Int32.TryParse(number, out int num);
-        if (!numberInput)
+        int[] myArray = new int[number];
+        for (int i = 0; i < myArray.Length; i++)
         {
-            Console.WriteLine($"Введите корректное значение");
+            bool inputFromUser = false;
+
+            do
+            {
+                Console.WriteLine("Введите целое число");
+                string inputSymbol = Console.ReadLine();
+                bool input = Int32.TryParse(inputSymbol, out int outputElement);
+                if (input == false)
+                {
+                    Console.WriteLine("Введенное вами число с клавиатуры неверно, попробуйте заново");
+                }
+                else
+                {
+                    myArray[i] = outputElement;
+                    inputFromUser = true;
+                    break;
+                }
+            } while (inputFromUser == false);
         }
 
-        return num;
+        return myArray;
     }
 
-    /// Метод для решения арифметических задач
-    public int[] CalculateMethod(int[] array_B)
+    // Метод для решения арифметических задач
+    public static int[] CalculateMethod(int[] array_B)
     {
         int indexOfNewArray = 0;
         int newArrayElementsCount = 0;
@@ -57,8 +91,8 @@ public class MyMethodsClass
         return array_C;
     }
 
-    /// Метод для вывода решения
-    public void PrintResultMethod(int[] printResult)
+    // Метод для вывода решения
+    public static void PrintResultMethod(int[] printResult)
     {
         Console.WriteLine($"Элементы нового массива: {string.Join(" ", printResult)}");
     }

@@ -9,31 +9,17 @@ namespace homework6._8
     {
         static void Main()
         {
-            
-            //начало программы
             MyMethodsClass myMethodsClass = new MyMethodsClass();
             Console.WriteLine(
-                "Программа для формирования нового массива В, состоящий из положительных элементов массива А\n" +
-                "Введите количество элементов массива");
-            string inputNumber = Console.ReadLine();
-            int consoleInput = myMethodsClass.InputArrayCountMethod(inputNumber);
+                "Программа для формирования нового массива В, состоящий из положительных элементов массива А\n");
 
-            int[] array_A = new int[consoleInput];
+            int consoleInput = MyMethodsClass.InputArrayCountMethod();
 
-            for (int i = 0; i < array_A.Length; i++)
-            {
-                Console.WriteLine("Введите элемент массива");
-                string inputElement = Console.ReadLine();
-                int element = myMethodsClass.InputArrayElementsMethod(inputElement);
+            int[] array_A = MyMethodsClass.InputArrayElementsMethod(consoleInput);
 
-                array_A[i] = element;
-            }
+            var result = MyMethodsClass.CalculateMethod(array_A);
 
-            var result = myMethodsClass.CalculateMethod(array_A);
-            myMethodsClass.PrintResultMethod(result);
-
-            
-
+            MyMethodsClass.PrintResultMethod(result);
 
             // Delay
             Console.ReadKey();
