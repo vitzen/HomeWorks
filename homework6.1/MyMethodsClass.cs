@@ -4,7 +4,9 @@ namespace homework6._1;
 
 public class MyMethodsClass
 {
-    /// Метод, осуществляющий парсинг символа от пользователя
+    // Метод, отвечающий за ввод символа с клавиатуры от пользователя,
+    // и осуществляющий дальнейший парсинг символа в int число
+
     public int GetIntFromInput()
     {
         bool inputFromUser = false;
@@ -12,7 +14,7 @@ public class MyMethodsClass
 
         do
         {
-            Console.WriteLine("Введите n-ый элемент для вычисления его в ряду Фибоначчи");
+            Console.WriteLine("Введите целое число");
             string inputSymbol = Console.ReadLine();
             bool input = Int32.TryParse(inputSymbol, out int outputElement);
             if (input == false)
@@ -31,7 +33,7 @@ public class MyMethodsClass
     }
 
 
-    /// Алгоритм поиска n-т-ого элемента в ряду Фибоначчи
+    // Алгоритм поиска n-т-ого элемента в ряду Фибоначчи
     public static int Fibonachi(int n)
     {
         int result;
@@ -45,7 +47,7 @@ public class MyMethodsClass
     }
 
 
-    /// Метод для вывода на консоль
+    // Метод для вывода на консоль
     public static void Print(int fibonachResult)
     {
         Console.WriteLine($"n-ое число Фибоначчи = {fibonachResult}");

@@ -13,9 +13,9 @@ namespace homework6._1
             Console.WriteLine(
                 "Программа для вычисления N-ого элемента последовтельности Фиббоначчи, используя метод-рекурсию \n");
             int intFromKeyboardInput = myMethodsClass.GetIntFromInput();
-            
+
             int myFibonachiNumber = MyMethodsClass.Fibonachi(intFromKeyboardInput);
-            
+
             MyMethodsClass.Print(myFibonachiNumber);
 
             // Delay
