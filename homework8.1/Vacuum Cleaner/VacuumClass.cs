@@ -11,6 +11,8 @@ public class VacuumClass
         set { _model = value; }
     }
 
+    
+    
     public virtual void StartCleaning()
     {
         Console.WriteLine("Началась уборка");
