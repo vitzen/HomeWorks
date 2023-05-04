@@ -1,0 +1,25 @@
+﻿// Домашнее задание 9.1:
+// Переделать на дллку работу с фигурами
+// Переделать класс фигура в наследование 2х интерфейсов : один с физическими свойствами(Area, Perimeter), друго й- с описательными(GetTitle())
+
+using System;
+using System.Reflection.Emit;
+
+
+namespace homework9._1
+{
+    class Program
+    {
+        public static void Main()
+        {
+            Circle figures1 = new Circle(5, 6, Figures.ColorState.Black);
+            Square figures2 = new Square(5, Figures.ColorState.Blue);
+            Triangle figures3 = new Triangle(5, 3, 6, 4, Figures.ColorState.Red);
+
+            Console.WriteLine($"Выводим список созданных пользователем фигур: \n" +
+                              $"{figures1}\n" +
+                              $"{figures2}\n" +
+                              $"{figures3}");
+        }
+    }
+}
