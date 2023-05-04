@@ -27,6 +27,11 @@ namespace homework8._1
     {
         public static void Main()
         {
+            RoboticVacuumClass roboticVacuum = new RoboticVacuumClass();
+            ManualVacuumClass manualVacuum = new ManualVacuumClass();
+            WhashingVacuumClass washingVacuum = new WhashingVacuumClass();
+            
+            
         }
     }
 }
