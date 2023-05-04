@@ -11,4 +11,6 @@ public class Figures
         Black,
     }
 
+    public double Area { get; set; }
+    public double Perimetr { get; set; }
 }
