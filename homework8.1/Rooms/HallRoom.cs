@@ -1,16 +1,29 @@
 namespace homework8._1.Rooms;
 
+//Класс, который описывает гостинную комнату, имеющую форму прямоугольника
 public class HallRoom : RoomClass
 {
-    private double _hallRoomLength;
-    private double _hallRoomWidth;
+    private double _hallRoomLength; //Длина комнаты
+    private double _hallRoomWidth; //Ширина комнаты
 
-    public HallRoom(double area, double perimetr, double hallRoomLength, double hallRoomWidth) : base(area, perimetr)
+    public HallRoom(double hallRoomLength, double hallRoomWidth)
     {
         _hallRoomLength = hallRoomLength;
         _hallRoomWidth = hallRoomWidth;
     }
-    
+
+    public double HallRoomLength
+    {
+        get => _hallRoomLength;
+        set => _hallRoomLength = value;
+    }
+
+    public double HallRoomWidth
+    {
+        get => _hallRoomWidth;
+        set => _hallRoomWidth = value;
+    }
+
     public override double Area
     {
         get => _hallRoomLength * _hallRoomWidth;

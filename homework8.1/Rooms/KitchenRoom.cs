@@ -1,24 +1,28 @@
 namespace homework8._1.Rooms;
 
+//Класс, который описывает кухонную комнату, имеющую форму квадрата
 public class KitchenRoom : RoomClass
 {
-    private double _kitchenRoomLength;
-    private double _kitchenRoomWidth;
+    private double _kitchenRoomSide; //Сторона комнаты
 
-    public KitchenRoom(double area, double perimetr, double kitchenRoomLength, double kitchenRoomWidth) : base(area,
-        perimetr)
+    public KitchenRoom(double kitchenRoomSide)
     {
-        _kitchenRoomLength = kitchenRoomLength;
-        _kitchenRoomWidth = kitchenRoomWidth;
+        _kitchenRoomSide = kitchenRoomSide;
+    }
+
+    public double KitchenRoomSide
+    {
+        get => _kitchenRoomSide;
+        set => _kitchenRoomSide = value;
     }
 
     public override double Area
     {
-        get => _kitchenRoomLength * _kitchenRoomWidth;
+        get => Math.Pow(_kitchenRoomSide, 2);
     }
 
     public override double Perimetr
     {
-        get => (2 * _kitchenRoomLength) + (2 * _kitchenRoomWidth);
+        get => 4 * _kitchenRoomSide;
     }
 }
