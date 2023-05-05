@@ -29,15 +29,24 @@ namespace homework8._1
         public static void Main()
         {
             //Создаем объекты комнат и помещаем их в массив
-            RoomClass[] rooms = { new HallRoom(10, 7), new KitchenRoom(8), new SleepingRoom(8, 5) };
-            
+            RoomClass[] rooms =
+            {
+                new HallRoom(10, 7),
+                new KitchenRoom(8),
+                new SleepingRoom(8, 5)
+            };
+
             //Создаем объекты-пылесосы и помещаем их в массив
-            VacuumClass[] vacuums = { new ManualVacuum(), new RoboticVacuum(), new WhashingVacuum() };
+            VacuumClass[] vacuums =
+            {
+                new ManualVacuum(),
+                new RoboticVacuum(),
+                new WhashingVacuum()
+            };
             foreach (var vacuum in vacuums)
             {
-                
+                vacuum.StartCleaning();
             }
-            
         }
     }
 }
