@@ -19,6 +19,7 @@
 
 using System;
 using System.Reflection.Emit;
+using homework8._1.Rooms;
 using homework8._1.Vacuum_Cleaner;
 
 namespace homework8._1
@@ -27,9 +28,15 @@ namespace homework8._1
     {
         public static void Main()
         {
-            RoboticVacuumClass roboticVacuum = new RoboticVacuumClass();
-            ManualVacuumClass manualVacuum = new ManualVacuumClass();
-            WhashingVacuumClass washingVacuum = new WhashingVacuumClass();
+            
+            //Создаем объекты комнат
+            
+            
+            
+            
+            // RoboticVacuumClass roboticVacuum = new RoboticVacuumClass();
+            // ManualVacuumClass manualVacuum = new ManualVacuumClass();
+            // WhashingVacuumClass washingVacuum = new WhashingVacuumClass();
             
             
         }

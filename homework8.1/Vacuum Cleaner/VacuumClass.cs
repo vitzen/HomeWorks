@@ -4,6 +4,10 @@ public class VacuumClass
 {
     private string _model;
 
+    public VacuumClass(string model)
+    {
+        _model = model;
+    }
 
     public string Model
     {
