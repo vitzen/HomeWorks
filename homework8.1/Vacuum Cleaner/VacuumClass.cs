@@ -11,15 +11,18 @@ public class VacuumClass
         _model = model;
     }
 
-
     public virtual string Model
     {
         get => _model;
-        set => _model = value ?? throw new ArgumentNullException(nameof(value));
+    }
+
+    public virtual void StartCleaning()
+    {
+        Console.WriteLine("Началась уборка");
     }
 
     public virtual void StartCleaning(RoomClass targetRoom)
     {
-        Console.WriteLine("Началась уборка");
+        Console.WriteLine($"Началась уборка в комнате: {targetRoom}");
     }
 }

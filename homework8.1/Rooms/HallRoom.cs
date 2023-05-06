@@ -7,14 +7,13 @@ public class HallRoom : RoomClass
     private double _hallRoomLength; //Длина комнаты
     private double _hallRoomWidth; //Ширина комнаты
 
-    public HallRoom(string nameOfRoom, double hallRoomLength, double hallRoomWidth)
+    public HallRoom(double hallRoomLength, double hallRoomWidth)
     {
-        _nameOfRoom = nameOfRoom;
         _hallRoomLength = hallRoomLength;
         _hallRoomWidth = hallRoomWidth;
     }
 
-    public string GetNameOfRoom
+    public string Model //Свойство - получить название комнаты
     {
         get => _nameOfRoom;
     }

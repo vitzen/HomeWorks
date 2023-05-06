@@ -7,11 +7,15 @@ public class SleepingRoom : RoomClass
     private double _sleepingRoomLength; //Длина комнаты
     private double _sleepingRoomWidth; //Ширина комнаты
 
-    public SleepingRoom(string nameOfRoom, double sleepingRoomLength, double sleepingRoomWidth)
+    public SleepingRoom(double sleepingRoomLength, double sleepingRoomWidth)
     {
-        _nameOfRoom = nameOfRoom;
         _sleepingRoomLength = sleepingRoomLength;
         _sleepingRoomWidth = sleepingRoomWidth;
+    }
+
+    public string Model //Свойство - получить название комнаты
+    {
+        get => _nameOfRoom;
     }
 
     public double SleepingRoomLength

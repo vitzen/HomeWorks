@@ -6,10 +6,14 @@ public class KitchenRoom : RoomClass
     private readonly string _nameOfRoom = "Kitchen Room";
     private double _kitchenRoomSide; //Сторона комнаты
 
-    public KitchenRoom(string nameOfRoom, double kitchenRoomSide)
+    public KitchenRoom(double kitchenRoomSide)
     {
-        _nameOfRoom = nameOfRoom;
         _kitchenRoomSide = kitchenRoomSide;
+    }
+
+    public string Model //Свойство - получить название комнаты
+    {
+        get => _nameOfRoom;
     }
 
     public double KitchenRoomSide

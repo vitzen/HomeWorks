@@ -16,9 +16,9 @@
 ● Создать массив базового типа, добавить в него объекты класса пылесос. В цикле у
 всех объектов вызвать метод StartCleaning
  */
-
 using System;
 using System.Reflection.Emit;
+using System.Text;
 using homework8._1.Rooms;
 using homework8._1.Vacuum_Cleaner;
 
@@ -28,25 +28,45 @@ namespace homework8._1
     {
         public static void Main()
         {
-            //Создаем объекты комнат и помещаем их в массив
-            RoomClass[] rooms =
-            {
-                new HallRoom(10, 7),
-                new KitchenRoom(8),
-                new SleepingRoom(8, 5)
-            };
-
             //Создаем объекты-пылесосы и помещаем их в массив
             VacuumClass[] vacuums =
             {
-                new ManualVacuum(),
-                new RoboticVacuum(),
-                new WhashingVacuum()
+                new ManualVacuum("1"),
+                new RoboticVacuum("2"),
+                new WhashingVacuum("3")
             };
-            foreach (var vacuum in vacuums)
+
+            string CalculateVacuums(VacuumClass[] vacuums)
             {
-                vacuum.StartCleaning(new RoomClass());
+                StringBuilder sb = new StringBuilder();
+                foreach (var vacuum in vacuums)
+                {
+                    var str = $"{vacuum.StartCleaning()}";
+                    sb.AppendLine(str);
+                }
+
+                return sb.ToString();
             }
+
+
+            //Создаем объекты комнат и помещаем их в массив
+            // RoomClass[] rooms = 
+            // {
+            //     new HallRoom(10,6),
+            //     new KitchenRoom(8),
+            //     new SleepingRoom(8, 5)
+            // };
+            //
+            // //Подсчитываем общую площадь всех комнат
+            // string CalculateRoomArea()
+            // {
+            //     StringBuilder sb = new StringBuilder();
+            //     foreach (var room in rooms)
+            //     {
+            //         room.
+            //     }
+            //     return
+            // }
         }
     }
 }
