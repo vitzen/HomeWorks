@@ -3,10 +3,12 @@ namespace homework8._1.Rooms;
 //Класс, который описывает кухонную комнату, имеющую форму квадрата
 public class KitchenRoom : RoomClass
 {
+    private readonly string _nameOfRoom = "Kitchen Room";
     private double _kitchenRoomSide; //Сторона комнаты
 
-    public KitchenRoom(double kitchenRoomSide)
+    public KitchenRoom(string nameOfRoom, double kitchenRoomSide)
     {
+        _nameOfRoom = nameOfRoom;
         _kitchenRoomSide = kitchenRoomSide;
     }
 

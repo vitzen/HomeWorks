@@ -1,3 +1,5 @@
+using homework8._1.Rooms;
+
 namespace homework8._1.Vacuum_Cleaner;
 
 public class VacuumClass
@@ -9,13 +11,14 @@ public class VacuumClass
         _model = model;
     }
 
+
     public virtual string Model
     {
         get => _model;
         set => _model = value ?? throw new ArgumentNullException(nameof(value));
     }
 
-    public virtual void StartCleaning()
+    public virtual void StartCleaning(RoomClass targetRoom)
     {
         Console.WriteLine("Началась уборка");
     }

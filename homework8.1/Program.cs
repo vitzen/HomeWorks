@@ -45,7 +45,7 @@ namespace homework8._1
             };
             foreach (var vacuum in vacuums)
             {
-                vacuum.StartCleaning();
+                vacuum.StartCleaning(new RoomClass());
             }
         }
     }
