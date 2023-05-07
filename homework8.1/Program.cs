@@ -16,11 +16,13 @@
 ● Создать массив базового типа, добавить в него объекты класса пылесос. В цикле у
 всех объектов вызвать метод StartCleaning
  */
+
 using System;
 using System.Reflection.Emit;
 using System.Text;
 using homework8._1.Rooms;
 using homework8._1.Vacuum_Cleaner;
+using static homework8._1.Mathematics;
 
 namespace homework8._1
 {
@@ -28,45 +30,41 @@ namespace homework8._1
     {
         public static void Main()
         {
+            //Создаем объекты комнат и помещаем их в массив
+            RoomClass[] rooms =
+            {
+                new HallRoom(10, 6),
+                new KitchenRoom(8),
+                new SleepingRoom(8, 5)
+            };
+
+            double totalRoomsArea = Mathematics.CalculateRoomArea(rooms);
+            double totalRoomsPerimetr = Mathematics.CalculateRoomPerimetr(rooms);
+
+
+            
             //Создаем объекты-пылесосы и помещаем их в массив
             VacuumClass[] vacuums =
             {
-                new ManualVacuum("1"),
-                new RoboticVacuum("2"),
-                new WhashingVacuum("3")
+                new ManualVacuum("MANUAL VACUUM"),
+                new RoboticVacuum("ROBOTIC VACUUM"),
+                new WhashingVacuum("WHASHING VACUUM")
             };
 
+
+            //Блок для вызова в каждом устройстве (пылесосе) метода StartCleaning
             string CalculateVacuums(VacuumClass[] vacuums)
             {
                 StringBuilder sb = new StringBuilder();
                 foreach (var vacuum in vacuums)
                 {
-                    var str = $"{vacuum.StartCleaning()}";
+                    //??????????????????????????????????????????????????????
+                    var str = $"{vacuum.StartCleaning(RoomClass targetRoom)}";
                     sb.AppendLine(str);
                 }
 
                 return sb.ToString();
             }
-
-
-            //Создаем объекты комнат и помещаем их в массив
-            // RoomClass[] rooms = 
-            // {
-            //     new HallRoom(10,6),
-            //     new KitchenRoom(8),
-            //     new SleepingRoom(8, 5)
-            // };
-            //
-            // //Подсчитываем общую площадь всех комнат
-            // string CalculateRoomArea()
-            // {
-            //     StringBuilder sb = new StringBuilder();
-            //     foreach (var room in rooms)
-            //     {
-            //         room.
-            //     }
-            //     return
-            // }
         }
     }
 }

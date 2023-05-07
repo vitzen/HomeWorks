@@ -25,4 +25,9 @@ public class VacuumClass
     {
         Console.WriteLine($"Началась уборка в комнате: {targetRoom}");
     }
+
+    // public void GetModel()
+    // {
+    //     ToString();
+    // }
 }
