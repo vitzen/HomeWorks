@@ -42,7 +42,6 @@ namespace homework8._1
             double totalRoomsPerimetr = Mathematics.CalculateRoomPerimetr(rooms);
 
 
-            
             //Создаем объекты-пылесосы и помещаем их в массив
             VacuumClass[] vacuums =
             {
@@ -62,12 +61,12 @@ namespace homework8._1
                     {
                         var str = $"{vacuum.StartCleaning(room)}";
                         sb.AppendLine(str);
-                    } 
-                    
+                    }
                 }
 
                 return sb.ToString();
             }
+
 
             Console.WriteLine(CalculateVacuums(vacuums));
         }
