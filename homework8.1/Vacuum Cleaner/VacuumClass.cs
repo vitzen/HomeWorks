@@ -21,13 +21,8 @@ public class VacuumClass
         Console.WriteLine("Началась уборка");
     }
 
-    public virtual void StartCleaning(RoomClass targetRoom)
+    public virtual string StartCleaning(RoomClass targetRoom)
     {
-        Console.WriteLine($"Началась уборка в комнате: {targetRoom}");
+        return $"Началась уборка в комнате: {targetRoom}";
     }
-
-    // public void GetModel()
-    // {
-    //     ToString();
-    // }
 }

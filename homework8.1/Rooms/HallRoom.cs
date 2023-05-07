@@ -39,4 +39,8 @@ public class HallRoom : RoomClass
     {
         get => (2 * _hallRoomLength) + (2 * _hallRoomWidth);
     }
+    public override string ToString()
+    {
+        return _nameOfRoom;
+    }
 }

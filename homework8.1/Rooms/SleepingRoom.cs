@@ -39,4 +39,8 @@ public class SleepingRoom : RoomClass
     {
         get => (2 * _sleepingRoomLength) + (2 * _sleepingRoomWidth);
     }
+    public override string ToString()
+    {
+        return _nameOfRoom;
+    }
 }

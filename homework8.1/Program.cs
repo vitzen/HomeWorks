@@ -58,13 +58,18 @@ namespace homework8._1
                 StringBuilder sb = new StringBuilder();
                 foreach (var vacuum in vacuums)
                 {
-                    //??????????????????????????????????????????????????????
-                    var str = $"{vacuum.StartCleaning(RoomClass targetRoom)}";
-                    sb.AppendLine(str);
+                    foreach (var room in rooms)
+                    {
+                        var str = $"{vacuum.StartCleaning(room)}";
+                        sb.AppendLine(str);
+                    } 
+                    
                 }
 
                 return sb.ToString();
             }
+
+            Console.WriteLine(CalculateVacuums(vacuums));
         }
     }
 }

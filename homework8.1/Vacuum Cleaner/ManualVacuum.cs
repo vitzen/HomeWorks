@@ -18,8 +18,8 @@ public class ManualVacuum : VacuumClass
         base.StartCleaning();
     }
 
-    public override void StartCleaning(RoomClass targetRoom)
+    public override string StartCleaning(RoomClass targetRoom)
     {
-        base.StartCleaning(targetRoom);
+        return $"{Model}, {base.StartCleaning(targetRoom)}";
     }
 }

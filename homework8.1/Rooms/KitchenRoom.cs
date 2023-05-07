@@ -31,4 +31,8 @@ public class KitchenRoom : RoomClass
     {
         get => 4 * _kitchenRoomSide;
     }
+    public override string ToString()
+    {
+        return _nameOfRoom;
+    }
 }

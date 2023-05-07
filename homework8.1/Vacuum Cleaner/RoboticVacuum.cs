@@ -12,16 +12,14 @@ public class RoboticVacuum : VacuumClass
     public RoboticVacuum(string model) : base(model)
     {
     }
-    
+
     public override void StartCleaning()
     {
         base.StartCleaning();
     }
-    
-    public override void StartCleaning(RoomClass targetRoom)
-    {
-        base.StartCleaning(targetRoom);
-    }
 
-    
+    public override string StartCleaning(RoomClass targetRoom)
+    {
+        return base.StartCleaning(targetRoom);
+    }
 }
