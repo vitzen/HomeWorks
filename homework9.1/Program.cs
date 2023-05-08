@@ -12,7 +12,7 @@ namespace homework9._1
     {
         public static void Main()
         {
-            Circle figures1 = new Circle(5, 6, Figures.ColorState.Black);
+            Circle figures1 = new Circle(5, 10, Figures.ColorState.Black);
             Square figures2 = new Square(5, Figures.ColorState.Blue);
             Triangle figures3 = new Triangle(5, 3, 6, 4, Figures.ColorState.Red);
 
