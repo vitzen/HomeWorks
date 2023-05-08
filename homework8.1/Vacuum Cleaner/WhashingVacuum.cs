@@ -20,6 +20,6 @@ public class WhashingVacuum : VacuumClass
 
     public override string StartCleaning(RoomClass targetRoom)
     {
-        return base.StartCleaning(targetRoom);
+        return $"{Model}, {base.StartCleaning(targetRoom)}";
     }
 }

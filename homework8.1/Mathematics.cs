@@ -1,4 +1,5 @@
 // Математический класс с алгоритмическими методами
+
 using homework8._1.Rooms;
 
 namespace homework8._1;
@@ -29,5 +30,4 @@ public static class Mathematics
 
         return summOfPerimetrs;
     }
-    
 }
