@@ -40,8 +40,13 @@ public class Triangle : Figures
         set { _myTriangleColor = value; }
     }
 
+    /// <summary>
+    /// Переопределение ToString
+    /// </summary>
+    /// <returns></returns>
     public override string ToString()
     {
-        return $"Name: {_name}, BaseSideOfTriangle: {_baseSideOfTriangle}, SecondSideOfTriangle: {_secondSideOfTriangle}, ThirdSideOfTriangle: {_thirdSideOfTriangle}, Perpendicular: {_perpendicular}, MyTriangleColor: {_myTriangleColor}";
+        return
+            $"Name: {_name}, BaseSideOfTriangle: {_baseSideOfTriangle}, SecondSideOfTriangle: {_secondSideOfTriangle}, ThirdSideOfTriangle: {_thirdSideOfTriangle}, Perpendicular: {_perpendicular}, MyTriangleColor: {_myTriangleColor}";
     }
 }

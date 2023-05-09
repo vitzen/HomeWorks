@@ -31,6 +31,11 @@ public class Circle : Figures
         set { _myCircleColor = value; }
     }
 
+
+    /// <summary>
+    /// Переопределение ToString
+    /// </summary>
+    /// <returns></returns>
     public override string ToString()
     {
         return $"Name: {_name}, Radius: {_radius}, Diametr: {_diametr}, MyCircleColor: {_myCircleColor}";
