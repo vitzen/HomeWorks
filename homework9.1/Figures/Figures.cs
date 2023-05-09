@@ -2,7 +2,7 @@ using homework9._1.Interfaces;
 
 namespace homework9._1;
 
-public class Figures : IPhysical
+public interface IFigures : IPhysical, IDescriptive
 {
     public enum ColorState
     {

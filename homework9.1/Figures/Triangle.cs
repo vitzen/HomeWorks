@@ -1,16 +1,16 @@
 namespace homework9._1;
 
-public class Triangle : Figures
+public class Triangle : IFigures
 {
     private readonly string _name = "myTriangle";
     private double _baseSideOfTriangle;
     private double _secondSideOfTriangle;
     private double _thirdSideOfTriangle;
     private double _perpendicular;
-    private ColorState _myTriangleColor;
+    private IFigures.ColorState _myTriangleColor;
 
     public Triangle(double baseSideOfTriangle, double secondSideOfTriangle, double thirdSideOfTriangle,
-        double perpendicular, ColorState myTriangleColor)
+        double perpendicular, IFigures.ColorState myTriangleColor)
     {
         _baseSideOfTriangle = baseSideOfTriangle;
         _secondSideOfTriangle = secondSideOfTriangle;
@@ -34,7 +34,7 @@ public class Triangle : Figures
         }
     }
 
-    public ColorState GetColorOfTriangle
+    public IFigures.ColorState GetColorOfTriangle
     {
         get { return _myTriangleColor; }
         set { _myTriangleColor = value; }
@@ -49,4 +49,7 @@ public class Triangle : Figures
         return
             $"Name: {_name}, BaseSideOfTriangle: {_baseSideOfTriangle}, SecondSideOfTriangle: {_secondSideOfTriangle}, ThirdSideOfTriangle: {_thirdSideOfTriangle}, Perpendicular: {_perpendicular}, MyTriangleColor: {_myTriangleColor}";
     }
+
+    public double Area { get; set; }
+    public double Perimetr { get; set; }
 }

@@ -1,12 +1,12 @@
 namespace homework9._1;
 
-public class Square : Figures
+public class Square : IFigures
 {
     private readonly string _name = "mySquare";
     private double _sideLength;
-    private ColorState _mySquareColor;
+    private IFigures.ColorState _mySquareColor;
 
-    public Square(double sideLength, ColorState mySquareColor)
+    public Square(double sideLength, IFigures.ColorState mySquareColor)
     {
         _sideLength = sideLength;
         _mySquareColor = mySquareColor;
@@ -23,7 +23,7 @@ public class Square : Figures
         set { _sideLength = value; }
     }
 
-    public ColorState GetColorOfCSquare
+    public IFigures.ColorState GetColorOfCSquare
     {
         get { return _mySquareColor; }
         set { _mySquareColor = value; }
@@ -37,4 +37,7 @@ public class Square : Figures
     {
         return $"Name: {_name}, SideLength: {_sideLength}, MySquareColor: {_mySquareColor}";
     }
+
+    public double Area { get; set; }
+    public double Perimetr { get; set; }
 }

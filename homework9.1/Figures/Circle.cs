@@ -1,13 +1,13 @@
 namespace homework9._1;
 
-public class Circle : Figures
+public class Circle : IFigures
 {
     private readonly string _name = "myCircle";
     private double _radius;
     private double _diametr;
-    private ColorState _myCircleColor;
+    private IFigures.ColorState _myCircleColor;
 
-    public Circle(double radius, double diametr, ColorState myCircleColor)
+    public Circle(double radius, double diametr, IFigures.ColorState myCircleColor)
     {
         _radius = radius;
         _diametr = diametr;
@@ -25,7 +25,7 @@ public class Circle : Figures
         set { _radius = value; }
     }
 
-    public ColorState GetColorOfCircle
+    public IFigures.ColorState GetColorOfCircle
     {
         get { return _myCircleColor; }
         set { _myCircleColor = value; }
@@ -40,4 +40,7 @@ public class Circle : Figures
     {
         return $"Name: {_name}, Radius: {_radius}, Diametr: {_diametr}, MyCircleColor: {_myCircleColor}";
     }
+
+    public double Area { get; set; }
+    public double Perimetr { get; set; }
 }

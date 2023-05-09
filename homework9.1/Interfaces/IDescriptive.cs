@@ -1,5 +1,9 @@
 namespace homework9._1.Interfaces;
 
-public class IDescriptive
+public interface IDescriptive
 {
+    public void GetTitle()
+    {
+        Console.WriteLine("Интерфейс IDescriptive");
+    }
 }

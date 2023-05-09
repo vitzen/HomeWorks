@@ -12,20 +12,19 @@ namespace homework9._1
     {
         public static void Main()
         {
-            Circle figures1 = new Circle(5, 10, Figures.ColorState.Black);
-            Square figures2 = new Square(5, Figures.ColorState.Blue);
-            Triangle figures3 = new Triangle(5, 3, 6, 4, Figures.ColorState.Red);
+            Circle figures1 = new Circle(5, 10, IFigures.ColorState.Black);
+            Square figures2 = new Square(5, IFigures.ColorState.Blue);
+            Triangle figures3 = new Triangle(5, 3, 6, 4, IFigures.ColorState.Red);
 
             Console.WriteLine($"Выводим список созданных пользователем фигур: \n" +
                               $"{figures1}\n" +
                               $"{figures2}\n" +
                               $"{figures3}");
 
-            Figures[] figures =
-            {
-                new Circle(4, 5, Figures.ColorState.Blue),
-                new Square(6, Figures.ColorState.Green),
-                new Triangle(5, 7, 3, 6, Figures.ColorState.White)
+            IFigures[] figures = { 
+                new Circle(4, 5, IFigures.ColorState.Blue),
+                new Square(6, IFigures.ColorState.Green),
+                new Triangle(5, 7, 3, 6, IFigures.ColorState.White)
             };
         }
     }
