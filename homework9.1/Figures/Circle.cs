@@ -14,16 +14,6 @@ public class Circle : IFigures
         _myCircleColor = myCircleColor;
     }
 
-    public string GetCircleName
-    {
-        get { return _name; }
-    }
-
-    public double GetLengthOfCircle
-    {
-        get { return 2 * Math.PI * _radius; }
-        set { _radius = value; }
-    }
 
     public IFigures.ColorState GetColorOfCircle
     {
@@ -31,6 +21,30 @@ public class Circle : IFigures
         set { _myCircleColor = value; }
     }
 
+    /// <summary>
+    /// Переопределяем физическое свойство Площадь из интерфейса IPhysical
+    /// </summary>
+    public double Area
+    {
+        get { return 2 * Math.PI * _radius; }
+    }
+
+    /// <summary>
+    /// Переопределяем физическое свойство Периметр из интерфейса IPhysical
+    /// </summary>
+    public double Perimetr
+    {
+        get { return Math.PI * Math.Pow(_radius, 2); }
+    }
+
+
+    /// <summary>
+    /// Переопределяем описательное свойство из интерфейса IDescriptive
+    /// </summary>
+    public string GetTitle
+    {
+        get { return _name; }
+    }
 
     /// <summary>
     /// Переопределение ToString
@@ -38,9 +52,12 @@ public class Circle : IFigures
     /// <returns></returns>
     public override string ToString()
     {
-        return $"Name: {_name}, Radius: {_radius}, Diametr: {_diametr}, MyCircleColor: {_myCircleColor}";
+        return $"Name: {_name}, " +
+               $"Radius: {_radius}, " +
+               $"Diametr: {_diametr}, " +
+               $"MyCircleColor: {_myCircleColor}\t" +
+               $"|||\t" +
+               $"Area: {Area:F}\t" +
+               $"Perimetr: {Perimetr:F}";
     }
-
-    public double Area { get; set; }
-    public double Perimetr { get; set; }
 }

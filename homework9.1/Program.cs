@@ -4,6 +4,7 @@
 
 using System;
 using System.Reflection.Emit;
+using System.Text;
 
 
 namespace homework9._1
@@ -27,6 +28,9 @@ namespace homework9._1
                 new Square(6, IFigures.ColorState.Green),
                 new Triangle(5, 7, 3, 6, IFigures.ColorState.White)
             };
+
+            Console.WriteLine($"Сумма площадей всех фигур составляет: {Mathematics.CalculateArea(figures)}");
+            Console.WriteLine($"Сумма периметров всех фигур составляет: {Mathematics.CalculatePerimetr(figures)}");
         }
     }
 }

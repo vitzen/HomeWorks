@@ -24,20 +24,37 @@ public class Triangle : IFigures
         get { return _name; }
     }
 
-    public double GetAreaOfTriangle
-    {
-        get { return (_baseSideOfTriangle * _perpendicular) / 2; }
-        set
-        {
-            _baseSideOfTriangle = value;
-            _perpendicular = value;
-        }
-    }
 
     public IFigures.ColorState GetColorOfTriangle
     {
         get { return _myTriangleColor; }
         set { _myTriangleColor = value; }
+    }
+
+
+    /// <summary>
+    /// Переопределяем физическое свойство Площадь из интерфейса IPhysical
+    /// </summary>
+    public double Area
+    {
+        get { return (_baseSideOfTriangle * _perpendicular / 2); }
+    }
+
+
+    /// <summary>
+    /// Переопределяем физическое свойство Периметр из интерфейса IPhysical
+    /// </summary>
+    public double Perimetr
+    {
+        get => _baseSideOfTriangle + _secondSideOfTriangle + _thirdSideOfTriangle;
+    }
+
+    /// <summary>
+    /// Переопределяем описательное свойство из интерфейса IDescriptive
+    /// </summary>
+    public string GetTitle
+    {
+        get { return _name; }
     }
 
     /// <summary>
@@ -47,9 +64,14 @@ public class Triangle : IFigures
     public override string ToString()
     {
         return
-            $"Name: {_name}, BaseSideOfTriangle: {_baseSideOfTriangle}, SecondSideOfTriangle: {_secondSideOfTriangle}, ThirdSideOfTriangle: {_thirdSideOfTriangle}, Perpendicular: {_perpendicular}, MyTriangleColor: {_myTriangleColor}";
+            $"Name: {_name}, " +
+            $"BaseSideOfTriangle: {_baseSideOfTriangle}, " +
+            $"SecondSideOfTriangle: {_secondSideOfTriangle}, " +
+            $"ThirdSideOfTriangle: {_thirdSideOfTriangle}, " +
+            $"Perpendicular: {_perpendicular}, " +
+            $"MyTriangleColor: {_myTriangleColor}\t" +
+            $"|||\t" +
+            $"Area: {Area:F}\t" +
+            $"Perimetr: {Perimetr:F}";
     }
-
-    public double Area { get; set; }
-    public double Perimetr { get; set; }
 }

@@ -14,6 +14,6 @@ public interface IFigures : IPhysical, IDescriptive
     }
 
 
-    public double Area { get; set; }
-    public double Perimetr { get; set; }
+    public double Area { get; }
+    public double Perimetr { get; }
 }
