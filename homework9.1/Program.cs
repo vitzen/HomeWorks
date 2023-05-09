@@ -21,7 +21,8 @@ namespace homework9._1
                               $"{figures2}\n" +
                               $"{figures3}");
 
-            IFigures[] figures = { 
+            IFigures[] figures =
+            {
                 new Circle(4, 5, IFigures.ColorState.Blue),
                 new Square(6, IFigures.ColorState.Green),
                 new Triangle(5, 7, 3, 6, IFigures.ColorState.White)
