@@ -1,6 +1,6 @@
-using homework9._1.Interfaces;
+using Library.Interfaces;
 
-namespace homework9._1;
+namespace Library.Figures;
 
 public interface IFigures : IPhysical, IDescriptive
 {

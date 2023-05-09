@@ -1,4 +1,4 @@
-namespace homework9._1;
+namespace Library.Figures;
 
 public class Triangle : IFigures
 {

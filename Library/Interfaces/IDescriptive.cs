@@ -1,4 +1,4 @@
-namespace homework9._1.Interfaces;
+namespace Library.Interfaces;
 
 public interface IDescriptive
 {

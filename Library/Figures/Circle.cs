@@ -1,31 +1,32 @@
-namespace homework9._1;
+namespace Library.Figures;
 
-public class Square : IFigures
+public class Circle : IFigures
 {
-    private readonly string _name = "mySquare";
-    private double _sideLength;
-    private IFigures.ColorState _mySquareColor;
+    private readonly string _name = "myCircle";
+    private double _radius;
+    private double _diametr;
+    private IFigures.ColorState _myCircleColor;
 
-    public Square(double sideLength, IFigures.ColorState mySquareColor)
+    public Circle(double radius, double diametr, IFigures.ColorState myCircleColor)
     {
-        _sideLength = sideLength;
-        _mySquareColor = mySquareColor;
+        _radius = radius;
+        _diametr = diametr;
+        _myCircleColor = myCircleColor;
     }
 
 
-    public IFigures.ColorState GetColorOfCSquare
+    public IFigures.ColorState GetColorOfCircle
     {
-        get { return _mySquareColor; }
-        set { _mySquareColor = value; }
+        get { return _myCircleColor; }
+        set { _myCircleColor = value; }
     }
-
 
     /// <summary>
     /// Переопределяем физическое свойство Площадь из интерфейса IPhysical
     /// </summary>
     public double Area
     {
-        get { return Math.Pow(_sideLength, 2); }
+        get { return 2 * Math.PI * _radius; }
     }
 
     /// <summary>
@@ -33,8 +34,9 @@ public class Square : IFigures
     /// </summary>
     public double Perimetr
     {
-        get { return _sideLength * 4; }
+        get { return Math.PI * Math.Pow(_radius, 2); }
     }
+
 
     /// <summary>
     /// Переопределяем описательное свойство из интерфейса IDescriptive
@@ -44,7 +46,6 @@ public class Square : IFigures
         get { return _name; }
     }
 
-
     /// <summary>
     /// Переопределение ToString
     /// </summary>
@@ -52,8 +53,9 @@ public class Square : IFigures
     public override string ToString()
     {
         return $"Name: {_name}, " +
-               $"SideLength: {_sideLength}, " +
-               $"MySquareColor: {_mySquareColor}\t" +
+               $"Radius: {_radius}, " +
+               $"Diametr: {_diametr}, " +
+               $"MyCircleColor: {_myCircleColor}\t" +
                $"|||\t" +
                $"Area: {Area:F}\t" +
                $"Perimetr: {Perimetr:F}";

@@ -1,3 +1,5 @@
+using Library.Figures;
+
 namespace homework9._1;
 
 public class Mathematics
