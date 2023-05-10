@@ -26,16 +26,16 @@ namespace homework10._1
 
 
             //Создаем объекты-пылесосы и помещаем их в массив
-            VacuumClass[] vacuums =
+            VacuumClass<T> vacuums =
             {
-                new ManualVacuum<string>("MANUAL VACUUM", 100),
+                new ManualVacuum<T>("MANUAL VACUUM", 99),
                 new RoboticVacuum<string>("ROBOTIC VACUUM", 90),
-                new WhashingVacuum<int>("WHASHING VACUUM", 79)
+                new WhashingVacuum<int>(128754, 79)
             };
 
 
             //Блок для вызова в каждом устройстве (пылесосе) метода StartCleaning
-            string CalculateVacuums(VacuumClass[] vacuums)
+            string CalculateVacuums(VacuumClass<T>[] vacuums)
             {
                 StringBuilder sb = new StringBuilder();
                 foreach (var vacuum in vacuums)
@@ -53,7 +53,7 @@ namespace homework10._1
             Console.WriteLine(CalculateVacuums(vacuums));
 
             //Блок для подсчета 
-            static string CalculateMaxDustVolumeOfRoom(VacuumClass[] vacuums, RoomClass[] rooms)
+            static string CalculateMaxDustVolumeOfRoom(VacuumClass<T>[] vacuums, RoomClass[] rooms)
             {
                 StringBuilder sb = new StringBuilder();
                 foreach (var vacuum in vacuums)
