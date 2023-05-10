@@ -2,7 +2,36 @@ using ClassLibrary.Rooms;
 
 namespace ClassLibrary.Vacuum_Cleaner;
 
-public class VacuumClass<T>
+public class Metla
+{
+    private double _maxVolume; //поле максимальный объем
+
+    public virtual void StartCleaning()
+    {
+        Console.WriteLine("Началась уборка");
+    }
+
+    public virtual string StartCleaning(RoomClass targetRoom)
+    {
+        return $"Началась уборка в комнате: {targetRoom}";
+    }
+    public virtual string CalculateMaxDustVolumeOfRoom(RoomClass targetRoom)
+    {
+        var maxDustVolumeOfRoom = (targetRoom.Perimetr * 18) / targetRoom.Area;
+        if (maxDustVolumeOfRoom > _maxVolume)
+        {
+            throw new Exception("Ей, остановись, твой пылесос не сможет сожрать столько пыли");
+        }
+        else
+        {
+            Console.WriteLine("Все отлично, предельно допустимый объем резервуара для пыли не превышен");
+        }
+
+        return "Что будем делать дальше?";
+    }
+}
+
+public class VacuumClass<T> : Metla
 {
     private T _model;
     private double _maxVolume;
@@ -27,12 +56,12 @@ public class VacuumClass<T>
     }
 
 
-    public virtual void StartCleaning()
+    public override void StartCleaning()
     {
         Console.WriteLine("Началась уборка");
     }
 
-    public virtual string StartCleaning(RoomClass targetRoom)
+    public override string StartCleaning(RoomClass targetRoom)
     {
         return $"Началась уборка в комнате: {targetRoom}";
     }
@@ -41,7 +70,7 @@ public class VacuumClass<T>
     /// Метод для подсчета максимального объема пыли в комнате
     /// </summary>
     /// <returns></returns>
-    public string CalculateMaxDustVolumeOfRoom(RoomClass targetRoom)
+    public override string CalculateMaxDustVolumeOfRoom(RoomClass targetRoom)
     {
         var maxDustVolumeOfRoom = (targetRoom.Perimetr * 18) / targetRoom.Area;
         if (maxDustVolumeOfRoom > _maxVolume)

@@ -26,19 +26,26 @@ namespace homework10._1
 
 
             //Создаем объекты-пылесосы и помещаем их в массив
-            VacuumClass<T> vacuums =
-            {
-                new ManualVacuum<T>("MANUAL VACUUM", 99),
-                new RoboticVacuum<string>("ROBOTIC VACUUM", 90),
-                new WhashingVacuum<int>(128754, 79)
-            };
+             // VacuumClass<string>[] vacuums =
+             // {
+             //     new ManualVacuum("MANUAL VACUUM", 99),
+             //     new RoboticVacuum("ROBOTIC VACUUM", 90),
+             //     new WhashingVacuum(128754, 79)
+             // };
+            
+            Metla[] vacuums2 =
+                {
+                    new ManualVacuum("MANUAL VACUUM", 99),
+                    new RoboticVacuum("ROBOTIC VACUUM", 90),
+                    new WhashingVacuum(128754, 79)
+                };
 
 
             //Блок для вызова в каждом устройстве (пылесосе) метода StartCleaning
-            string CalculateVacuums(VacuumClass<T>[] vacuums)
+            string CalculateVacuums(Metla[] vacuums)
             {
                 StringBuilder sb = new StringBuilder();
-                foreach (var vacuum in vacuums)
+                foreach (var vacuum in vacuums2)
                 {
                     foreach (var room in rooms)
                     {
@@ -50,10 +57,10 @@ namespace homework10._1
                 return sb.ToString();
             }
 
-            Console.WriteLine(CalculateVacuums(vacuums));
+            Console.WriteLine(CalculateVacuums(vacuums2));
 
             //Блок для подсчета 
-            static string CalculateMaxDustVolumeOfRoom(VacuumClass<T>[] vacuums, RoomClass[] rooms)
+            static string CalculateMaxDustVolumeOfRoom(Metla[] vacuums, RoomClass[] rooms)
             {
                 StringBuilder sb = new StringBuilder();
                 foreach (var vacuum in vacuums)
@@ -68,7 +75,7 @@ namespace homework10._1
                 return sb.ToString();
             }
 
-            Console.WriteLine(CalculateMaxDustVolumeOfRoom);
+            Console.WriteLine(CalculateMaxDustVolumeOfRoom());
         }
     }
 }
