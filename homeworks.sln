@@ -1,8 +1,22 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "homework10.1", "homework10.1\homework10.1.csproj", "{EB126B6E-706C-44D4-9608-0AFA6AD02610}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary", "ClassLibrary\ClassLibrary.csproj", "{B50308B8-A964-406A-B53B-BC1B8C34CC81}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB126B6E-706C-44D4-9608-0AFA6AD02610}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB126B6E-706C-44D4-9608-0AFA6AD02610}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB126B6E-706C-44D4-9608-0AFA6AD02610}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB126B6E-706C-44D4-9608-0AFA6AD02610}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B50308B8-A964-406A-B53B-BC1B8C34CC81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B50308B8-A964-406A-B53B-BC1B8C34CC81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B50308B8-A964-406A-B53B-BC1B8C34CC81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B50308B8-A964-406A-B53B-BC1B8C34CC81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
