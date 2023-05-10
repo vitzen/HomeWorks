@@ -20,6 +20,7 @@ public class RoboticVacuum : VacuumClass
         base.StartCleaning();
     }
 
+
     public override string StartCleaning(RoomClass targetRoom)
     {
         return $"{Model}, {base.StartCleaning(targetRoom)}";

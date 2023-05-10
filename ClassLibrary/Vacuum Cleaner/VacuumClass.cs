@@ -36,4 +36,28 @@ public class VacuumClass
     {
         return $"Началась уборка в комнате: {targetRoom}";
     }
+
+    /// <summary>
+    /// Метод для подсчета максимального объема пыли в комнате
+    /// </summary>
+    /// <returns></returns>
+    public string CalculateMaxDustVolumeOfRoom(RoomClass targetRoom)
+    {
+        var maxDustVolumeOfRoom = (targetRoom.Perimetr * 18) / targetRoom.Area;
+        if (maxDustVolumeOfRoom > _maxVolume)
+        {
+            throw new Exception("Ей, остановись, твой пылесос не сможет сожрать столько пыли");
+        }
+        else
+        {
+            Console.WriteLine("Все отлично, предельно допустимый объем резервуара для пыли не превышен");
+        }
+
+        return "Что будем делать дальше?";
+    }
+
+    // public override string ToString()
+    // {
+    //     return $"{_model}, {CalculateMaxDustVolumeOfRoom()}";
+    // }
 }

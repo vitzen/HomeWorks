@@ -6,7 +6,11 @@ namespace homework10._1;
 
 public static class Mathematics
 {
-    ///Подсчитываем общую площадь всех комнат
+    /// <summary>
+    /// Подсчитываем общую площадь всех комнат
+    /// </summary>
+    /// <param name="rooms"></param>
+    /// <returns></returns>
     public static double CalculateRoomArea(RoomClass[] rooms)
     {
         double summofAreas = 0;
@@ -18,7 +22,12 @@ public static class Mathematics
         return summofAreas;
     }
 
-    //Подсчитываем общий периметр всех комнат
+
+    /// <summary>
+    /// Подсчитываем общий периметр всех комнат
+    /// </summary>
+    /// <param name="rooms"></param>
+    /// <returns></returns>
     public static double CalculateRoomPerimetr(RoomClass[] rooms)
     {
         double summOfPerimetrs = 0;
@@ -30,16 +39,4 @@ public static class Mathematics
 
         return summOfPerimetrs;
     }
-
-    public static string CollectTheDust(double dustVolume, double vacuumMaxVolume)
-    {
-        if (dustVolume > vacuumMaxVolume)
-        {
-            throw Exception;
-        }
-        
-        return "ОШИБКА";
-    }
-
-    
 }

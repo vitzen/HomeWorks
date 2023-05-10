@@ -50,8 +50,24 @@ namespace homework10._1
                 return sb.ToString();
             }
 
-
             Console.WriteLine(CalculateVacuums(vacuums));
+
+            //Блок для подсчета 
+            static string CalculateMaxDustVolumeOfRoom(VacuumClass[] vacuums, RoomClass[] rooms)
+            {
+                StringBuilder sb = new StringBuilder();
+                foreach (var vacuum in vacuums)
+                {
+                    foreach (var room in rooms)
+                    {
+                        var str = $"{vacuum.CalculateMaxDustVolumeOfRoom(room)}";
+                        sb.AppendLine(str);
+                    }
+                }
+
+                return sb.ToString();
+            }
+            Console.WriteLine(CalculateMaxDustVolumeOfRoom);
         }
     }
 }
