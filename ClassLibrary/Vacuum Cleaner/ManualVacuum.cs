@@ -2,7 +2,7 @@ using ClassLibrary.Rooms;
 
 namespace ClassLibrary.Vacuum_Cleaner;
 
-public class ManualVacuum : VacuumClass
+public class ManualVacuum : VacuumClass<string>
 {
     public ManualVacuum(string model, double maxVolume) : base(model, maxVolume)
     {
@@ -25,4 +25,8 @@ public class ManualVacuum : VacuumClass
     {
         return $"{Model}, {base.StartCleaning(targetRoom)}";
     }
+}
+
+public class T
+{
 }

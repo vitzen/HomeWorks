@@ -2,19 +2,19 @@ using ClassLibrary.Rooms;
 
 namespace ClassLibrary.Vacuum_Cleaner;
 
-public class VacuumClass
+public class VacuumClass<T>
 {
-    private string _model;
+    private T _model;
     private double _maxVolume;
 
 
-    public VacuumClass(string model, double maxVolume)
+    public VacuumClass(T model, double maxVolume)
     {
         _model = model;
         _maxVolume = maxVolume;
     }
 
-    public virtual string Model
+    public virtual T Model
     {
         get => _model;
     }

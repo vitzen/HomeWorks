@@ -2,7 +2,7 @@ using ClassLibrary.Rooms;
 
 namespace ClassLibrary.Vacuum_Cleaner;
 
-public class RoboticVacuum : VacuumClass
+public class RoboticVacuum : VacuumClass<string>
 {
     public RoboticVacuum(string model, double maxVolume) : base(model, maxVolume)
     {

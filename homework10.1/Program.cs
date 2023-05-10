@@ -28,9 +28,9 @@ namespace homework10._1
             //Создаем объекты-пылесосы и помещаем их в массив
             VacuumClass[] vacuums =
             {
-                new ManualVacuum("MANUAL VACUUM", 100),
-                new RoboticVacuum("ROBOTIC VACUUM", 90),
-                new WhashingVacuum("WHASHING VACUUM", 79)
+                new ManualVacuum<string>("MANUAL VACUUM", 100),
+                new RoboticVacuum<string>("ROBOTIC VACUUM", 90),
+                new WhashingVacuum<int>("WHASHING VACUUM", 79)
             };
 
 
@@ -67,6 +67,7 @@ namespace homework10._1
 
                 return sb.ToString();
             }
+
             Console.WriteLine(CalculateMaxDustVolumeOfRoom);
         }
     }
