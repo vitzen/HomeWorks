@@ -67,7 +67,6 @@ namespace homework8._1
                 return sb.ToString();
             }
 
-
             Console.WriteLine(CalculateVacuums(vacuums));
         }
     }
