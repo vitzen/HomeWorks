@@ -28,9 +28,9 @@ namespace homework10._1
             //Создаем объекты-пылесосы и помещаем их в массив
             VacuumClass[] vacuums =
             {
-                new ManualVacuum("MANUAL VACUUM"),
-                new RoboticVacuum("ROBOTIC VACUUM"),
-                new WhashingVacuum("WHASHING VACUUM")
+                new ManualVacuum("MANUAL VACUUM", 100),
+                new RoboticVacuum("ROBOTIC VACUUM", 90),
+                new WhashingVacuum("WHASHING VACUUM", 79)
             };
 
 

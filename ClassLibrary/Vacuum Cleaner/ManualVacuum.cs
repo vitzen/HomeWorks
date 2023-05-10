@@ -4,14 +4,16 @@ namespace ClassLibrary.Vacuum_Cleaner;
 
 public class ManualVacuum : VacuumClass
 {
+    public ManualVacuum(string model, double maxVolume) : base(model, maxVolume)
+    {
+    }
+
     public override string Model
     {
         get => "Manual Vacuum Toshiba XN-145";
     }
 
-    public ManualVacuum(string model) : base(model)
-    {
-    }
+    public override double MaxVolume { get; set; }
 
     public override void StartCleaning()
     {

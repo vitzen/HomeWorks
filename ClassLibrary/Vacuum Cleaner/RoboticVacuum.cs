@@ -4,14 +4,16 @@ namespace ClassLibrary.Vacuum_Cleaner;
 
 public class RoboticVacuum : VacuumClass
 {
+    public RoboticVacuum(string model, double maxVolume) : base(model, maxVolume)
+    {
+    }
+
     public override string Model
     {
         get => "Robotic Vacuum Xiaomi CZ18";
     }
 
-    public RoboticVacuum(string model) : base(model)
-    {
-    }
+    public override double MaxVolume { get; set; }
 
     public override void StartCleaning()
     {

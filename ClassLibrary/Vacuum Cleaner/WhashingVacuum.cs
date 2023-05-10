@@ -4,14 +4,16 @@ namespace ClassLibrary.Vacuum_Cleaner;
 
 public class WhashingVacuum : VacuumClass
 {
+    public WhashingVacuum(string model, double maxVolume) : base(model, maxVolume)
+    {
+    }
+
     public override string Model
     {
         get => "Washing Vacuum Panasonic rz246";
     }
 
-    public WhashingVacuum(string model) : base(model)
-    {
-    }
+    public override double MaxVolume { get; set; }
 
     public override void StartCleaning()
     {
