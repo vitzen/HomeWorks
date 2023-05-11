@@ -6,6 +6,7 @@ public class ManualVacuum : VacuumClass<string>
 {
     public ManualVacuum(string model, double maxVolume) : base(model, maxVolume)
     {
+        MaxVolume = maxVolume;
     }
 
     public override string Model

@@ -6,6 +6,7 @@ public class WhashingVacuum : VacuumClass<int>
 {
     public WhashingVacuum(int model, double maxVolume) : base(model, maxVolume)
     {
+        MaxVolume = maxVolume;
     }
 
     public override int Model
