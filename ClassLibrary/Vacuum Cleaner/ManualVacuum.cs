@@ -15,14 +15,13 @@ public class ManualVacuum : VacuumClass<string>
 
     public override double MaxVolume { get; set; }
 
-    public override void StartCleaning()
-    {
-        base.StartCleaning();
-    }
-
-
     public override string StartCleaning(RoomClass targetRoom)
     {
         return $"{Model}, {base.StartCleaning(targetRoom)}";
+    }
+    
+    public override string ToString()
+    {
+        return $"{_model}";
     }
 }

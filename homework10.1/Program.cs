@@ -24,43 +24,36 @@ namespace homework10._1
             double totalRoomsArea = Mathematics.CalculateRoomArea(rooms);
             double totalRoomsPerimetr = Mathematics.CalculateRoomPerimetr(rooms);
 
-
-            //Создаем объекты-пылесосы и помещаем их в массив
-             // VacuumClass<string>[] vacuums =
-             // {
-             //     new ManualVacuum("MANUAL VACUUM", 99),
-             //     new RoboticVacuum("ROBOTIC VACUUM", 90),
-             //     new WhashingVacuum(128754, 79)
-             // };
-            
-            Metla[] vacuums2 =
-                {
-                    new ManualVacuum("MANUAL VACUUM", 99),
-                    new RoboticVacuum("ROBOTIC VACUUM", 90),
-                    new WhashingVacuum(128754, 79)
-                };
+            //Создаем массив в котором мы можем работать с дженериками любого типа
+            //за счет созданного родительского класса SuperVacuum
+            SuperVacuum[] vacuums =
+            {
+                new ManualVacuum("MANUAL VACUUM", 9900),
+                new RoboticVacuum("ROBOTIC VACUUM", 9000),
+                new WhashingVacuum(128754, 7900)
+            };
 
 
             //Блок для вызова в каждом устройстве (пылесосе) метода StartCleaning
-            string CalculateVacuums(Metla[] vacuums)
-            {
-                StringBuilder sb = new StringBuilder();
-                foreach (var vacuum in vacuums2)
-                {
-                    foreach (var room in rooms)
-                    {
-                        var str = $"{vacuum.StartCleaning(room)}";
-                        sb.AppendLine(str);
-                    }
-                }
+            // string CalculateVacuums(SuperVacuum[] vacuums)
+            // {
+            //     StringBuilder sb = new StringBuilder();
+            //     foreach (var vacuum in vacuums)
+            //     {
+            //         foreach (var room in rooms)
+            //         {
+            //             var str = $"{vacuum.StartCleaning(room)}";
+            //             sb.AppendLine(str);
+            //         }
+            //     }
+            //
+            //     return sb.ToString();
+            // }
+            //
+            // Console.WriteLine(CalculateVacuums(vacuums));
 
-                return sb.ToString();
-            }
-
-            Console.WriteLine(CalculateVacuums(vacuums2));
-
-            //Блок для подсчета 
-            static string CalculateMaxDustVolumeOfRoom(Metla[] vacuums, RoomClass[] rooms)
+            //Блок для подсчета максмального объема пыли в зависимости от комнаты
+            static string CalculateMaxDustVolumeOfRoom(SuperVacuum[] vacuums, RoomClass[] rooms)
             {
                 StringBuilder sb = new StringBuilder();
                 foreach (var vacuum in vacuums)
@@ -71,11 +64,11 @@ namespace homework10._1
                         sb.AppendLine(str);
                     }
                 }
-
+            
                 return sb.ToString();
             }
-
-            Console.WriteLine(CalculateMaxDustVolumeOfRoom());
+            
+            Console.WriteLine(CalculateMaxDustVolumeOfRoom(vacuums, rooms));
         }
     }
 }
