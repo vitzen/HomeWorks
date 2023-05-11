@@ -23,6 +23,6 @@ public class VacuumClass
 
     public virtual string StartCleaning(RoomClass targetRoom)
     {
-        return $"Началась уборка в комнате: {targetRoom}";
+        return $"начал уборку в комнате --> {targetRoom}";
     }
 }

@@ -13,12 +13,14 @@ public class ManualVacuum : VacuumClass
     {
     }
 
-    public override void StartCleaning()
-    {
-        base.StartCleaning();
-    }
-
-    public override string StartCleaning(RoomClass targetRoom)
+    /// <summary>
+    /// Реализация сокрытия метода по условию домашенго задания!!!
+    /// На практике быть с этим нужно осторожно, так как в коде потом сложно будет отловить ошибку,
+    /// почему метод вызывает неправильный параметр
+    /// </summary>
+    /// <param name="targetRoom"></param>
+    /// <returns></returns>
+    public string StartCleaning(RoomClass targetRoom)
     {
         return $"{Model}, {base.StartCleaning(targetRoom)}";
     }
