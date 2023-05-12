@@ -9,7 +9,7 @@ public class VacuumClass<T>: SuperVacuum
     {
     }
 
-    public override string Model { get; set; }
+    public override T Model { get; set; }
     public override double MaxVolume { get; set; }
 
 
