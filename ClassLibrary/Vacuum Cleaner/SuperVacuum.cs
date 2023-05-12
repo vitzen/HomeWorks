@@ -29,7 +29,6 @@ public class SuperVacuum
         set => _maxVolume = value;
     }
 
-//////////////////////////////////////////////////////////////////
     public virtual void StartCleaning()
     {
         Console.WriteLine("Началась уборка");
@@ -41,7 +40,7 @@ public class SuperVacuum
     }
 
     /// <summary>
-    /// Метод для подсчета максимального количества пыли в зависимости от комнаты
+    /// Метод для подсчета максимального количества в комнате пыли (в зависимости от комнаты)
     /// </summary>
     /// <param name="targetRoom"></param>
     /// <returns></returns>
@@ -61,6 +60,6 @@ public class SuperVacuum
 
     public override string ToString()
     {
-        return $"*{_model}*";
+        return $"*{Model}*";
     }
 }

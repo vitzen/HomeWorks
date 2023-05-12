@@ -3,17 +3,15 @@ using ClassLibrary.Rooms;
 
 namespace ClassLibrary.Vacuum_Cleaner;
 
-public class VacuumClass<T>: SuperVacuum
+public class VacuumClass : SuperVacuum
 {
-    public VacuumClass(double maxVolume, T model) : base(maxVolume, model)
+    public VacuumClass(double maxVolume, string model) : base(maxVolume, model)
     {
     }
 
-    public override T Model { get; set; }
+    public override string Model { get; set; }
     public override double MaxVolume { get; set; }
 
-
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////
     public override void StartCleaning()
     {
         Console.WriteLine("Началась уборка");

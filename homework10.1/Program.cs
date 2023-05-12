@@ -1,7 +1,7 @@
-﻿// Домашнее задание 10.1:
+﻿// Домашнее задание 10.1: !!! БЕЗ GENERIC
 // В классы для пылесосов добавить свойство максимального объема которое он может обработать.
 // Добавить метод по сбору пыли, и если переданный объем превышает параметр пылесоса, сгенерировать иключение(создать свое) и обработать в вызывающем методе.
-// Сделать дженерик на основе пылесоса - по собственному желанию что именно.
+
 
 using System.Text;
 using System.Collections.Generic;
@@ -29,11 +29,10 @@ namespace homework10._1
             //за счет созданного родительского класса SuperVacuum
             SuperVacuum[] vacuums =
             {
-                new ManualVacuum(9, "MANUAL VACUUM"),
+                new ManualVacuum(90, "MANUAL"),
                 new RoboticVacuum(110, "ROBOTIC"),
-                new WhashingVacuum(109, 13846534)
+                new WhashingVacuum(109, "WHASING")
             };
-
 
             //Блок для подсчета максмального объема пыли в зависимости от комнаты
             static string CalculateMaxDustVolumeOfRoom(SuperVacuum[] vacuums, RoomClass[] rooms)

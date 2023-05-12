@@ -3,7 +3,7 @@ using ClassLibrary.Rooms;
 
 namespace ClassLibrary.Vacuum_Cleaner;
 
-public class ManualVacuum : VacuumClass<string>
+public class ManualVacuum : VacuumClass
 {
     public ManualVacuum(double maxVolume, string model) : base(maxVolume, model)
     {
@@ -17,9 +17,6 @@ public class ManualVacuum : VacuumClass<string>
 
     public override double MaxVolume { get; set; }
 
-
-
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////
     public override string StartCleaning(RoomClass targetRoom)
     {
         return $"{Model}, {base.StartCleaning(targetRoom)}";
