@@ -29,11 +29,29 @@ namespace homework10._1
             //за счет созданного родительского класса SuperVacuum
             SuperVacuum[] vacuums =
             {
-                new ManualVacuum("MANUAL VACUUM", 30),
-                new RoboticVacuum("ROBOTIC VACUUM", 40),
-                new WhashingVacuum(128754, 10)
+                new ManualVacuum(9, "MANUAL VACUUM"),
+                new RoboticVacuum(110, "ROBOTIC"),
+                new WhashingVacuum(109, "13846534")
             };
 
+
+            //Блок для подсчета максмального объема пыли в зависимости от комнаты
+            static string CalculateMaxDustVolumeOfRoom(SuperVacuum[] vacuums, RoomClass[] rooms)
+            {
+                StringBuilder sb = new StringBuilder();
+                foreach (var vacuum in vacuums)
+                {
+                    foreach (var room in rooms)
+                    {
+                        var str = $"{vacuum.CalculateMaxDustVolumeOfRoom(room, vacuum)}";
+                        sb.AppendLine(str);
+                    }
+                }
+
+                return sb.ToString();
+            }
+
+            Console.WriteLine(CalculateMaxDustVolumeOfRoom(vacuums, rooms));
 
             //Блок для вызова в каждом устройстве (пылесосе) метода StartCleaning
             //
@@ -53,24 +71,6 @@ namespace homework10._1
             // }
             //
             // Console.WriteLine(CalculateVacuums(vacuums));
-
-            //Блок для подсчета максмального объема пыли в зависимости от комнаты
-            static string CalculateMaxDustVolumeOfRoom(SuperVacuum[] vacuums, RoomClass[] rooms)
-            {
-                StringBuilder sb = new StringBuilder();
-                foreach (var vacuum in vacuums)
-                {
-                    foreach (var room in rooms)
-                    {
-                        var str = $"{vacuum.CalculateMaxDustVolumeOfRoom(room)}";
-                        sb.AppendLine(str);
-                    }
-                }
-            
-                return sb.ToString();
-            }
-            
-            Console.WriteLine(CalculateMaxDustVolumeOfRoom(vacuums, rooms));
         }
     }
 }

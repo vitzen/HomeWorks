@@ -1,5 +1,6 @@
 ///class SuperVacuum нужен для того чтобы можно было создавать массив из генериков разного типа (string, int и тд)
 /// Мы наследуем все остальные классы vacuum от него
+
 using System.Collections.Generic;
 using ClassLibrary.Rooms;
 
@@ -7,15 +8,28 @@ namespace ClassLibrary.Vacuum_Cleaner;
 
 public class SuperVacuum
 {
+    protected string _model;
     private double _maxVolume; //поле максимальный объем
-    private string _model;
 
-    // public double MaxVolume
-    // {
-    //     get => _maxVolume;
-    //     set => _maxVolume = value;
-    // }
+    public SuperVacuum(double maxVolume, string model) //конструктор
+    {
+        _maxVolume = maxVolume;
+        _model = model;
+    }
 
+    public virtual string Model //свойство для поля _model
+    {
+        get => _model;
+        set => _model = value;
+    }
+
+    public virtual double MaxVolume //свойство для поля _model
+    {
+        get => _maxVolume;
+        set => _maxVolume = value;
+    }
+
+//////////////////////////////////////////////////////////////////
     public virtual void StartCleaning()
     {
         Console.WriteLine("Началась уборка");
@@ -25,28 +39,28 @@ public class SuperVacuum
     {
         return $"Началась уборка в комнате: {targetRoom}";
     }
-    
+
     /// <summary>
     /// Метод для подсчета максимального количества пыли в зависимости от комнаты
     /// </summary>
     /// <param name="targetRoom"></param>
     /// <returns></returns>
     /// <exception cref="Exception"></exception>
-    public string CalculateMaxDustVolumeOfRoom(RoomClass targetRoom)
+    public string CalculateMaxDustVolumeOfRoom(RoomClass targetRoom, SuperVacuum targetVacuum)
     {
         var maxDustVolumeOfRoom = (targetRoom.Perimetr * 18) / targetRoom.Area;
         if (maxDustVolumeOfRoom > _maxVolume)
         {
-            throw new Exception("Ей, остановись, твой пылесос не сможет сожрать столько пыли");
+            throw new Exception("Объема резервуара не достаточно чтобы убрать эту комнату!!!");
         }
 
-        return $"Все отлично, предельно допустимый объем резервуара для пыли не превышен.\t" +
-               $"Максимальный объем резервуара пылесоса {_maxVolume}\t" +
-               $"Пыли собрано в объеме {maxDustVolumeOfRoom}";
+        return $"В комнате: {targetRoom} максимальный объем пыли равен: {maxDustVolumeOfRoom} куб/м.\t\n" +
+               $"Максимальный лимит объема резервуара для сбора пыли у пылесоса {targetVacuum}: {_maxVolume}куб/м\t\n" +
+               $"Объема резервуара пылесоса достаточно для работы с этой комнатой\n";
     }
-    
+
     public override string ToString()
     {
-        return $"{_model}";
+        return $"*{_model}*";
     }
 }

@@ -3,31 +3,17 @@ using ClassLibrary.Rooms;
 
 namespace ClassLibrary.Vacuum_Cleaner;
 
-public class VacuumClass<T> : SuperVacuum
+public class VacuumClass<T>: SuperVacuum
 {
-    protected T _model;
-    private double _maxVolume;
-
-
-    public VacuumClass(T model, double maxVolume)
+    public VacuumClass(double maxVolume, T model) : base(maxVolume, model)
     {
-        _model = model;
-        _maxVolume = maxVolume;
     }
 
-    public virtual T Model
-    {
-        get => _model;
-    }
-
-    //Максимальный объем пыли, обрабатываемый пылесосом
-    public virtual double MaxVolume
-    {
-        get { return _maxVolume; }
-        set => _maxVolume = value;
-    }
+    public override string Model { get; set; }
+    public override double MaxVolume { get; set; }
 
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////
     public override void StartCleaning()
     {
         Console.WriteLine("Началась уборка");
@@ -36,10 +22,5 @@ public class VacuumClass<T> : SuperVacuum
     public override string StartCleaning(RoomClass targetRoom)
     {
         return $"Началась уборка в комнате: {targetRoom}";
-    }
-    
-    public override string ToString()
-    {
-        return $"{_model}";
     }
 }

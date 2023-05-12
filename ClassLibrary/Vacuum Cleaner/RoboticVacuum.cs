@@ -5,25 +5,24 @@ namespace ClassLibrary.Vacuum_Cleaner;
 
 public class RoboticVacuum : VacuumClass<string>
 {
-    public RoboticVacuum(string model, double maxVolume) : base(model, maxVolume)
+    public RoboticVacuum(double maxVolume, string model) : base(maxVolume, model)
     {
-        MaxVolume = maxVolume;
     }
 
     public override string Model
     {
         get => "Robotic Vacuum Xiaomi CZ18";
+        set => _model = value;
     }
 
     public override double MaxVolume { get; set; }
+
     
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public override string StartCleaning(RoomClass targetRoom)
     {
         return $"{Model}, {base.StartCleaning(targetRoom)}";
-    }
-    
-    public override string ToString()
-    {
-        return $"{_model}";
     }
 }
