@@ -31,7 +31,7 @@ namespace homework10._1
             {
                 new ManualVacuum(9, "MANUAL VACUUM"),
                 new RoboticVacuum(110, "ROBOTIC"),
-                new WhashingVacuum(109, "13846534")
+                new WhashingVacuum(109, 13846534)
             };
 
 

@@ -5,7 +5,7 @@ namespace ClassLibrary.Vacuum_Cleaner;
 
 public class WhashingVacuum : VacuumClass<int>
 {
-    public WhashingVacuum(double maxVolume, string model) : base(maxVolume, model)
+    public WhashingVacuum(double maxVolume, int model) : base(maxVolume, model)
     {
     }
 
