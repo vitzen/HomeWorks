@@ -4,6 +4,7 @@
 // Сделать дженерик на основе пылесоса - по собственному желанию что именно.
 
 using System.Text;
+using System.Collections.Generic;
 using ClassLibrary.Rooms;
 using ClassLibrary.Vacuum_Cleaner;
 
@@ -28,9 +29,9 @@ namespace homework10._1
             //за счет созданного родительского класса SuperVacuum
             SuperVacuum[] vacuums =
             {
-                new ManualVacuum("MANUAL VACUUM", 3),
-                new RoboticVacuum("ROBOTIC VACUUM", 4),
-                new WhashingVacuum(128754, 1)
+                new ManualVacuum("MANUAL VACUUM", 30),
+                new RoboticVacuum("ROBOTIC VACUUM", 40),
+                new WhashingVacuum(128754, 10)
             };
 
 

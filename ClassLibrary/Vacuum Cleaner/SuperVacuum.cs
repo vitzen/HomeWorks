@@ -1,6 +1,6 @@
 ///class SuperVacuum нужен для того чтобы можно было создавать массив из генериков разного типа (string, int и тд)
 /// Мы наследуем все остальные классы vacuum от него
-
+using System.Collections.Generic;
 using ClassLibrary.Rooms;
 
 namespace ClassLibrary.Vacuum_Cleaner;
@@ -9,6 +9,12 @@ public class SuperVacuum
 {
     private double _maxVolume; //поле максимальный объем
     private string _model;
+
+    // public double MaxVolume
+    // {
+    //     get => _maxVolume;
+    //     set => _maxVolume = value;
+    // }
 
     public virtual void StartCleaning()
     {
