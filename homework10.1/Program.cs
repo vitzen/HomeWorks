@@ -35,6 +35,7 @@ namespace homework10._1
 
 
             //Блок для вызова в каждом устройстве (пылесосе) метода StartCleaning
+            //
             // string CalculateVacuums(SuperVacuum[] vacuums)
             // {
             //     StringBuilder sb = new StringBuilder();
