@@ -3,11 +3,9 @@
 // Добавить метод по сбору пыли, и если переданный объем превышает параметр пылесоса,
 // сгенерировать иключение(создать свое) и обработать в вызывающем методе.
 
-
 using System.Text;
 using NewClassLibrary.Rooms;
 using NewClassLibrary.Vacuum_Cleaner;
-
 
 namespace homework10._2
 {
@@ -30,10 +28,28 @@ namespace homework10._2
             //за счет созданного родительского класса SuperVacuum
             SuperVacuum[] vacuums =
             {
-                new ManualVacuum(90, "MANUAL"),
-                new RoboticVacuum(110, "ROBOTIC"),
-                new WhashingVacuum(109, "WHASING")
+                new ManualVacuum("MANUAL", 90),
+                new RoboticVacuum("ROBOTIC", 89),
+                new WhashingVacuum(009385647, 67)
             };
+
+            //Блок для получения статуса с каждого пылесоса при старте работы
+            string GetStartVacuumStates(SuperVacuum[] vacuums)
+            {
+                StringBuilder sb = new StringBuilder();
+                foreach (var vacuum in vacuums)
+                {
+                    foreach (var room in rooms)
+                    {
+                        var str = $"{vacuum.StartCleaning(room, vacuum)}";
+                        sb.AppendLine(str);
+                    }
+                }
+
+                return sb.ToString();
+            }
+
+            Console.WriteLine($"{GetStartVacuumStates(vacuums)}\n");
 
             //Блок для подсчета максмального объема пыли в зависимости от комнаты
             static string CalculateMaxDustVolumeOfRoom(SuperVacuum[] vacuums, RoomClass[] rooms)
@@ -50,27 +66,7 @@ namespace homework10._2
 
                 return sb.ToString();
             }
-
-            Console.WriteLine(CalculateMaxDustVolumeOfRoom(vacuums, rooms));
-
-            //Блок для вызова в каждом устройстве (пылесосе) метода StartCleaning
-            //
-            // string CalculateVacuums(SuperVacuum[] vacuums)
-            // {
-            //     StringBuilder sb = new StringBuilder();
-            //     foreach (var vacuum in vacuums)
-            //     {
-            //         foreach (var room in rooms)
-            //         {
-            //             var str = $"{vacuum.StartCleaning(room)}";
-            //             sb.AppendLine(str);
-            //         }
-            //     }
-            //
-            //     return sb.ToString();
-            // }
-            //
-            // Console.WriteLine(CalculateVacuums(vacuums));
+            //Console.WriteLine(CalculateMaxDustVolumeOfRoom(vacuums, rooms));
         }
     }
 }

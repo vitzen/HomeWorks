@@ -2,22 +2,22 @@ using NewClassLibrary.Rooms;
 
 namespace NewClassLibrary.Vacuum_Cleaner;
 
-public class WhashingVacuum : VacuumClass
+public class WhashingVacuum : VacuumClass<int>
 {
-    public WhashingVacuum(double maxVolume, string model) : base(maxVolume, model)
+    public WhashingVacuum(int model, double maxVolume) : base(model, maxVolume)
     {
     }
 
-    public override string Model
+    public override int Model
     {
-        get => "Whashing Vacuum Daewoo CZdd618";
+        get => 19826432;
         set => _model = value;
     }
 
     public override double MaxVolume { get; set; }
-
-    public override string StartCleaning(RoomClass targetRoom)
-    {
-        return $"{Model}, {base.StartCleaning(targetRoom)}";
-    }
+    
+    // public override string StartCleaning(RoomClass targetRoom)
+    // {
+    //     return $"{Model}, {base.StartCleaning(targetRoom)}";
+    // }
 }

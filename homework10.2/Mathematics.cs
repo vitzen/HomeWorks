@@ -2,6 +2,7 @@
 
 
 using NewClassLibrary.Rooms;
+using NewClassLibrary.Vacuum_Cleaner;
 
 namespace homework10._2;
 
@@ -22,8 +23,7 @@ public static class Mathematics
 
         return summofAreas;
     }
-
-
+    
     /// <summary>
     /// Подсчитываем общий периметр всех комнат
     /// </summary>
