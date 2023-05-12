@@ -28,9 +28,9 @@ namespace homework10._1
             //за счет созданного родительского класса SuperVacuum
             SuperVacuum[] vacuums =
             {
-                new ManualVacuum("MANUAL VACUUM", 9900),
-                new RoboticVacuum("ROBOTIC VACUUM", 9000),
-                new WhashingVacuum(128754, 7900)
+                new ManualVacuum("MANUAL VACUUM", 3),
+                new RoboticVacuum("ROBOTIC VACUUM", 4),
+                new WhashingVacuum(128754, 1)
             };
 
 
