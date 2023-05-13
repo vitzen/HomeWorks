@@ -23,7 +23,7 @@ public static class Mathematics
 
         return summofAreas;
     }
-    
+
     /// <summary>
     /// Подсчитываем общий периметр всех комнат
     /// </summary>

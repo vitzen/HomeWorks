@@ -24,7 +24,7 @@ public class VacuumClass<T> : SuperVacuum
         get => _maxVolume;
         set => _maxVolume = value;
     }
-    
+
     public override string ToString()
     {
         return $"*{_model}*";

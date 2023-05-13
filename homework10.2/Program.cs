@@ -33,7 +33,7 @@ namespace homework10._2
                 new WhashingVacuum(009385647, 67)
             };
 
-            //Блок для получения статуса с каждого пылесоса при старте работы
+            //Блок для получения статуса --> GetStartVacuumStates с каждого пылесоса при старте работы
             string GetStartVacuumStates(SuperVacuum[] vacuums)
             {
                 StringBuilder sb = new StringBuilder();
@@ -51,8 +51,8 @@ namespace homework10._2
 
             Console.WriteLine($"{GetStartVacuumStates(vacuums)}\n");
 
-            //Блок для подсчета максмального объема пыли в зависимости от комнаты
-            static string CalculateMaxDustVolumeOfRoom(SuperVacuum[] vacuums, RoomClass[] rooms)
+            //Блок для получения статуса вместимости каждого пылесоса
+            static string GetVacuumMaxVolumeStates(SuperVacuum[] vacuums, RoomClass[] rooms)
             {
                 StringBuilder sb = new StringBuilder();
                 foreach (var vacuum in vacuums)
@@ -66,7 +66,8 @@ namespace homework10._2
 
                 return sb.ToString();
             }
-            //Console.WriteLine(CalculateMaxDustVolumeOfRoom(vacuums, rooms));
+
+            Console.WriteLine(GetVacuumMaxVolumeStates(vacuums, rooms));
         }
     }
 }
