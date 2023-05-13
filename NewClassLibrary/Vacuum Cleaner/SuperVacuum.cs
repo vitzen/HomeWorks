@@ -32,14 +32,27 @@ public class SuperVacuum
     /// <exception cref="Exception"></exception>
     public string CalculateMaxDustVolumeOfRoom(RoomClass targetRoom, SuperVacuum targetVacuum)
     {
+        // var maxRoomdustVolume = targetRoom;
+        // var maxVacuumDustVolume = targetVacuum;
         var maxDustVolumeOfRoom = (targetRoom.Perimetr * 18) / targetRoom.Area;
-        if (maxDustVolumeOfRoom > Double.MaxValue)
+
+        try
         {
-            throw new Exception("Объема резервуара не достаточно чтобы убрать эту комнату!!!");
+            var result = maxDustVolumeOfRoom > _maxVolume;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"Объема резервуара не достаточно чтобы убрать эту комнату!!!");
+            throw;
         }
 
         return $"В комнате: {targetRoom} максимальный объем пыли равен: {maxDustVolumeOfRoom} куб/м.\t\n" +
                $"Максимальный лимит объема резервуара для сбора пыли у пылесоса {targetVacuum}: {_maxVolume}куб/м\t\n" +
                $"Объема резервуара пылесоса достаточно для работы с этой комнатой\n";
     }
+
+    // public override string ToString()
+    // {
+    //     return $"{_maxVolume}";
+    // }
 }
