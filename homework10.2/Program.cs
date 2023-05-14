@@ -76,6 +76,9 @@ namespace homework10._2
                 return sb.ToString();
             }
 
+            Console.WriteLine("___________________________" +
+                              "___________________________" +
+                              "___________________________");
             Console.WriteLine(GetVacuumMaxVolumeStates(vacuums, rooms));
         }
     }

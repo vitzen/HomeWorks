@@ -32,16 +32,11 @@ public class VacuumClass<T> : SuperVacuum
 
         if (!(maxDustVolumeOfRoom > _maxVolume))
         {
-            throw new OutOfDustVolumeException();
+            throw new OutOfDustVolumeException(Model);
         }
 
         return $"В комнате: {targetRoom} максимальный объем пыли равен: {maxDustVolumeOfRoom} куб/м.\t\n" +
                $"Максимальный лимит объема резервуара для сбора пыли у пылесоса {targetVacuum}: {_maxVolume}куб/м\t\n" +
                $"Объема резервуара пылесоса достаточно для работы с этой комнатой\n";
-    }
-
-    public override string ToString()
-    {
-        return $"*{_model}*";
     }
 }
