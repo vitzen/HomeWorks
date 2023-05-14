@@ -4,8 +4,10 @@
 // сгенерировать иключение(создать свое) и обработать в вызывающем методе.
 
 using System.Text;
+using NewClassLibrary;
 using NewClassLibrary.Rooms;
 using NewClassLibrary.Vacuum_Cleaner;
+
 
 namespace homework10._2
 {
@@ -16,7 +18,7 @@ namespace homework10._2
             //Создаем объекты комнат и помещаем их в массив
             RoomClass[] rooms =
             {
-                new HallRoom(10, 6),
+                new HallRoom(10, 4),
                 new KitchenRoom(8),
                 new SleepingRoom(8, 5)
             };
@@ -59,8 +61,15 @@ namespace homework10._2
                 {
                     foreach (var room in rooms)
                     {
-                        var str = $"{vacuum.CalculateMaxDustVolumeOfRoom(room, vacuum)}";
-                        sb.AppendLine(str);
+                        try
+                        {
+                            var str = $"{vacuum.CalculateMaxDustVolumeOfRoom(room, vacuum)}";
+                            sb.AppendLine(str);
+                        }
+                        catch (OutOfDustVolumeException e)
+                        {
+                            Console.WriteLine(e);
+                        }
                     }
                 }
 

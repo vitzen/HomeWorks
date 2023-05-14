@@ -1,5 +1,6 @@
 using NewClassLibrary.Rooms;
 
+
 namespace NewClassLibrary.Vacuum_Cleaner;
 
 public class VacuumClass<T> : SuperVacuum
@@ -29,14 +30,9 @@ public class VacuumClass<T> : SuperVacuum
     {
         var maxDustVolumeOfRoom = (targetRoom.Perimetr * 18) / targetRoom.Area;
 
-        try
+        if (!(maxDustVolumeOfRoom > _maxVolume))
         {
-            var result = maxDustVolumeOfRoom > _maxVolume;
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine($"Объема резервуара не достаточно чтобы убрать эту комнату!!!");
-            //throw;
+            throw new OutOfDustVolumeException();
         }
 
         return $"В комнате: {targetRoom} максимальный объем пыли равен: {maxDustVolumeOfRoom} куб/м.\t\n" +
