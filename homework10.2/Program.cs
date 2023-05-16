@@ -51,7 +51,7 @@ namespace homework10._2
                 return sb.ToString();
             }
 
-            Console.WriteLine($"{GetStartVacuumStates(vacuums)}\n");
+            Console.WriteLine($"{GetStartVacuumStates(vacuums)}");
 
             //Блок для получения статуса вместимости каждого пылесоса
             static string GetVacuumMaxVolumeStates(SuperVacuum[] vacuums, RoomClass[] rooms)
@@ -76,9 +76,7 @@ namespace homework10._2
                 return sb.ToString();
             }
 
-            Console.WriteLine("___________________________" +
-                              "___________________________" +
-                              "___________________________");
+            Console.WriteLine(new string('_', 95));
             Console.WriteLine(GetVacuumMaxVolumeStates(vacuums, rooms));
         }
     }
