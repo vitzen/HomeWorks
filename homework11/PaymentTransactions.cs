@@ -1,19 +1,21 @@
 namespace homework11;
 
-public class PaymentTransactions
+public static class PaymentTransactions
 {
     /// <summary>
     /// Метод для пополнения карты деньгами
     /// </summary>
     /// <param name="???"></param>
-    public void Replenishment()
+    public static decimal Replenishment(decimal balance, decimal addSomeCash)
     {
-        
+        balance += addSomeCash;
+        return balance;
     }
 
-    public void Payment()
+    public static decimal Payment(decimal balance, decimal spendingCash)
     {
-        
+        balance -= spendingCash;
+        return balance;
     }
     
 }

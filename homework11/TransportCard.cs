@@ -23,12 +23,7 @@ public class TransportCard
         set => _moneyBalance = value;
     }
 
-    public delegate void OperationStatus(string notification);
+    public delegate void ReplenishmentDelegate(string notification);
 
-
-    public void Replenishment(amount)
-    {
-        
-    }
+    public delegate void PaymentDelegate(string notification);
 }
-

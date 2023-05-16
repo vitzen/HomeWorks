@@ -21,7 +21,13 @@ namespace homework11
     {
         public static void Main()
         {
-            
+            //decimal balance = 0;
+            //decimal addSomeCash = 100;
+
+            TransportCard transportCard = new TransportCard("Month bus ticket", 0);
+            TransportCard.ReplenishmentDelegate replenishmentDelegate = new TransportCard.ReplenishmentDelegate(Replenishment);
+
+
         }
     }
 }
