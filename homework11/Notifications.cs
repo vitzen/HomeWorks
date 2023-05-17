@@ -1,14 +1,14 @@
 namespace homework11;
 
-public class Notifications
+public static class Notifications
 {
-    public void ReplenishmentNotifications(string newReplenishment)
+    public static string ReplenishmentNotifications(decimal newReplenishment)
     {
-      Console.WriteLine("Replenishment DONE!!!");  
+      return $"Replenishment DONE!!!";  
     }
     
-    public void PaymentNotifications(string newPayment)
+    public static string PaymentNotifications(decimal newPayment)
     {
-        Console.WriteLine("Replenishment DONE!!!");  
+        return $"Replenishment DONE!!!";  
     }
 }

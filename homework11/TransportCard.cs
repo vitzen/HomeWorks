@@ -1,3 +1,5 @@
+using static homework11.Notifications;
+
 namespace homework11;
 
 public class TransportCard
@@ -23,7 +25,34 @@ public class TransportCard
         set => _moneyBalance = value;
     }
 
-    public delegate void ReplenishmentDelegate(string notification);
+    /// <summary>
+    /// Метод для пополнения карты деньгами
+    /// </summary>
+    /// <param name="???"></param>
+    public string Replenishment(decimal addSomeCash)
+    {
+        _moneyBalance += addSomeCash;
+        return $"{ReplenishmentNotifications(_moneyBalance)}";
+    }
+    
+    /// <summary>
+    /// Метод совершения покупки или списания средств
+    /// </summary>
+    /// <param name="balance"></param>
+    /// <param name="spendingCash"></param>
+    /// <returns></returns>
+    public string Payment(decimal spendingCash)
+    {
+        _moneyBalance -= spendingCash;
+        return $"{PaymentNotifications(_moneyBalance)}";
+    }
 
-    public delegate void PaymentDelegate(string notification);
+    public delegate string ReplenishmentDelegate(decimal param);
+
+    public delegate string PaymentDelegate(decimal param);
+
+    public override string ToString()
+    {
+        return $"{_cardName}, {_moneyBalance}";
+    }
 }

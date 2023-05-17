@@ -14,6 +14,7 @@
 // Добавить предикат на возможность списания денег, функцию на расчет кешбека, сохранение истории всех платежей и ее просмотр
 
 using System.Text;
+using static homework11.TransportCard;
 
 namespace homework11
 {
@@ -21,13 +22,11 @@ namespace homework11
     {
         public static void Main()
         {
-            //decimal balance = 0;
-            //decimal addSomeCash = 100;
+            decimal replenishmentAmount = 100; //Сумма пополнения
 
             TransportCard transportCard = new TransportCard("Month bus ticket", 0);
-            TransportCard.ReplenishmentDelegate replenishmentDelegate = new TransportCard.ReplenishmentDelegate(Replenishment);
-
-
+            ReplenishmentDelegate replenishmentDelegate = new ReplenishmentDelegate(transportCard.Replenishment);
+            replenishmentDelegate.Invoke(replenishmentAmount);
         }
     }
 }
