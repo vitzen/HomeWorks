@@ -1,4 +1,4 @@
-using static homework11.Notifications;
+using static homework11.Events;
 
 namespace homework11;
 
@@ -16,7 +16,7 @@ public class TransportCard
     public string CardName
     {
         get => _cardName;
-        set => _cardName = value ?? throw new ArgumentNullException(nameof(value));
+        set => _cardName = value;
     }
 
     public decimal MoneyBalance
@@ -32,9 +32,10 @@ public class TransportCard
     public string Replenishment(decimal addSomeCash)
     {
         _moneyBalance += addSomeCash;
-        return $"{ReplenishmentNotifications(_moneyBalance)}";
+        //replenishement();
+        //return $"{ReplenishmentNotifications(_moneyBalance)}";
     }
-    
+
     /// <summary>
     /// Метод совершения покупки или списания средств
     /// </summary>
@@ -44,15 +45,17 @@ public class TransportCard
     public string Payment(decimal spendingCash)
     {
         _moneyBalance -= spendingCash;
-        return $"{PaymentNotifications(_moneyBalance)}";
+        //payment();
+        //return $"{PaymentNotifications(_moneyBalance, spendingCash)}";
     }
 
-    public delegate string ReplenishmentDelegate(decimal param);
-
-    public delegate string PaymentDelegate(decimal param);
 
     public override string ToString()
     {
         return $"{_cardName}, {_moneyBalance}";
     }
 }
+
+//Делегаты
+public delegate string ReplenishmentDelegate(decimal replParam);
+public delegate string PaymentDelegate(decimal payParam);

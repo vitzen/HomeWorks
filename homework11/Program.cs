@@ -23,10 +23,24 @@ namespace homework11
         public static void Main()
         {
             decimal replenishmentAmount = 100; //Сумма пополнения
+            decimal paymentAmount = 30; //Сумма оплаты проезда
 
             TransportCard transportCard = new TransportCard("Month bus ticket", 0);
+            Events events = new Events();
+            Subscribe subscribe = new Subscribe();
+
+            transportCard.replenishement += ReplenishmentNotifications;
+            transportCard.payment += PaymentNotifications;
+
+            //Создаем экземпляр класса-делегата и передаем в коструктор метод пополнения
             ReplenishmentDelegate replenishmentDelegate = new ReplenishmentDelegate(transportCard.Replenishment);
-            replenishmentDelegate.Invoke(replenishmentAmount);
+            string result1 = replenishmentDelegate.Invoke(replenishmentAmount);
+            Console.WriteLine(result1);
+
+            //Создаем экземпляр класса-делегата и передаем в коструктор метод оплаты
+            PaymentDelegate paymentDelegate = new PaymentDelegate(transportCard.Payment);
+            string result2 = paymentDelegate.Invoke(paymentAmount);
+            Console.WriteLine(result2);
         }
     }
 }
