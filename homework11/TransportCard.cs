@@ -23,12 +23,9 @@ public class TransportCard
         set => _moneyBalance = value;
     }
 
-    ///////////////////////////////////////////////////////////////////
-//События
+//Создаем события
     public event Program.ReplenishmentDelegate? ReplenishementEvent;
     public event Program.PaymentDelegate? PaymentEvent;
-
-    ///////////////////////////////////////////////////////////////////
 
     /// <summary>
     /// Метод для пополнения карты деньгами
@@ -51,7 +48,6 @@ public class TransportCard
         _moneyBalance -= spendingCash;
         PaymentEvent.Invoke(_moneyBalance);
     }
-
 
     public override string ToString()
     {
