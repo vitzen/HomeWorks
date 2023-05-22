@@ -1,5 +1,3 @@
-using static homework11.Events;
-
 namespace homework11;
 
 public class TransportCard
@@ -25,15 +23,21 @@ public class TransportCard
         set => _moneyBalance = value;
     }
 
+    ///////////////////////////////////////////////////////////////////
+//События
+    public event Program.ReplenishmentDelegate? ReplenishementEvent;
+    public event Program.PaymentDelegate? PaymentEvent;
+
+    ///////////////////////////////////////////////////////////////////
+
     /// <summary>
     /// Метод для пополнения карты деньгами
     /// </summary>
     /// <param name="???"></param>
-    public string Replenishment(decimal addSomeCash)
+    public void Replenishment(decimal addSomeCash)
     {
         _moneyBalance += addSomeCash;
-        //replenishement();
-        //return $"{ReplenishmentNotifications(_moneyBalance)}";
+        ReplenishementEvent.Invoke(_moneyBalance);
     }
 
     /// <summary>
@@ -42,11 +46,10 @@ public class TransportCard
     /// <param name="balance"></param>
     /// <param name="spendingCash"></param>
     /// <returns></returns>
-    public string Payment(decimal spendingCash)
+    public void Payment(decimal spendingCash)
     {
         _moneyBalance -= spendingCash;
-        //payment();
-        //return $"{PaymentNotifications(_moneyBalance, spendingCash)}";
+        PaymentEvent.Invoke(_moneyBalance);
     }
 
 
@@ -55,7 +58,3 @@ public class TransportCard
         return $"{_cardName}, {_moneyBalance}";
     }
 }
-
-//Делегаты
-public delegate string ReplenishmentDelegate(decimal replParam);
-public delegate string PaymentDelegate(decimal payParam);
