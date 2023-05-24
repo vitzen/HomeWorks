@@ -25,7 +25,7 @@ namespace homework11
             decimal replenishmentAmount = 100; //Сумма пополнения
             decimal paymentAmount = 30; //Сумма оплаты проезда
 
-            TransportCard transportCard = new TransportCard("Month bus ticket", 0);
+            TransportCard transportCard = new TransportCard("Month bus ticket", 0, 30);
 
 
             //Подписки
@@ -35,8 +35,21 @@ namespace homework11
             transportCard.Replenishment(replenishmentAmount);
             transportCard.Payment(paymentAmount);
             
+            // transportCard.ReplenishementEvent -= SubscribtionClass.ReplenishmentSubscription;
+            // transportCard.PaymentEvent -= SubscribtionClass.PaymentSubscription;
+            transportCard.Payment(paymentAmount);
+            transportCard.Payment(paymentAmount);
+            transportCard.Payment(paymentAmount);
+            transportCard.Payment(paymentAmount);
+            transportCard.Payment(paymentAmount);
+            transportCard.Payment(paymentAmount);
+            transportCard.Payment(paymentAmount);
+            transportCard.Payment(paymentAmount);
+            
             transportCard.ReplenishementEvent -= SubscribtionClass.ReplenishmentSubscription;
             transportCard.PaymentEvent -= SubscribtionClass.PaymentSubscription;
+            
+            //добавить запись все операций в .txt файл
         }
     }
 }

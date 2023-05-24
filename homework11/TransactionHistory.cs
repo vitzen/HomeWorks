@@ -1,6 +1,6 @@
 namespace homework11;
 
-public static class TransactionHistory
+public class TransactionHistory
 {
-    public static List<decimal> HistoryOfTransactions;
+    public List<decimal> HistoryOfTransactions;
 }
