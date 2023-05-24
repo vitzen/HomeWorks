@@ -8,8 +8,10 @@ public class TransportCard
     public delegate string ReplenishmentDelegate(decimal replParam);
     public delegate string PaymentDelegate(decimal payParam);
 
-    //public Predicate<decimal> _possibleToPayPredicate;
-    
+    public Predicate<decimal> _possibleToPayPredicate; //Предикат проверки возможности оплаты
+    public Func<decimal, decimal> _calculateCashback; //Func для расчета кэшбека
+
+
     private readonly string _cardName;
     private decimal _moneyBalance = 0;
 

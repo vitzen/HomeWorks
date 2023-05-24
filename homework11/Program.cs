@@ -34,6 +34,9 @@ namespace homework11
 
             transportCard.Replenishment(replenishmentAmount);
             transportCard.Payment(paymentAmount);
+            
+            transportCard.ReplenishementEvent -= SubscribtionClass.ReplenishmentSubscription;
+            transportCard.PaymentEvent -= SubscribtionClass.PaymentSubscription;
         }
     }
 }
