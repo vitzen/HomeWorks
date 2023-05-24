@@ -20,11 +20,6 @@ namespace homework11
 {
     public class Program
     {
-        //Делегаты
-        public delegate string ReplenishmentDelegate(decimal replParam);
-
-        public delegate string PaymentDelegate(decimal payParam);
-
         public static void Main()
         {
             decimal replenishmentAmount = 100; //Сумма пополнения
@@ -32,11 +27,13 @@ namespace homework11
 
             TransportCard transportCard = new TransportCard("Month bus ticket", 0);
 
-            SubscribtionClass.ReplenishmentSubscription(TransportCard.MoneyBalance, replenishmentAmount);
-            SubscribtionClass.PaymentSubscription(TransportCard.MoneyBalance, paymentAmount);
 
-            transportCard.ReplenishementEvent += ReplenishmentSubscription;
-            transportCard.PaymentEvent += PaymentSubscription;
+            //Подписки
+            transportCard.ReplenishementEvent += SubscribtionClass.ReplenishmentSubscription;
+            transportCard.PaymentEvent += SubscribtionClass.PaymentSubscription;
+
+            transportCard.Replenishment(replenishmentAmount);
+            transportCard.Payment(paymentAmount);
         }
     }
 }

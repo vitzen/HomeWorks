@@ -1,8 +1,16 @@
 namespace homework11;
 
+//Делегаты
+
+
 public class TransportCard
 {
-    private string _cardName;
+    public delegate string ReplenishmentDelegate(decimal replParam);
+    public delegate string PaymentDelegate(decimal payParam);
+
+    //public Predicate<decimal> _possibleToPayPredicate;
+    
+    private readonly string _cardName;
     private decimal _moneyBalance = 0;
 
     public TransportCard(string cardName, decimal moneyBalance)
@@ -10,11 +18,10 @@ public class TransportCard
         _cardName = cardName;
         _moneyBalance = moneyBalance;
     }
-
+    
     public string CardName
     {
         get => _cardName;
-        set => _cardName = value;
     }
 
     public decimal MoneyBalance
@@ -24,9 +31,11 @@ public class TransportCard
     }
 
 //Создаем события
-    public event Program.ReplenishmentDelegate? ReplenishementEvent;
-    public event Program.PaymentDelegate? PaymentEvent;
+    public event ReplenishmentDelegate? ReplenishementEvent;
+    public event PaymentDelegate? PaymentEvent;
+    //public event _possibleToPayPredicate? PossibleToPayEvent;
 
+//Методы
     /// <summary>
     /// Метод для пополнения карты деньгами
     /// </summary>
@@ -34,7 +43,7 @@ public class TransportCard
     public void Replenishment(decimal addSomeCash)
     {
         _moneyBalance += addSomeCash;
-        ReplenishementEvent.Invoke(_moneyBalance);
+        ReplenishementEvent?.Invoke(addSomeCash);
     }
 
     /// <summary>
@@ -46,7 +55,7 @@ public class TransportCard
     public void Payment(decimal spendingCash)
     {
         _moneyBalance -= spendingCash;
-        PaymentEvent.Invoke(_moneyBalance);
+        PaymentEvent?.Invoke(spendingCash);
     }
 
     public override string ToString()
