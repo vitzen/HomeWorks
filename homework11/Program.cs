@@ -32,7 +32,6 @@ namespace homework11
                 30M,
                 0.1M);
 
-            List<decimal> historyOfTransactions = new List<decimal>(); //Создаем историю платежей
 
             //Подписки
             transportCard.ReplenishementEvent += SubscribtionClass.ReplenishmentSubscription;
@@ -53,8 +52,7 @@ namespace homework11
             transportCard.ReplenishementEvent -= SubscribtionClass.ReplenishmentSubscription;
             transportCard.PaymentEvent -= SubscribtionClass.PaymentSubscription;
 
-            //historyOfTransactions.ToArray();
-
+            Console.WriteLine(TransportCard.HistoryOfTransactions);
         }
     }
 }

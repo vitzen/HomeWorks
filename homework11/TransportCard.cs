@@ -17,7 +17,7 @@ public class TransportCard
 
     private readonly string _cardName;
     private decimal _moneyBalance = 0;
-    private static List<decimal> historyOfTransactions;
+    //private static List<decimal> historyOfTransactions;
 
     public TransportCard(string cardName, decimal moneyBalance, decimal minBalance, decimal calculateCashback)
     {
@@ -38,6 +38,8 @@ public class TransportCard
         set => _moneyBalance = value;
     }
 
+    public static List<decimal> historyOfTransactions = new List<decimal>(); //Создаем историю платежей
+    
     public static List<decimal> HistoryOfTransactions
     {
         get => historyOfTransactions;
@@ -82,24 +84,11 @@ public class TransportCard
                               $"{_moneyBalance} рублей");
         }
 
-        AddPaymentInHistory(spendingCash);
+        historyOfTransactions.Add(spendingCash);
     }
 
-    /// <summary>
-    /// Метод для добавления платежа в History
-    /// </summary>
-    public void AddPaymentInHistory(decimal newPayment)
+    public override string ToString()
     {
-        historyOfTransactions.Add(newPayment);
+        return $"{HistoryOfTransactions}";
     }
-
-    public static void ShowHistory()
-    {
-       Console.WriteLine(HistoryOfTransactions); 
-    }
-
-    // public override string ToString()
-    // {
-    //     return $"{historyOfTransactions}";
-    // }
 }
