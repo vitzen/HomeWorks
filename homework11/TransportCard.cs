@@ -1,3 +1,6 @@
+using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.Contracts;
+
 namespace homework11;
 
 //Делегаты
@@ -12,9 +15,9 @@ public class TransportCard
     public Predicate<decimal> _possibleToPayPredicate; //Предикат проверки возможности оплаты
     public Func<decimal, decimal> _calculateCashback; //Func для расчета кэшбека при каждом пополнении карты
 
-
     private readonly string _cardName;
     private decimal _moneyBalance = 0;
+    private static List<decimal> historyOfTransactions;
 
     public TransportCard(string cardName, decimal moneyBalance, decimal minBalance, decimal calculateCashback)
     {
@@ -23,7 +26,6 @@ public class TransportCard
         _possibleToPayPredicate = (balance) => balance > minBalance;
         _calculateCashback = (balance) => { return balance *= calculateCashback; };
     }
-
 
     public string CardName
     {
@@ -36,15 +38,16 @@ public class TransportCard
         set => _moneyBalance = value;
     }
 
-    public List<object> HistoryOfTransactions;
-
+    public static List<decimal> HistoryOfTransactions
+    {
+        get => historyOfTransactions;
+        set => historyOfTransactions = value ?? throw new ArgumentNullException(nameof(value));
+    }
 
 //Создаем события
     public event ReplenishmentDelegate? ReplenishementEvent;
     public event PaymentDelegate? PaymentEvent;
 
-
-//Методы
     /// <summary>
     /// Метод для пополнения карты деньгами
     /// </summary>
@@ -76,7 +79,27 @@ public class TransportCard
         else
         {
             Console.WriteLine($"Недостаточно денег для оплаты проезда, так как баланс вашей карты составляет: " +
-                              $"{_moneyBalance}рублей");
+                              $"{_moneyBalance} рублей");
         }
+
+        AddPaymentInHistory(spendingCash);
     }
+
+    /// <summary>
+    /// Метод для добавления платежа в History
+    /// </summary>
+    public void AddPaymentInHistory(decimal newPayment)
+    {
+        historyOfTransactions.Add(newPayment);
+    }
+
+    public static void ShowHistory()
+    {
+       Console.WriteLine(HistoryOfTransactions); 
+    }
+
+    // public override string ToString()
+    // {
+    //     return $"{historyOfTransactions}";
+    // }
 }

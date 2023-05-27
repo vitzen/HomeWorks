@@ -13,6 +13,7 @@
 //  
 // Добавить предикат на возможность списания денег, функцию на расчет кешбека, сохранение истории всех платежей и ее просмотр
 
+using System.Collections.Generic;
 using System.Text;
 using static homework11.TransportCard;
 
@@ -24,11 +25,14 @@ namespace homework11
         {
             decimal replenishmentAmount = 100M; //Сумма пополнения
             decimal paymentAmount = 30M; //Сумма оплаты проезда
-            //decimal _calculateCashback = 0.1M; //Коэффициент для расчет кэшбека при пополнении карты
-            
-            Console.WriteLine("Программа - ТРАНСПОРТНАЯ КАРТА\n");
-            TransportCard transportCard = new TransportCard("Month bus ticket", 0M, 30M, 0.1M);
 
+            Console.WriteLine("Программа - ТРАНСПОРТНАЯ КАРТА\n");
+            TransportCard transportCard = new TransportCard("Month bus ticket",
+                0M,
+                30M,
+                0.1M);
+
+            List<decimal> historyOfTransactions = new List<decimal>(); //Создаем историю платежей
 
             //Подписки
             transportCard.ReplenishementEvent += SubscribtionClass.ReplenishmentSubscription;
@@ -49,8 +53,8 @@ namespace homework11
             transportCard.ReplenishementEvent -= SubscribtionClass.ReplenishmentSubscription;
             transportCard.PaymentEvent -= SubscribtionClass.PaymentSubscription;
 
+            //historyOfTransactions.ToArray();
 
-            //добавить запись все операций в .txt файл
         }
     }
 }
