@@ -4,7 +4,8 @@ namespace homework11;
 
 public class TransportCard
 {
-    public delegate void ReplenishmentDelegate(decimal replParam, decimal balanceAfterReplenishement);
+    public delegate void ReplenishmentDelegate(decimal replParam,
+        decimal balanceAfterReplenishement, decimal balanceAfterCashbackGift);
 
     public delegate void PaymentDelegate(decimal payParam, decimal balanceAfterPayment);
 
@@ -35,7 +36,7 @@ public class TransportCard
         set => _moneyBalance = value;
     }
 
-    public List<decimal> HistoryOfTransactions;
+    public List<object> HistoryOfTransactions;
 
 
 //Создаем события
@@ -51,8 +52,12 @@ public class TransportCard
     public void Replenishment(decimal addSomeCash)
     {
         _moneyBalance += addSomeCash;
-        ReplenishementEvent?.Invoke(addSomeCash, _moneyBalance);
-        //return _moneyBalance;
+        decimal cashbackAmount = _calculateCashback(_moneyBalance);
+        _moneyBalance += cashbackAmount;
+
+        ReplenishementEvent?.Invoke(addSomeCash,
+            _moneyBalance,
+            cashbackAmount);
     }
 
     /// <summary>
@@ -74,9 +79,4 @@ public class TransportCard
                               $"{_moneyBalance}рублей");
         }
     }
-
-    // public decimal CalculateCashback(decimal moneyBalance)
-    // {
-    //     return _calculateCashback;
-    // }
 }

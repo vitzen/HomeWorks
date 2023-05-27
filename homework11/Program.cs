@@ -24,8 +24,9 @@ namespace homework11
         {
             decimal replenishmentAmount = 100M; //Сумма пополнения
             decimal paymentAmount = 30M; //Сумма оплаты проезда
-            decimal _calculateCashback = 0.1M; //Коэффициент для расчет кэшбека при пополнении карты
-
+            //decimal _calculateCashback = 0.1M; //Коэффициент для расчет кэшбека при пополнении карты
+            
+            Console.WriteLine("Программа - ТРАНСПОРТНАЯ КАРТА\n");
             TransportCard transportCard = new TransportCard("Month bus ticket", 0M, 30M, 0.1M);
 
 
@@ -40,15 +41,14 @@ namespace homework11
             transportCard.Payment(paymentAmount);
             transportCard.Payment(paymentAmount);
             transportCard.Payment(paymentAmount);
-            
+
             transportCard.Replenishment(replenishmentAmount);
             transportCard.Payment(paymentAmount);
             transportCard.Payment(paymentAmount);
 
             transportCard.ReplenishementEvent -= SubscribtionClass.ReplenishmentSubscription;
             transportCard.PaymentEvent -= SubscribtionClass.PaymentSubscription;
-            
-            
+
 
             //добавить запись все операций в .txt файл
         }
