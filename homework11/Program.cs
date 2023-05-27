@@ -32,7 +32,6 @@ namespace homework11
                 30M,
                 0.1M);
 
-
             //Подписки
             transportCard.ReplenishementEvent += SubscribtionClass.ReplenishmentSubscription;
             transportCard.PaymentEvent += SubscribtionClass.PaymentSubscription;
@@ -52,7 +51,7 @@ namespace homework11
             transportCard.ReplenishementEvent -= SubscribtionClass.ReplenishmentSubscription;
             transportCard.PaymentEvent -= SubscribtionClass.PaymentSubscription;
 
-            Console.WriteLine(TransportCard.HistoryOfTransactions);
+            Console.WriteLine(TransportCard.historyOfTransactions.ToString());
         }
     }
 }

@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.Contracts;
+using System.Collections.Generic;
 
 namespace homework11;
 
@@ -17,7 +18,6 @@ public class TransportCard
 
     private readonly string _cardName;
     private decimal _moneyBalance = 0;
-    //private static List<decimal> historyOfTransactions;
 
     public TransportCard(string cardName, decimal moneyBalance, decimal minBalance, decimal calculateCashback)
     {
@@ -39,7 +39,7 @@ public class TransportCard
     }
 
     public static List<decimal> historyOfTransactions = new List<decimal>(); //Создаем историю платежей
-    
+
     public static List<decimal> HistoryOfTransactions
     {
         get => historyOfTransactions;
@@ -89,6 +89,6 @@ public class TransportCard
 
     public override string ToString()
     {
-        return $"{HistoryOfTransactions}";
+        return $"{historyOfTransactions}";
     }
 }
