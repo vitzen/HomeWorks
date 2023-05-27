@@ -9,20 +9,20 @@ public class TransportCard
     public delegate void PaymentDelegate(decimal payParam, decimal balanceAfterPayment);
 
     public Predicate<decimal> _possibleToPayPredicate; //Предикат проверки возможности оплаты
-    public Func<decimal, decimal> _calculateCashback; //Func для расчета кэшбека
+    public Func<decimal, decimal> _calculateCashback; //Func для расчета кэшбека при каждом пополнении карты
 
 
     private readonly string _cardName;
     private decimal _moneyBalance = 0;
 
-    public TransportCard(string cardName, decimal moneyBalance, decimal minBalance)
+    public TransportCard(string cardName, decimal moneyBalance, decimal minBalance, decimal calculateCashback)
     {
         _cardName = cardName;
         _moneyBalance = moneyBalance;
-        _possibleToPayPredicate = (balance) => balance > minBalance && 1 > 0;
-
+        _possibleToPayPredicate = (balance) => balance > minBalance;
+        _calculateCashback = (balance) => { return balance *= calculateCashback; };
     }
-    
+
 
     public string CardName
     {
@@ -34,9 +34,10 @@ public class TransportCard
         get => _moneyBalance;
         set => _moneyBalance = value;
     }
+
     public List<decimal> HistoryOfTransactions;
-   
-    
+
+
 //Создаем события
     public event ReplenishmentDelegate? ReplenishementEvent;
     public event PaymentDelegate? PaymentEvent;
@@ -51,6 +52,7 @@ public class TransportCard
     {
         _moneyBalance += addSomeCash;
         ReplenishementEvent?.Invoke(addSomeCash, _moneyBalance);
+        //return _moneyBalance;
     }
 
     /// <summary>
@@ -61,16 +63,20 @@ public class TransportCard
     /// <returns></returns>
     public void Payment(decimal spendingCash)
     {
-        if(_possibleToPayPredicate(_moneyBalance)) 
+        if (_possibleToPayPredicate(_moneyBalance))
         {
             _moneyBalance -= spendingCash;
             PaymentEvent?.Invoke(spendingCash, _moneyBalance);
         }
-        
+        else
+        {
+            Console.WriteLine($"Недостаточно денег для оплаты проезда, так как баланс вашей карты составляет: " +
+                              $"{_moneyBalance}рублей");
+        }
     }
-}
 
-    // public override string ToString()
+    // public decimal CalculateCashback(decimal moneyBalance)
     // {
-    //     return $"{_cardName}, {_moneyBalance}";
+    //     return _calculateCashback;
     // }
+}

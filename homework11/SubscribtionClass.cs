@@ -5,22 +5,14 @@ public class SubscribtionClass //: EventArgs
     //Обработчик пополнения баланса
     public static void ReplenishmentSubscription(decimal replparam, decimal newBalance)
     {
-        Console.WriteLine($"Пополнение вашего баланса на {replparam} сделано успешно !!!\n" +
-                          $"Баланс вашей карты составляет: {newBalance}");
+        Console.WriteLine($"Пополнение вашего баланса на {replparam} рублей выполнено успешно!\n" +
+                          $"Баланс вашей карты составляет: {newBalance} рублей");
     }
 
     //Обработчик снятия денег
     public static void PaymentSubscription(decimal payparam, decimal newBalance)
     {
-        Console.WriteLine($"Совершена оплата в размере {payparam} рублей !!!\n " +
-                          $"Баланс вашей карты составляет: {newBalance} ");
+        Console.WriteLine($"Совершена оплата проезда в размере {payparam} рублей!\n" +
+                          $"Баланс вашей карты составляет: {newBalance} рублей\n ");
     }
-
-    // public static string
-    //     PossibleToPayPredicate(decimal param, decimal newBalance) //Обработчик нехватки денег для оплаты
-    // {
-    //     return
-    //         $"Невозможно оплатить проезд, так как денег на вашем балансе недостаточно\n" +
-    //         $"Баланс вашей карты составляет: {newBalance} ";
-    // }
 }
