@@ -8,13 +8,18 @@ public static class AddExtraCashback
     /// </summary>
     /// <param name="transportCard"></param>
     /// <param name="replenishSizeForExtraCashback"></param>
-    public static decimal AddSuperCashback(this TransportCard transportCard, decimal moneyBalance)
+    public static void AddSuperCashback(this TransportCard transportCard)
     {
-        if (moneyBalance > 500)
+        if (transportCard.MoneyBalance > 500)
         {
-            return TransportCard.ExtraCashback;
+            transportCard.MoneyBalance += TransportCard.ExtraCashback;
+            Console.WriteLine("Вы получили бесплатную поездку в транспорте");
         }
-
-        return 0;
     }
+
+    public static string AddNewNotification(this string str)
+    {
+        return str + "!!!";
+    }
+    
 }

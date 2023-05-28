@@ -16,7 +16,7 @@ namespace homework12
             decimal replenishmentAmount = 100M; //Сумма пополнения
             decimal paymentAmount = 30M; //Сумма оплаты проезда
 
-            Console.WriteLine("Программа - ТРАНСПОРТНАЯ КАРТА\n");
+            Console.WriteLine("Программа - ТРАНСПОРТНАЯ КАРТА\n".AddNewNotification());
             TransportCard transportCard = new TransportCard("Month bus ticket",
                 0M,
                 30M,
@@ -44,7 +44,7 @@ namespace homework12
             transportCard.ReplenishementEvent -= SubscribtionClass.ReplenishmentSubscription;
             transportCard.PaymentEvent -= SubscribtionClass.PaymentSubscription;
 
-            Console.WriteLine(TransportCard.historyOfTransactions.ToString());
+            //Console.WriteLine(String.TransportCard.historyOfTransactions.ToString());
         }
     }
 }
