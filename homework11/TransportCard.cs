@@ -4,8 +4,6 @@ using System.Collections.Generic;
 
 namespace homework11;
 
-//Делегаты
-
 public class TransportCard
 {
     public delegate void ReplenishmentDelegate(decimal replParam,
@@ -37,7 +35,7 @@ public class TransportCard
         get => _moneyBalance;
         set => _moneyBalance = value;
     }
-    
+
     //Создаем историю всех оплат
     public List<decimal> historyOfTransactions = new List<decimal>();
 
