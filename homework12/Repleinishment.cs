@@ -13,8 +13,8 @@ public partial class TransportCard
         _moneyBalance += cashbackAmount;
 
         //Вызов метода для получения супер кэшбэка
-        var superCashback = AddExtraCashback.AddSuperCashback(_moneyBalance); 
-        _moneyBalance += superCashback;
+        //var superCashback = AddExtraCashback.AddSuperCashback(_moneyBalance); 
+        //_moneyBalance += superCashback;
 
         ReplenishementEvent?.Invoke(addSomeCash,
             _moneyBalance,

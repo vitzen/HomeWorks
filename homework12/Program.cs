@@ -25,7 +25,10 @@ namespace homework12
             //Подписки
             transportCard.ReplenishementEvent += SubscribtionClass.ReplenishmentSubscription;
             transportCard.PaymentEvent += SubscribtionClass.PaymentSubscription;
-
+            
+            // var extraCashbcak= AddExtraCashback.AddSuperCashback(transportCard, transportCard.MoneyBalance);
+            // transportCard.Replenishment(extraCashbcak);
+            
             transportCard.Replenishment(replenishmentAmount);
             transportCard.Payment(paymentAmount);
             transportCard.Payment(paymentAmount);
