@@ -37,16 +37,11 @@ public class TransportCard
         get => _moneyBalance;
         set => _moneyBalance = value;
     }
-//Создаем историю всех оплат
-    public static List<decimal> historyOfTransactions = new List<decimal>(); //Создаем историю платежей
+    
+    //Создаем историю всех оплат
+    public List<decimal> historyOfTransactions = new List<decimal>();
 
-    public static List<decimal> HistoryOfTransactions
-    {
-        get => historyOfTransactions;
-        set => historyOfTransactions = value ?? throw new ArgumentNullException(nameof(value));
-    }
-
-//Создаем события
+    //Создаем события
     public event ReplenishmentDelegate? ReplenishementEvent;
     public event PaymentDelegate? PaymentEvent;
 
@@ -85,10 +80,5 @@ public class TransportCard
         }
 
         historyOfTransactions.Add(spendingCash);
-    }
-
-    public override string ToString()
-    {
-        return $"{historyOfTransactions}";
     }
 }

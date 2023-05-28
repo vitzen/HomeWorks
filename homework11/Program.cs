@@ -51,7 +51,7 @@ namespace homework11
             transportCard.ReplenishementEvent -= SubscribtionClass.ReplenishmentSubscription;
             transportCard.PaymentEvent -= SubscribtionClass.PaymentSubscription;
 
-            Console.WriteLine(TransportCard.historyOfTransactions.ToString());
+            Console.WriteLine(String.Join(",", transportCard.historyOfTransactions));
         }
     }
 }
