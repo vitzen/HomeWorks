@@ -1,6 +1,6 @@
 namespace homework12;
 
-public class SubscribtionClass //: EventArgs
+public class SubscribtionClass
 {
     //Обработчик пополнения баланса
     public static void ReplenishmentSubscription(decimal replparam, decimal newBalance, decimal cashback)

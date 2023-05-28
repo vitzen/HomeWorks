@@ -12,9 +12,7 @@ public partial class TransportCard
         decimal cashbackAmount = _calculateCashback(_moneyBalance);
         _moneyBalance += cashbackAmount;
 
-        //Вызов метода для получения супер кэшбэка
-        
-        this.AddSuperCashback();
+        this.AddSuperCashback(); //Вызываем метод расширения
 
         ReplenishementEvent?.Invoke(addSomeCash,
             _moneyBalance,

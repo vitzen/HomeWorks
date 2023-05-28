@@ -40,11 +40,17 @@ namespace homework12
             transportCard.Replenishment(replenishmentAmount);
             transportCard.Payment(paymentAmount);
             transportCard.Payment(paymentAmount);
+            
+            transportCard.Replenishment(replenishmentAmount);
+            transportCard.Replenishment(replenishmentAmount);
+            transportCard.Replenishment(replenishmentAmount);
+            transportCard.Replenishment(replenishmentAmount);
+            transportCard.Replenishment(replenishmentAmount);
 
             transportCard.ReplenishementEvent -= SubscribtionClass.ReplenishmentSubscription;
             transportCard.PaymentEvent -= SubscribtionClass.PaymentSubscription;
 
-            //Console.WriteLine(String.TransportCard.historyOfTransactions.ToString());
+            Console.WriteLine(String.Join(",", transportCard.HistoryOfTransactions));
         }
     }
 }

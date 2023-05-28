@@ -4,8 +4,6 @@ using System.Collections.Generic;
 
 namespace homework12;
 
-//Делегаты
-
 public partial class TransportCard
 {
     public delegate void ReplenishmentDelegate(decimal replParam,
@@ -20,7 +18,8 @@ public partial class TransportCard
     private decimal _moneyBalance = 0;
     private static decimal _extraCashback;
 
-    public TransportCard(string cardName, decimal moneyBalance, decimal minBalance, decimal calculateCashback, decimal extraCashback )
+    public TransportCard(string cardName, decimal moneyBalance, decimal minBalance, decimal calculateCashback,
+        decimal extraCashback)
     {
         _cardName = cardName;
         _moneyBalance = moneyBalance;
@@ -48,18 +47,13 @@ public partial class TransportCard
 
     public static List<decimal> historyOfTransactions = new List<decimal>(); //Создаем историю платежей
 
-    public static List<decimal> HistoryOfTransactions
+    public List<decimal> HistoryOfTransactions
     {
         get => historyOfTransactions;
         set => historyOfTransactions = value ?? throw new ArgumentNullException(nameof(value));
     }
 
-//Создаем события
+    //Создаем события
     public event ReplenishmentDelegate? ReplenishementEvent;
     public event PaymentDelegate? PaymentEvent;
-
-    public override string ToString()
-    {
-        return $"{historyOfTransactions}";
-    }
 }
