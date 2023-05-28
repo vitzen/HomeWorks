@@ -17,7 +17,9 @@ public partial class TransportCard
         }
         else
         {
-            PaymentIssue.PaymentIssueExtended($"Недостаточно денег для оплаты проезда ", _moneyBalance);
+            Console.WriteLine($"Недостаточно денег для оплаты проезда, " +
+                              $"так как баланс вашей карты составляет: " +
+                              $"{_moneyBalance} рублей");
         }
 
         historyOfTransactions.Add(spendingCash);

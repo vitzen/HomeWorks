@@ -20,7 +20,7 @@ namespace homework12
             TransportCard transportCard = new TransportCard("Month bus ticket",
                 0M,
                 30M,
-                0.1M);
+                0.1M, 30M);
 
             //Подписки
             transportCard.ReplenishementEvent += SubscribtionClass.ReplenishmentSubscription;

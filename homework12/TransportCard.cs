@@ -18,11 +18,13 @@ public partial class TransportCard
 
     private readonly string _cardName;
     private decimal _moneyBalance = 0;
+    private static decimal _extraCashback;
 
-    public TransportCard(string cardName, decimal moneyBalance, decimal minBalance, decimal calculateCashback)
+    public TransportCard(string cardName, decimal moneyBalance, decimal minBalance, decimal calculateCashback, decimal extraCashback )
     {
         _cardName = cardName;
         _moneyBalance = moneyBalance;
+        _extraCashback = extraCashback;
         _possibleToPayPredicate = (balance) => balance > minBalance;
         _calculateCashback = (balance) => { return balance *= calculateCashback; };
     }
@@ -36,6 +38,12 @@ public partial class TransportCard
     {
         get => _moneyBalance;
         set => _moneyBalance = value;
+    }
+
+    public static decimal ExtraCashback
+    {
+        get => _extraCashback;
+        set => _extraCashback = value;
     }
 
     public static List<decimal> historyOfTransactions = new List<decimal>(); //Создаем историю платежей
