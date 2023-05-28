@@ -9,8 +9,7 @@ namespace homework12;
 public partial class TransportCard
 {
     public delegate void ReplenishmentDelegate(decimal replParam,
-        decimal balanceAfterReplenishement, 
-        decimal balanceAfterCashbackGift);
+        decimal balanceAfterReplenishement, decimal balanceAfterCashbackGift);
 
     public delegate void PaymentDelegate(decimal payParam, decimal balanceAfterPayment);
 

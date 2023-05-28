@@ -1,6 +1,17 @@
-﻿// ЗАДАЧА:Модифицируем транспортню карту
-// Делаем класс partial (разделяем логику оплаты и пополнения)
-// Добавляем метод-расширение. Логика - по желанию.
+﻿// ЗАДАЧА:
+//     ● Создать класс транспортная карта
+//     ○ определить в нем делегат с аргументом строчного типа (string), которое будет уведомлять об
+// операции
+//     ○ реализовать методы Пополнение (при вызове метода передаем какой суммой пополняем карту) и
+//     Оплата (снимаем из баланса карты 30 руб)
+//     ○ реализовать вызов и оповещение текстом о случившимся событии пополнения и оплаты
+//     ○ в строке события писать текущий баланс карты
+//     ● Создать экземпляр класса транспортная карта
+//     ○ подписаться на событие уведомления о операциях по транспортной карте
+//     ○ вызвать методы пополнения карты и оплаты по карте
+//     ○ при срабатывании - писать текст события в консоль
+//  
+// Добавить предикат на возможность списания денег, функцию на расчет кешбека, сохранение истории всех платежей и ее просмотр
 
 using System.Collections.Generic;
 using System.Text;
@@ -13,8 +24,6 @@ namespace homework12
         public static void Main()
         {
             decimal replenishmentAmount = 100M; //Сумма пополнения
-            decimal extraReplenishmentAmount = 500M; //Сумма пополнения, при которой покупатель
-                                                     //получает в подарок поедку
             decimal paymentAmount = 30M; //Сумма оплаты проезда
 
             Console.WriteLine("Программа - ТРАНСПОРТНАЯ КАРТА\n");
@@ -39,15 +48,10 @@ namespace homework12
             transportCard.Payment(paymentAmount);
             transportCard.Payment(paymentAmount);
 
-            transportCard.Replenishment(replenishmentAmount);
-            transportCard.Replenishment(replenishmentAmount);
-            transportCard.Replenishment(extraReplenishmentAmount);
-            
-            
             transportCard.ReplenishementEvent -= SubscribtionClass.ReplenishmentSubscription;
             transportCard.PaymentEvent -= SubscribtionClass.PaymentSubscription;
 
-            //Console.WriteLine(TransportCard.historyOfTransactions.ToString());
+            Console.WriteLine(TransportCard.historyOfTransactions.ToString());
         }
     }
 }

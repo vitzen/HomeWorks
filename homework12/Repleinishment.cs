@@ -9,7 +9,6 @@ public partial class TransportCard
     public void Replenishment(decimal addSomeCash)
     {
         _moneyBalance += addSomeCash;
-        _moneyBalance = ReplenishmentExtensionClass.ReplenishmentExtensionMethod(addSomeCash);
         decimal cashbackAmount = _calculateCashback(_moneyBalance);
         _moneyBalance += cashbackAmount;
 
