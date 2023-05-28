@@ -37,7 +37,7 @@ public class TransportCard
         get => _moneyBalance;
         set => _moneyBalance = value;
     }
-
+//Создаем историю всех оплат
     public static List<decimal> historyOfTransactions = new List<decimal>(); //Создаем историю платежей
 
     public static List<decimal> HistoryOfTransactions
