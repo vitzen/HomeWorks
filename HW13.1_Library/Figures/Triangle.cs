@@ -1,5 +1,6 @@
 namespace HW13._1_Library.Figures;
 
+[AuthorAttribute("Vitalii Zenkov", "29.05.2023")]
 public class Triangle : IFigures
 {
     private readonly string _name = "myTriangle";
@@ -24,13 +25,11 @@ public class Triangle : IFigures
         get { return _name; }
     }
 
-
     public IFigures.ColorState GetColorOfTriangle
     {
         get { return _myTriangleColor; }
         set { _myTriangleColor = value; }
     }
-
 
     /// <summary>
     /// Переопределяем физическое свойство Площадь из интерфейса IPhysical
@@ -39,7 +38,6 @@ public class Triangle : IFigures
     {
         get { return (_baseSideOfTriangle * _perpendicular / 2); }
     }
-
 
     /// <summary>
     /// Переопределяем физическое свойство Периметр из интерфейса IPhysical

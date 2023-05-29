@@ -31,17 +31,19 @@ namespace homework13._1
                 new Triangle(5, 7, 3, 6, IFigures.ColorState.White)
             };
 
-            var typeOfFigures = typeof(IFigures[]);
-            foreach (var attribute in typeOfFigures.GetCustomAttributes(true))
+            Console.WriteLine($"Сумма площадей всех фигур составляет: {Mathematics.CalculateArea(figures)}");
+            Console.WriteLine($"Сумма периметров всех фигур составляет: {Mathematics.CalculatePerimetr(figures)}\n");
+
+            IFigures[] figuresArray = new IFigures[] {figures1, figures2, figures3 };
+            
+            var getTypeoffigures = figuresArray.GetType();
+            foreach (var att in getTypeoffigures.GetCustomAttributes(true))
             {
-                if (attribute is AuthorAttribute authorAttribute)
+                if (att is AuthorAttribute authorAttribute)
                 {
-                    Console.WriteLine($"Наш атрибут: {authorAttribute}");
+                    Console.WriteLine($"Атрибут у фигуры --> {authorAttribute}");
                 }
             }
-
-            Console.WriteLine($"Сумма площадей всех фигур составляет: {Mathematics.CalculateArea(figures)}");
-            Console.WriteLine($"Сумма периметров всех фигур составляет: {Mathematics.CalculatePerimetr(figures)}");
         }
     }
 }

@@ -1,5 +1,6 @@
 namespace HW13._1_Library.Figures;
 
+[AuthorAttribute("Vitalii Zenkov", "29.05.2023")]
 public class Circle : IFigures
 {
     private readonly string _name = "myCircle";
