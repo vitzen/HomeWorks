@@ -5,6 +5,7 @@
 using System;
 using System.Reflection.Emit;
 using System.Text;
+using HW13._1_Library;
 using HW13._1_Library.Figures;
 
 
@@ -29,6 +30,15 @@ namespace homework13._1
                 new Square(6, IFigures.ColorState.Green),
                 new Triangle(5, 7, 3, 6, IFigures.ColorState.White)
             };
+
+            var typeOfFigures = typeof(IFigures[]);
+            foreach (var attribute in typeOfFigures.GetCustomAttributes(true))
+            {
+                if (attribute is AuthorAttribute authorAttribute)
+                {
+                    Console.WriteLine($"Наш атрибут: {authorAttribute}");
+                }
+            }
 
             Console.WriteLine($"Сумма площадей всех фигур составляет: {Mathematics.CalculateArea(figures)}");
             Console.WriteLine($"Сумма периметров всех фигур составляет: {Mathematics.CalculatePerimetr(figures)}");
