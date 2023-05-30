@@ -34,7 +34,7 @@ namespace homework13._1
             //Console.WriteLine($"Сумма площадей всех фигур составляет: {Mathematics.CalculateArea(figures).GetType().ToString()}");
             Console.WriteLine($"Сумма площадей всех фигур составляет: {Mathematics.CalculateArea(figures)}");
             Console.WriteLine($"Сумма периметров всех фигур составляет: {Mathematics.CalculatePerimetr(figures)}\n");
-            
+
             // var getTypeoffAllFigures = figures.GetType();
             //
             // foreach (var att in getTypeoffAllFigures.GetCustomAttributes(true))
