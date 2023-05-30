@@ -34,14 +34,14 @@ namespace homework13._1
             Console.WriteLine($"Сумма площадей всех фигур составляет: {Mathematics.CalculateArea(figures)}");
             Console.WriteLine($"Сумма периметров всех фигур составляет: {Mathematics.CalculatePerimetr(figures)}\n");
 
-            IFigures[] figuresArray = new IFigures[] {figures1, figures2, figures3 };
-            
-            var getTypeoffigures = figuresArray.GetType();
+
+            var getTypeoffigures = figures1.GetType();
+
             foreach (var att in getTypeoffigures.GetCustomAttributes(true))
             {
                 if (att is AuthorAttribute authorAttribute)
                 {
-                    Console.WriteLine($"Атрибут у фигуры --> {authorAttribute}");
+                    Console.WriteLine($"Атрибут у фигуры {figures1.GetTitle} --> {authorAttribute}");
                 }
             }
         }
