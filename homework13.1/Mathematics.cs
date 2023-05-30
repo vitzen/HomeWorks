@@ -5,6 +5,7 @@ namespace homework13._1;
 
 public class Mathematics
 {
+    [AuthorAttribute("Vitalii Zenkov", "29.05.2023")]
     /// <summary>
     /// Метод для подсчета площади
     /// </summary>
@@ -22,6 +23,7 @@ public class Mathematics
         return result;
     }
 
+    [AuthorAttribute("Vitalii Zenkov", "29.05.2023")]
     /// <summary>
     /// Метод для подсчета периметра
     /// </summary>

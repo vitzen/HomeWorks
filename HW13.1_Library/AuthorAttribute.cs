@@ -1,6 +1,6 @@
 namespace HW13._1_Library;
 
-[AttributeUsage(AttributeTargets.Class)]
+[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method | AttributeTargets.Interface)]
 public class AuthorAttribute : Attribute
 {
     public string AuthorName { get; set; }

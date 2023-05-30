@@ -31,10 +31,21 @@ namespace homework13._1
                 new Triangle(5, 7, 3, 6, IFigures.ColorState.White)
             };
 
+            //Console.WriteLine($"Сумма площадей всех фигур составляет: {Mathematics.CalculateArea(figures).GetType().ToString()}");
             Console.WriteLine($"Сумма площадей всех фигур составляет: {Mathematics.CalculateArea(figures)}");
             Console.WriteLine($"Сумма периметров всех фигур составляет: {Mathematics.CalculatePerimetr(figures)}\n");
+            
+            // var getTypeoffAllFigures = figures.GetType();
+            //
+            // foreach (var att in getTypeoffAllFigures.GetCustomAttributes(true))
+            // {
+            //     if (att is AuthorAttribute authorAttribute)
+            //     {
+            //         Console.WriteLine($"Атрибут у фигуры {figures} --> {authorAttribute}");
+            //     }
+            // }
 
-
+            // Выводим атрибуты у фигуры Circle
             var getTypeoffigures = figures1.GetType();
 
             foreach (var att in getTypeoffigures.GetCustomAttributes(true))
