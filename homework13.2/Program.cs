@@ -48,25 +48,30 @@ namespace homework13._2
             Console.WriteLine(String.Join(",", transportCard.HistoryOfTransactions));
             Console.WriteLine(new string('-', 60));
 
-            //массив
-            var arrayOfCards = new TransportCard[3]
-            {
-                new TransportCard("Trolleybus Card", 0, 30, 0.1M, 30),
-                new TransportCard("Train Card", 100, 30, 0.1M, 30),
-                new TransportCard("Tram Card", 200, 30, 0.1M, 30),
-            };
+            //Создаем обьекты новых транспортных карт
+            TransportCard transportCard2 = new TransportCard("Trolleybus Card", 0, 30, 0.1M, 30);
+            TransportCard transportCard3 = new TransportCard("Train Card", 100, 30, 0.1M, 30);
+            TransportCard transportCard4 = new TransportCard("Tram Card", 200, 30, 0.1M, 30);
+
+            //Массивы
+            var arrayOfCards = new TransportCard[] { transportCard2, transportCard3, transportCard4 };
+
             foreach (var cardItem in arrayOfCards)
             {
                 Console.WriteLine($"Название карты: {cardItem.CardName}, Баланс карты: {cardItem.MoneyBalance}");
             }
+
             Console.WriteLine(new string('-', 60));
-            
+
             //List
             List<TransportCard> listOfCards = new List<TransportCard>();
-            listOfCards.Add(transportCard);
+            listOfCards.Add(transportCard2);
+            listOfCards.Add(transportCard3); 
+            listOfCards.Insert(0, transportCard4);
+            Console.WriteLine(string.Join(" ||| ", listOfCards));
             
-            Console.WriteLine(String.Join(",", listOfCards.ToString()));
-
+            listOfCards.Reverse();
+            Console.WriteLine(string.Join(" ||| ", listOfCards));
         }
     }
 }

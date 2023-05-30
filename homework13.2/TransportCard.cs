@@ -52,4 +52,9 @@ public partial class TransportCard
     //Создаем события
     public event ReplenishmentDelegate? ReplenishementEvent;
     public event PaymentDelegate? PaymentEvent;
+
+    public override string ToString()
+    {
+        return $"CardName: {CardName}, MoneyBalance: {MoneyBalance}";
+    }
 }
