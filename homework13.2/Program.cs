@@ -23,10 +23,7 @@ namespace homework13._2
             //Подписки
             transportCard.ReplenishementEvent += SubscribtionClass.ReplenishmentSubscription;
             transportCard.PaymentEvent += SubscribtionClass.PaymentSubscription;
-            
-            // var extraCashbcak= AddExtraCashback.AddSuperCashback(transportCard, transportCard.MoneyBalance);
-            // transportCard.Replenishment(extraCashbcak);
-            
+
             transportCard.Replenishment(replenishmentAmount);
             transportCard.Payment(paymentAmount);
             transportCard.Payment(paymentAmount);
@@ -38,7 +35,7 @@ namespace homework13._2
             transportCard.Replenishment(replenishmentAmount);
             transportCard.Payment(paymentAmount);
             transportCard.Payment(paymentAmount);
-            
+
             transportCard.Replenishment(replenishmentAmount);
             transportCard.Replenishment(replenishmentAmount);
             transportCard.Replenishment(replenishmentAmount);
@@ -49,6 +46,27 @@ namespace homework13._2
             transportCard.PaymentEvent -= SubscribtionClass.PaymentSubscription;
 
             Console.WriteLine(String.Join(",", transportCard.HistoryOfTransactions));
+            Console.WriteLine(new string('-', 60));
+
+            //массив
+            var arrayOfCards = new TransportCard[3]
+            {
+                new TransportCard("Trolleybus Card", 0, 30, 0.1M, 30),
+                new TransportCard("Train Card", 100, 30, 0.1M, 30),
+                new TransportCard("Tram Card", 200, 30, 0.1M, 30),
+            };
+            foreach (var cardItem in arrayOfCards)
+            {
+                Console.WriteLine($"Название карты: {cardItem.CardName}, Баланс карты: {cardItem.MoneyBalance}");
+            }
+            Console.WriteLine(new string('-', 60));
+            
+            //List
+            List<TransportCard> listOfCards = new List<TransportCard>();
+            listOfCards.Add(transportCard);
+            
+            Console.WriteLine(String.Join(",", listOfCards.ToString()));
+
         }
     }
 }
