@@ -66,12 +66,60 @@ namespace homework13._2
             //List
             List<TransportCard> listOfCards = new List<TransportCard>();
             listOfCards.Add(transportCard2);
-            listOfCards.Add(transportCard3); 
+            listOfCards.Add(transportCard3);
             listOfCards.Insert(0, transportCard4);
             Console.WriteLine(string.Join(" ||| ", listOfCards));
-            
+
             listOfCards.Reverse();
             Console.WriteLine(string.Join(" ||| ", listOfCards));
+
+            listOfCards.RemoveAt(2);
+            Console.WriteLine(string.Join(" ||| ", listOfCards));
+
+            listOfCards.AddRange((listOfCards));
+            Console.WriteLine(string.Join(" ||| ", listOfCards));
+
+            var count = listOfCards.Count;
+            Console.WriteLine($"Количество элементов list: {listOfCards.Count}");
+
+            listOfCards.RemoveAll((x) => { return x == transportCard4 || x == transportCard2; });
+            Console.WriteLine(string.Join(" ||| ", listOfCards));
+            Console.WriteLine(new string('-', 60));
+
+            //Queue
+            Queue<TransportCard> transportCardQueue = new Queue<TransportCard>();
+            transportCardQueue.Enqueue(transportCard2);
+            transportCardQueue.Enqueue(transportCard3);
+            transportCardQueue.Enqueue(transportCard4);
+
+            //Извлекаем первый элемент из очереди
+            var lastTransportCardInEqueu = transportCardQueue.Dequeue();
+            Console.WriteLine($"Первый элемент в очереди: {lastTransportCardInEqueu}");
+
+            //Голова череди
+            var headOfQueue = transportCardQueue.Peek();
+            Console.WriteLine($"Голова очереди: {headOfQueue}");
+            Console.WriteLine("Оставшиеся элементы в очереди : " +
+                              String.Join(" ||| ", transportCardQueue));
+            
+            transportCardQueue.Dequeue();
+            transportCardQueue.Dequeue();
+            Console.WriteLine("Оставшиеся элементы в очереди : " +
+                              String.Join(" ||| ", transportCardQueue));
+
+            TransportCard result;
+            transportCardQueue.TryDequeue(out result);
+
+            if (result == null)
+            {
+                Console.WriteLine("Очередь пуста");
+            }
+            else
+            {
+                Console.WriteLine("Оставшиеся элементы в очереди : " +
+                                  String.Join(" ||| ", transportCardQueue));
+            }
+
         }
     }
 }
