@@ -101,7 +101,7 @@ namespace homework13._2
             Console.WriteLine($"Голова очереди: {headOfQueue}");
             Console.WriteLine("Оставшиеся элементы в очереди : " +
                               String.Join(" ||| ", transportCardQueue));
-            
+
             transportCardQueue.Dequeue();
             transportCardQueue.Dequeue();
             Console.WriteLine("Оставшиеся элементы в очереди : " +
@@ -120,6 +120,22 @@ namespace homework13._2
                                   String.Join(" ||| ", transportCardQueue));
             }
 
+            Console.WriteLine(new string('-', 60));
+
+            //Stack
+            Stack<TransportCard> transportCardsInStack = new Stack<TransportCard>();
+
+            for (int j = 0; j < arrayOfCards.Length; j++)
+            {
+                transportCardsInStack.Push(arrayOfCards[j]);
+            }
+
+            Console.WriteLine("Элементы в стеке : " +
+                              String.Join(" ||| ", transportCardsInStack));
+
+            transportCardsInStack.TryPop(out result);
+            Console.WriteLine("Последний элемент в стеке : " +
+                              String.Join(" ||| ", result));
         }
     }
 }
