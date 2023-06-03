@@ -79,6 +79,9 @@ namespace homework13._2
             listOfCards.AddRange((listOfCards));
             Console.WriteLine(string.Join(" ||| ", listOfCards));
 
+            var transportCardSearching = listOfCards.Find(X => X.CardName == "Trolleybus Card");
+            Console.WriteLine($"Параметры транспортной карты, которые соотвествуют требованиям поиска: {transportCardSearching}");
+
             var count = listOfCards.Count;
             Console.WriteLine($"Количество элементов list: {listOfCards.Count}");
 
@@ -136,6 +139,21 @@ namespace homework13._2
             transportCardsInStack.TryPop(out result);
             Console.WriteLine("Последний элемент в стеке : " +
                               String.Join(" ||| ", result));
+            Console.WriteLine(new string('-', 60));
+            
+            //Dictionary
+            Dictionary<string, decimal> transportCardDictionary = new Dictionary<string, decimal>();
+            
+            transportCardDictionary.Add(transportCard2.CardName, transportCard2.MoneyBalance);
+            transportCardDictionary.Add(transportCard3.CardName, transportCard3.MoneyBalance);
+            transportCardDictionary.Add(transportCard4.CardName, transportCard4.MoneyBalance);
+            
+            Console.WriteLine("Вывод на экран нашего словаря транспортных карт на момент создания");
+            Console.WriteLine(String.Join(" ||| ", transportCardDictionary));
+
+            var dictionaryElement = transportCardDictionary[transportCard3.CardName];
+            Console.WriteLine($"Баланс транспортной карты Train Card: {dictionaryElement}");
         }
+        
     }
 }
