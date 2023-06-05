@@ -154,6 +154,11 @@ namespace homework13._2
 
             var dictionaryElement = transportCardDictionary[transportCard3.CardName];
             Console.WriteLine($"Баланс транспортной карты Train Card: {dictionaryElement}");
+
+            Console.WriteLine($"GetHashCode наших транспортных карт:" +
+                              $"{transportCard2.GetHashCode()}, " +
+                              $"{transportCard3.GetHashCode()}, " +
+                              $"{transportCard4.GetHashCode()}");
         }
     }
 }
