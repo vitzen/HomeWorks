@@ -19,12 +19,27 @@ using System;
 using System.Reflection.Emit;
 using System.Text;
 
-namespace homework15
+namespace homework15._1
 {
     class Program
     {
         public static void Main()
         {
+            Console.WriteLine("Задача 1");
+
+            List<int> subsequence = new List<int>(50);
+            int K = 10;
+
+            Random random = new Random();
+            for (int i = 0; i < subsequence.Count; i++)
+            {
+                subsequence.Add(random.Next(0, 100));
+            }
+
+            var subsequence_B = subsequence.Where(x => x % 2 == 0).ToList();
+            // var subsequence_C = subsequence_A.Select()
+
+            Console.WriteLine($"Последовательность А--> {String.Join(",", subsequence_B)}");
             
         }
     }

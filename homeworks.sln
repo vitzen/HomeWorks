@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "homework15", "homework15\homework15.csproj", "{A39FB7F7-9A62-4612-88C0-DD020F8A61B0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "homework15.1", "homework15.1\homework15.1.csproj", "{A39FB7F7-9A62-4612-88C0-DD020F8A61B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
