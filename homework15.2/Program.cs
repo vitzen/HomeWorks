@@ -36,17 +36,23 @@ namespace homework15._2
                               (String.Join(",", subsequenceTwo)));
 
             var newSubSequenceOne = subsequenceOne
-                .Where(x => x > K1).ToArray();
+                .Where(x => x > K1)
+                .ToArray();
+
             var newSubSequenceTwo = subsequenceTwo
-                .Where(x => x < K2).ToArray();
+                .Where(x => x < K2)
+                .ToArray();
+
             var resultSubSequence = newSubSequenceOne
-                .Concat(newSubSequenceTwo).ToArray();
+                .Concat(newSubSequenceTwo)
+                .OrderBy(x => x)
+                .ToArray();
 
             Console.WriteLine("* Новая последовательность One : " +
                               (String.Join(",", newSubSequenceOne)));
             Console.WriteLine("* Новая последовательность Two : " +
                               (String.Join(",", newSubSequenceTwo)));
-            Console.WriteLine("* Результат склейки последовательностей : " +
+            Console.WriteLine("* Результат склейки последовательностей и сортировка по возрастанию : " +
                               (String.Join(",", resultSubSequence)));
 
             //Задержка
