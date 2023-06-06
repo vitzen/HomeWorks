@@ -4,20 +4,11 @@
 // разность двух фрагментов A: первый содержит все четные числа, а второй — все числа с порядковыми
 //     номерами, большими K. В полученной последовательности (не содержащей одинаковых элементов)
 // поменять порядок элементов на обратный.
-//     ● Даны целые числа K1 и K2 и целочисленные последовательности A и B. Получить последовательность,
-//     содержащую все числа из A, большие K1, и все числа из B, меньшие K2. Отсортировать полученную
-// последовательность по возрастанию.
-//     ● Исходная последовательность содержит сведения об абитуриентах. Каждый элемент
-// последовательности включает следующие поля:
-//     <Фамилия> <Год поступления> <Номер школы>
-//     Для каждой школы вывести общее число абитуриентов за все годы и фамилию первого из абитуриентов
-// этой школы, содержащихся в исходном наборе данных (вначале указывать номер школы, затем число
-//     абитуриентов, затем фамилию). Сведения о каждой школе выводить на новой строке и упорядочивать
-// по возрастанию номеров школ.
 
 using System;
 using System.Reflection.Emit;
 using System.Text;
+using System.Linq;
 
 namespace homework15._1
 {
@@ -27,20 +18,37 @@ namespace homework15._1
         {
             Console.WriteLine("Задача 1");
 
-            List<int> subsequence = new List<int>(50);
             int K = 10;
+            int countOfList = 50;
+            List<int> subsequenceA = new List<int>(countOfList);
 
             Random random = new Random();
-            for (int i = 0; i < subsequence.Count; i++)
+            for (int i = 0; i < countOfList; i++)
             {
-                subsequence.Add(random.Next(0, 100));
+                subsequenceA.Add(random.Next(1, 100));
             }
 
-            var subsequence_B = subsequence.Where(x => x % 2 == 0).ToList();
-            // var subsequence_C = subsequence_A.Select()
+            var subsequenceB = subsequenceA
+                .Where(x => x % 2 == 0)
+                .ToArray();
 
-            Console.WriteLine($"Последовательность А--> {String.Join(",", subsequence_B)}");
-            
+            var subsequenceC = subsequenceA
+                .Select(x => subsequenceA.GetRange(K + 1, countOfList - K - 1))
+                .ToArray();
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("* Исходная последовательность A: " +
+                              (String.Join(",", subsequenceA)));
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("* Последовательность B : " +
+                              (String.Join(",", subsequenceB)));
+
+            Console.WriteLine("* Последовательность C : " +
+                              (String.Join(",", subsequenceC)));
+
+            //Задержка
+            Console.ReadKey();
         }
     }
 }
