@@ -43,7 +43,8 @@ namespace homework15._1
             var subSequenceD = subsequenceB
                 .Except(subsequenceC)
                 .Distinct()
-                .Reverse();
+                .Reverse()
+                .ToArray();
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("* Исходная последовательность A: " +
