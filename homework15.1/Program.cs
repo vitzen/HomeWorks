@@ -31,12 +31,12 @@ namespace homework15._1
             //Последовательность четных чисел
             var subsequenceB = subsequenceA
                 .Where(x => x % 2 == 0)
-                .ToArray();
+                .ToList();
 
             //Последовательность из чисел начиная с 11-ого порядкового номера
             var subsequenceC = subsequenceA
                 .Where((x, i) => { return i > K; })
-                .ToArray();
+                .ToList();
 
             //Разность двух полученных множеств, удаление повторяющихся элементов,
             //реверс чисел в последовательности
@@ -44,7 +44,7 @@ namespace homework15._1
                 .Except(subsequenceC)
                 .Distinct()
                 .Reverse()
-                .ToArray();
+                .ToList();
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("* Исходная последовательность A: " +

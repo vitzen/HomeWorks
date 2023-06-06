@@ -37,16 +37,16 @@ namespace homework15._2
 
             var newSubSequenceOne = subsequenceOne
                 .Where(x => x > K1)
-                .ToArray();
+                .ToList();
 
             var newSubSequenceTwo = subsequenceTwo
                 .Where(x => x < K2)
-                .ToArray();
+                .ToList();
 
             var resultSubSequence = newSubSequenceOne
                 .Concat(newSubSequenceTwo)
                 .OrderBy(x => x)
-                .ToArray();
+                .ToList();
 
             Console.WriteLine("* Новая последовательность One : " +
                               (String.Join(",", newSubSequenceOne)));

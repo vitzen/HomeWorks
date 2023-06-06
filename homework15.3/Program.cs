@@ -22,27 +22,29 @@ namespace homework15._4
         {
             Console.WriteLine("Задача 3");
 
-            List<Enrollee> myList = new List<Enrollee>();
+            List<Enrollee> enrolleeList = new List<Enrollee>();
 
-            myList.Add(new Enrollee("Савельева Ульяна", 13, 2023));
-            myList.Add(new Enrollee("Павлов Ярослав", 123, 2022));
-            myList.Add(new Enrollee("Плотникова Ариана", 13, 2023));
-            myList.Add(new Enrollee("Кузнецов Павел", 13, 2021));
-            myList.Add(new Enrollee("Борисова Ева", 4, 2023));
-            myList.Add(new Enrollee("Кожевникова Вера", 13, 2021));
-            myList.Add(new Enrollee("Филатова Полина", 123, 2023));
-            myList.Add(new Enrollee("Денисова Татьяна", 18, 2022));
-            myList.Add(new Enrollee("Большаков Владислава", 23, 2022));
-            myList.Add(new Enrollee("Тарасова Арина", 3, 2023));
-            myList.Add(new Enrollee("Моисеев Михаил", 23, 2021));
-            myList.Add(new Enrollee("Литвинов Алексей", 18, 2021));
+            enrolleeList.Add(new Enrollee("Савельева Ульяна", 13, 2023));
+            enrolleeList.Add(new Enrollee("Павлов Ярослав", 123, 2022));
+            enrolleeList.Add(new Enrollee("Плотникова Ариана", 13, 2023));
+            enrolleeList.Add(new Enrollee("Кузнецов Павел", 13, 2021));
+            enrolleeList.Add(new Enrollee("Борисова Ева", 4, 2023));
+            enrolleeList.Add(new Enrollee("Кожевникова Вера", 13, 2021));
+            enrolleeList.Add(new Enrollee("Филатова Полина", 123, 2023));
+            enrolleeList.Add(new Enrollee("Денисова Татьяна", 18, 2022));
+            enrolleeList.Add(new Enrollee("Большаков Владислава", 23, 2022));
+            enrolleeList.Add(new Enrollee("Тарасова Арина", 3, 2023));
+            enrolleeList.Add(new Enrollee("Моисеев Михаил", 23, 2021));
+            enrolleeList.Add(new Enrollee("Литвинов Алексей", 18, 2021));
 
             Console.WriteLine("* Исходная последовательность из учеников : \n" +
-                              (String.Join("\n", myList)));
+                              (String.Join("\n", enrolleeList)));
             Console.WriteLine(new string('-', 60));
 
-            var subSequence = myList
-                .GroupBy(x => x.SchoolNumber).ToList();
+            var subSequence = enrolleeList
+                .GroupBy(x => x.SchoolNumber)
+                .ToList();
+            
 
             Console.WriteLine("* Последовательность из учеников : \n" +
                               (String.Join("\n", subSequence)));
