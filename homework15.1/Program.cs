@@ -28,13 +28,22 @@ namespace homework15._1
                 subsequenceA.Add(random.Next(1, 100));
             }
 
+            //Последовательность четных чисел
             var subsequenceB = subsequenceA
                 .Where(x => x % 2 == 0)
                 .ToArray();
 
+            //Последовательность из чисел начиная с 11-ого порядкового номера
             var subsequenceC = subsequenceA
-                .Select(x => subsequenceA.GetRange(K + 1, countOfList - K - 1))
+                .Where((x, i) => { return i > K; })
                 .ToArray();
+
+            //Разность двух полученных множеств, удаление повторяющихся элементов,
+            //реверс чисел в последовательности
+            var subSequenceD = subsequenceB
+                .Except(subsequenceC)
+                .Distinct()
+                .Reverse();
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("* Исходная последовательность A: " +
@@ -46,6 +55,10 @@ namespace homework15._1
 
             Console.WriteLine("* Последовательность C : " +
                               (String.Join(",", subsequenceC)));
+
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("* Итоговое множество : " +
+                              (String.Join(",", subSequenceD)));
 
             //Задержка
             Console.ReadKey();
