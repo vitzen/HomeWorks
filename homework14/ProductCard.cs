@@ -57,7 +57,7 @@ namespace homework14
         {
             var total = GetTotalSumm();
             Items.Clear();
-            OnBuyEvent(total);
+            //OnBuyEvent(total);
             return total;
         }
 
@@ -80,7 +80,6 @@ namespace homework14
 
             return summ * sale;
         }
-
 
         public string PrintAllProduct()
         {
