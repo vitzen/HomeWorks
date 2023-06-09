@@ -51,14 +51,13 @@ namespace ConsoleApp6Array
             var listOfCards = new List<ProductCard>() { card1, card2, card3 };
 
             // Задание: выбрать такие корзины, в которых сумма всех продуктов больше 100
-            var a = listOfCards
-                .Select(x => x)
-                .Where(x => x.Items.Pr > 100 )
-                .OrderBy(x => x.Price)
+            var moreThen100 = listOfCards
+                .Select(x => x.Items)
+                .Where(x => x.Price > 100)
                 .Select(x => x.Title)
-                .ToArray();
+                .ToList();
 
-            Console.WriteLine(String.Join("\n", a));
+            Console.WriteLine(String.Join("\n", moreThen100));
         }
     }
 }
