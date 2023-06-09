@@ -10,7 +10,7 @@
 // выбрать для каждой корзины продукт с максимальной ценой в рамках данной корзины
 // посчитать сумму всех продуктов в рамках каждой корзины
 // посмитчать сумму всех продуктов для всех корзин суммарно
-    
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -50,7 +50,15 @@ namespace ConsoleApp6Array
             //Список продуктовых корзин
             var listOfCards = new List<ProductCard>() { card1, card2, card3 };
 
-            Console.WriteLine(String.Join(",",card1));
+            // Задание: выбрать такие корзины, в которых сумма всех продуктов больше 100
+            var a = listOfCards
+                .Select(x => x)
+                .Where(x => x.Items.Pr > 100 )
+                .OrderBy(x => x.Price)
+                .Select(x => x.Title)
+                .ToArray();
+
+            Console.WriteLine(String.Join("\n", a));
         }
     }
 }

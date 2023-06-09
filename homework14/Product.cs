@@ -9,7 +9,7 @@ namespace homework14
             Price = price;
             Title = title;
         }
-        
+
         public decimal Price { get; }
         public string Title { get; }
         public bool IsNew { get; set; }
@@ -21,7 +21,7 @@ namespace homework14
 
         public override string ToString()
         {
-            return $"Price: {Price}, Title: {Title}, IsNew: {IsNew}";
+            return $"Title: {Title}, Price: {Price}";
         }
     }
 }
