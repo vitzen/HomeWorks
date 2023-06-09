@@ -8,11 +8,6 @@ namespace homework14
     {
         public List<Product> Items { get; }
 
-        private readonly Action<Product> _notifyAddedProduct;
-        private readonly Action<decimal, decimal> _notifyOfSalePercent;
-        private readonly Func<decimal, decimal> _calculateSaleFunc;
-        private readonly Predicate<decimal> _presentGift;
-
         public ProductCard(List<Product> products)
         {
             Items = products;
