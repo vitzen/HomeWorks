@@ -14,6 +14,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Threading;
 using homework14;
@@ -52,12 +53,14 @@ namespace ConsoleApp6Array
 
             // Задание: выбрать такие корзины, в которых сумма всех продуктов больше 100
             var moreThen100 = listOfCards
+                .Select(x => x)
                 .Select(x => x.Items)
-                .Where(x => x.Price > 100)
-                .Select(x => x.Title)
-                .ToList();
+                .Where(x=>x.Sum(product => x.Count*x.P ))
+                //.OrderBy(x => x.Price)
+                //.Select(x => x.Title)
+                .ToArray();
 
-            Console.WriteLine(String.Join("\n", moreThen100));
+            //Console.WriteLine(String.Join("\n", moreThen100));
         }
     }
 }

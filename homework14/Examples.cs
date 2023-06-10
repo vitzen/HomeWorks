@@ -59,14 +59,7 @@
             //
             // var newProduct = new List<string>();
             //
-            // foreach (var product in list)
-            // {
-            //     if (product.IsNew)
-            //     {
-            //         newProduct.Add(product.Title);
-            //     }
-            // }
-            //
+            
             // Console.WriteLine("Новые продукты:");
             // Console.WriteLine(string.Join(";", newProduct));
             //
