@@ -6,22 +6,15 @@ namespace homework14
 {
     public class ProductCard
     {
+        public string Name;
         public List<Product> Items { get; }
 
-        public ProductCard(List<Product> products)
+        public ProductCard(List<Product> products, string cartName)
         {
             Items = products;
+            Name = cartName;
         }
-
-        /// <summary>
-        /// Метод добавления продукта в продуктовую корзину
-        /// </summary>
-        /// <param name="product"></param>
-        public void AddProduct(Product product)
-        {
-            Items.Add(product);
-        }
-
+        
         public override string ToString()
         {
             return $"Items: {Items}";
