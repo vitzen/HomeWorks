@@ -27,7 +27,7 @@ namespace ConsoleApp6Array
         {
             var cowsMilk = new Product(100, "Cows Milk");
             var goatMilk = new Product(100, "Goat Milk");
-            var potato = new Product(102, "Potato");
+            var potato = new Product(10, "Potato");
             var carrot = new Product(80, "Сarrot") { IsNew = true };
             var onion = new Product(80, "Onion");
             var beet = new Product(60, "Beet");
@@ -52,15 +52,35 @@ namespace ConsoleApp6Array
             var listOfCards = new List<ProductCard>() { card1, card2, card3 };
 
             // Задание: выбрать такие корзины, в которых сумма всех продуктов больше 100
-            var moreThen100 = listOfCards
-                .Select(x => x)
-                .Select(x => x.Items)
-                .Where(x=>x.Sum(product => x.Count*x.P ))
-                //.OrderBy(x => x.Price)
-                //.Select(x => x.Title)
-                .ToArray();
+            // var moreThen100 = listOfCards
+            //     .Select(x => x)
+            //     .Select(x => x.Items)
+            //     .Where(x=>x.Sum(product => x.Count*x.P ))
+            //     //.OrderBy(x => x.Price)
+            //     //.Select(x => x.Title)
+            //     .ToArray();
+            //
+            // Console.WriteLine(String.Join("\n", moreThen100));
+            Console.WriteLine(new string('-', 60));
 
-            //Console.WriteLine(String.Join("\n", moreThen100));
+            // Задание: выбрать такие продукты, у которых название длинее 5 символов и цена больше 10
+            var moreThen100Symbols = listOfCards
+                .SelectMany(x => x.Items)
+                .Where(x => x.Title.Length > 5 && x.Price > 10)
+                .ToList();
+
+            Console.WriteLine("Продукты, у которых название длинее 5 символов и цена больше 10: ");
+            Console.WriteLine(String.Join("\n", moreThen100Symbols));
+            Console.WriteLine(new string('-', 60));
+
+            //Задание: выбрать такие корзины, у которых более 4 продуктов
+            var cardWithMore4Products = listOfCards
+                .Where(x=> x)
+                .Select()
+
+            Console.WriteLine("Корзины, в которых более 4 продуктов: ");
+            Console.WriteLine(String.Join("\n", cardWithMore4Products));
+            Console.WriteLine(new string('-', 60));
         }
     }
 }
