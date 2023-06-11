@@ -1,18 +1,6 @@
-﻿// 1) Учимся работать с Dictionary.
-// На примере продуктов или транспортной карты изучаем основные методы работы с данной коллекцией -
-// добавление, удаление и тд.
-// 2) Делаем список линков, на основе продуктовой корзины. 
-// Дано: список продуктовых корзин, в каждой продуктовой корзине есть свой список продуктов
-// выбрать такие корзины, в которых сумма всех продуктов больше 100
-// выбрать такие продукты, у которых название длинее 5 символов и цена больше 10
-// выбрать такие корзины, у которых более 4 продуктов 
-// выбрать продукты из всех корзин, у которых цена в интервале от 10 до 100
-// выбрать для каждой корзины продукт с максимальной ценой в рамках данной корзины
-// посчитать сумму всех продуктов в рамках каждой корзины
-// посмитчать сумму всех продуктов для всех корзин суммарно
-
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Diagnostics;
 using System.Diagnostics.Metrics;
 using System.Linq;
@@ -61,43 +49,69 @@ namespace ConsoleApp6Array
             //     .ToArray();
             //
             // Console.WriteLine(String.Join("\n", moreThen100));
-            Console.WriteLine(new string('-', 60));
+            //Console.WriteLine(new string('-', 60));
 
             // Задание: выбрать такие продукты, у которых название длинее 5 символов и цена больше 10
             var moreThen100Symbols = listOfCards
                 .SelectMany(x => x.Items)
                 .Where(x => x.Title.Length > 5 && x.Price > 10)
-                .Select(x=>x.Title)
+                .Select(x => x.Title)
                 .ToList();
 
             Console.WriteLine("Продукты, у которых название длинее 5 символов и цена больше 10: ");
             Console.WriteLine(String.Join("\n", moreThen100Symbols));
             Console.WriteLine(new string('-', 60));
 
-            //Задание: выбрать такие корзины, у которых более 4 продуктов
-            // var cardWithMore4Products = listOfCards
-            //     .Where(x=> x)
-            //     .Select()
+            //Задание: выбрать такие корзины, у которых более 4 продуктов ?????????????????????????????????????????????
+            var cardWithMore4Products = listOfCards
+                .Where(x => x.Items.Count > 4)
+                .Select(x => x)
+                .ToList();
 
             Console.WriteLine("Корзины, в которых более 4 продуктов: ");
-            //Console.WriteLine(String.Join("\n", cardWithMore4Products));
+            Console.WriteLine(String.Join("\n", cardWithMore4Products));
             Console.WriteLine(new string('-', 60));
-            
+
             //Задание: выбрать продукты из всех корзин, у которых цена в интервале от 10 до 100
             var productsInRange = listOfCards
                 .SelectMany(x => x.Items)
                 .Where(x => x.Price > 10 && x.Price < 100)
-                .Select(x=>x.Title)
+                .Select(x => x.Title)
                 .ToList();
-            
+
             Console.WriteLine("Все продукты, цена которых в диапазоне от 10 до 100: ");
             Console.WriteLine(String.Join("\n", productsInRange));
             Console.WriteLine(new string('-', 60));
+
+            //Задание: выбрать для каждой корзины продукт с максимальной ценой в рамках данной корзины ?????????????????
+            var productWithMaxPrice = listOfCards
+                .Where(x => true)
+                .Select(x => x.Items).Max()
+                .ToList();
             
-            //Задание: выбрать для каждой корзины продукт с максимальной ценой в рамках данной корзины
-            //var productWithMaxPrice = listOfCards
+            Console.WriteLine("Продукт с максимальной ценой: ");
+            Console.WriteLine(String.Join("\n", productWithMaxPrice));
+            Console.WriteLine(new string('-', 60));
+
+            //Задание: посчитать сумму всех продуктов в рамках каждой корзины
+            var SumOfProductsInCard = listOfCards
+                //.GroupBy(x=>x)
+                // .Where(x=>x.Sum(x))
+                // .Select(x => x.Items.Count)
                 
-            
+            Console.WriteLine("Сумма всех продуктов в рамках корзины: ");
+            Console.WriteLine(String.Join("\n", SumOfProductsInCard));
+            Console.WriteLine(new string('-', 60));
+
+
+            //Задание: посмитчать сумму всех продуктов для всех корзин суммарно
+            var SumOfAllProducts = listOfCards
+                .SelectMany(x => x.Items)
+                .Sum(x => x.Price)
+                .ToString();
+            Console.WriteLine("Сумма всех продуктов во всех корзинахы: ");
+            Console.WriteLine(String.Join("\n", SumOfAllProducts));
+            Console.WriteLine(new string('-', 60));
         }
     }
 }
