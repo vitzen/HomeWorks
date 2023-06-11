@@ -6,7 +6,7 @@
 // выбрать такие корзины, в которых сумма всех продуктов больше 100
 // выбрать такие продукты, у которых название длинее 5 символов и цена больше 10
 // выбрать такие корзины, у которых более 4 продуктов 
-// выбрать продукты из всех корзин, у которых цена в интервале от 10 до 00
+// выбрать продукты из всех корзин, у которых цена в интервале от 10 до 100
 // выбрать для каждой корзины продукт с максимальной ценой в рамках данной корзины
 // посчитать сумму всех продуктов в рамках каждой корзины
 // посмитчать сумму всех продуктов для всех корзин суммарно
@@ -67,6 +67,7 @@ namespace ConsoleApp6Array
             var moreThen100Symbols = listOfCards
                 .SelectMany(x => x.Items)
                 .Where(x => x.Title.Length > 5 && x.Price > 10)
+                .Select(x=>x.Title)
                 .ToList();
 
             Console.WriteLine("Продукты, у которых название длинее 5 символов и цена больше 10: ");
@@ -74,13 +75,29 @@ namespace ConsoleApp6Array
             Console.WriteLine(new string('-', 60));
 
             //Задание: выбрать такие корзины, у которых более 4 продуктов
-            var cardWithMore4Products = listOfCards
-                .Where(x=> x)
-                .Select()
+            // var cardWithMore4Products = listOfCards
+            //     .Where(x=> x)
+            //     .Select()
 
             Console.WriteLine("Корзины, в которых более 4 продуктов: ");
-            Console.WriteLine(String.Join("\n", cardWithMore4Products));
+            //Console.WriteLine(String.Join("\n", cardWithMore4Products));
             Console.WriteLine(new string('-', 60));
+            
+            //Задание: выбрать продукты из всех корзин, у которых цена в интервале от 10 до 100
+            var productsInRange = listOfCards
+                .SelectMany(x => x.Items)
+                .Where(x => x.Price > 10 && x.Price < 100)
+                .Select(x=>x.Title)
+                .ToList();
+            
+            Console.WriteLine("Все продукты, цена которых в диапазоне от 10 до 100: ");
+            Console.WriteLine(String.Join("\n", productsInRange));
+            Console.WriteLine(new string('-', 60));
+            
+            //Задание: выбрать для каждой корзины продукт с максимальной ценой в рамках данной корзины
+            //var productWithMaxPrice = listOfCards
+                
+            
         }
     }
 }
