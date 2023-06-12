@@ -1,4 +1,10 @@
-﻿using System;
+﻿// Дан массив продуктовых корзин ProductCard[] cards
+// Необходимо проинициализировать его данными и посчитать сумму всех продуктов во всех корзинах.
+// При этом, сделать расчет суммы продуктов для каждой корзины параллельно. То есть 1 поток - 1 продуктовая корзина.
+// По аналогии тому, как мы сделали сумму всех объемов для списка фигур.
+// Только не в 2 потока, а в столько потоков, сколько продуктовых корзин.
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Diagnostics;
@@ -38,82 +44,61 @@ namespace homework16
             //Список продуктовых корзин
             var listOfCards = new List<ProductCard>() { card1, card2, card3 };
 
-            // Задание: выбрать такие корзины, в которых сумма всех продуктов больше 100
-            var moreThen100 = listOfCards
-                .Where(x => x.Items.Sum(y => y.Price) > 100)
-                .Select(x => x.Name)
-                .ToList();
+            decimal sumOfCard1 = 0;
+            decimal sumOfCard2 = 0;
+            decimal sumOfCard3 = 0;
+            decimal totalSumm = 0;
 
-            Console.WriteLine("Корзины, в которых сумма всех продуктов больше 100: ");
-            Console.WriteLine(String.Join("\n", moreThen100));
-            Console.WriteLine(new string('-', 60));
+            AutoResetEvent flag1 = new AutoResetEvent(false);
+            AutoResetEvent flag2 = new AutoResetEvent(false);
+            AutoResetEvent flag3 = new AutoResetEvent(false);
 
-            // Задание: выбрать такие продукты, у которых название длинее 5 символов и цена больше 10
-            var moreThen100Symbols = listOfCards
-                .SelectMany(x => x.Items)
-                .Where(x => x.Title.Length > 5 && x.Price > 10)
-                .Select(x => x.Title)
-                .ToList();
+            var thread1 = new Thread(o =>
+            {
+                var sumOfCard1 = listOfCards
+                    .Where(x => x.Name is "Product Card 1")
+                    .SelectMany(x => x.Items)
+                    .Sum(x => x.Price);
+                    //.ToString();
 
-            Console.WriteLine("Продукты, у которых название длинее 5 символов и цена больше 10: ");
-            Console.WriteLine(String.Join("\n", moreThen100Symbols));
-            Console.WriteLine(new string('-', 60));
+                flag1.Set();
+            });
 
-            //Задание: выбрать такие корзины, у которых более 4 продуктов 
-            var cardWithMore4Products = listOfCards
-                .Where(x => x.Items.Count > 4)
-                .Select(x => x.Name)
-                .ToList();
+            var thread2 = new Thread(o =>
+            {
+                var sumOfCard2 = listOfCards
+                    .Where(x => x.Name is "Product Card 2")
+                    .SelectMany(x => x.Items)
+                    .Sum(x => x.Price);
+                    //.ToString();
 
-            Console.WriteLine("Корзины, в которых более 4 продуктов: ");
-            Console.WriteLine(String.Join("\n", cardWithMore4Products));
-            Console.WriteLine(new string('-', 60));
+                flag2.Set();
+            });
 
-            //Задание: выбрать продукты из всех корзин, у которых цена в интервале от 10 до 100
-            var productsInRange = listOfCards
-                .SelectMany(x => x.Items)
-                .Where(x => x.Price > 10 && x.Price < 100)
-                .Select(x => x.Title)
-                .ToList();
+            var thread3 = new Thread(o =>
+            {
+                var sumOfCard3 = listOfCards
+                    .Where(x => x.Name is "Product Card 3")
+                    .SelectMany(x => x.Items)
+                    .Sum(x => x.Price);
+                    //.ToString();
 
-            Console.WriteLine("Все продукты, цена которых в диапазоне от 10 до 100: ");
-            Console.WriteLine(String.Join("\n", productsInRange));
-            Console.WriteLine(new string('-', 60));
+                flag3.Set();
+            });
 
-            //Задание: выбрать для каждой корзины продукт с максимальной ценой в рамках данной корзины 
-            var productWithMaxPrice = listOfCards
-                .Select(x => new
-                { 
-                    product = x.Items.OrderByDescending(y => y.Price).First(),
-                    title = x.Name
-                })
-                .ToList();
+            thread1.Start();
+            thread2.Start();
+            thread3.Start();
+            
+            //Thread.Sleep(5000);
 
-            Console.WriteLine("Продукт с максимальной ценой: ");
-            Console.WriteLine(String.Join("\n", productWithMaxPrice));
-            Console.WriteLine(new string('-', 60));
-
-            //Задание: посчитать сумму всех продуктов в рамках каждой корзины
-            var SumOfProductsInCard = listOfCards
-                .Select(x => new
-                {
-                    Title = x.Name,
-                    Sum = x.Items.Sum(y => y.Price)
-                })
-                .ToList();
-
-            Console.WriteLine("Сумма всех продуктов в рамках корзины: ");
-            Console.WriteLine(String.Join("\n", SumOfProductsInCard));
-            Console.WriteLine(new string('-', 60));
-
-
-            //Задание: посчитать сумму всех продуктов для всех корзин суммарно
-            var SumOfAllProducts = listOfCards
-                .SelectMany(x => x.Items)
-                .Sum(x => x.Price)
-                .ToString();
-            Console.WriteLine("Сумма всех продуктов во всех корзинахы: ");
-            Console.WriteLine(String.Join("\n", SumOfAllProducts));
+            if (WaitHandle.WaitAll(new[] { flag1, flag2, flag3 },TimeSpan.FromSeconds(10)))
+            {
+                totalSumm = sumOfCard1 + sumOfCard2 + sumOfCard3;
+            }
+            
+            Console.WriteLine("Сумма всех продуктов во всех корзинах: ");
+            Console.WriteLine(String.Join("\n", totalSumm));
             Console.WriteLine(new string('-', 60));
         }
     }
