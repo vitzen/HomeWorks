@@ -5,9 +5,8 @@ using System.Diagnostics;
 using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Threading;
-using homework14;
 
-namespace ConsoleApp6Array
+namespace homework14
 {
     class Program
     {
