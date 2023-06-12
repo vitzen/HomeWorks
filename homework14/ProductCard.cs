@@ -14,7 +14,7 @@ namespace homework14
             Items = products;
             Name = cartName;
         }
-        
+
         public override string ToString()
         {
             return $"Items: {Items}";
