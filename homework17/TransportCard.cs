@@ -7,8 +7,11 @@ public partial class TransportCard
 
     public delegate void PaymentDelegate(decimal payParam, decimal balanceAfterPayment);
 
-    public Predicate<decimal> _possibleToPayPredicate; //Предикат проверки возможности оплаты
-    public Func<decimal, decimal> _calculateCashback; //Func для расчета кэшбека при каждом пополнении карты
+    //Предикат проверки возможности оплаты
+    public Predicate<decimal> _possibleToPayPredicate; 
+    
+    //Func для расчета кэшбека при каждом пополнении карты
+    public Func<decimal, decimal> _calculateCashback; 
 
     private readonly string _cardName;
     private decimal _moneyBalance = 0;
@@ -41,7 +44,8 @@ public partial class TransportCard
         set => _extraCashback = value;
     }
 
-    public static List<decimal> historyOfTransactions = new List<decimal>(); //Создаем историю платежей
+    //Создаем историю платежей
+    public static List<decimal> historyOfTransactions = new List<decimal>(); 
 
     public List<decimal> HistoryOfTransactions
     {
