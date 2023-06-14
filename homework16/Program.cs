@@ -59,9 +59,9 @@ namespace homework16
                     .Where(x => x.Name is "Product Card 1")
                     .SelectMany(x => x.Items)
                     .Sum(x => x.Price);
-                    //.ToString
+                //.ToString
 
-                    flag1.Set();
+                flag1.Set();
             });
 
             var thread2 = new Thread(x =>
@@ -70,7 +70,7 @@ namespace homework16
                     .Where(x => x.Name is "Product Card 2")
                     .SelectMany(x => x.Items)
                     .Sum(x => x.Price);
-                    //.ToString();
+                //.ToString();
 
                 flag2.Set();
             });
@@ -81,7 +81,7 @@ namespace homework16
                     .Where(x => x.Name is "Product Card 3")
                     .SelectMany(x => x.Items)
                     .Sum(x => x.Price);
-                    //.ToString();
+                //.ToString();
 
                 flag3.Set();
             });
@@ -89,16 +89,20 @@ namespace homework16
             thread1.Start();
             thread2.Start();
             thread3.Start();
-            
+
             //Thread.Sleep(5000);
 
-            if (WaitHandle.WaitAll(new[] { flag1, flag2, flag3 },TimeSpan.FromSeconds(5)))
+            if (WaitHandle.WaitAll(new[] { flag1, flag2, flag3 }, TimeSpan.FromSeconds(5)))
             {
                 totalSumm = sumOfCard1 + sumOfCard2 + sumOfCard3;
+                Console.WriteLine("Сумма всех продуктов во всех корзинах: ");
+                Console.WriteLine(String.Join("\n", totalSumm));
             }
-            
-            Console.WriteLine("Сумма всех продуктов во всех корзинах: ");
-            Console.WriteLine(String.Join("\n", totalSumm));
+            else
+            {
+                Console.WriteLine($"Не удалось посчитать сумму.");
+            }
+
             Console.WriteLine(new string('-', 60));
         }
     }
