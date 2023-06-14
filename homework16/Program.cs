@@ -42,7 +42,8 @@ namespace homework16
                 { goatMilk, beet, bellPepper, seasoning, onion, celery, carrot }, "Product Card 3");
 
             //Список продуктовых корзин
-            var listOfCards = new List<ProductCard>() { card1, card2, card3 };
+            //var listOfCards = new List<ProductCard>() { card1, card2, card3 };
+            var arrayOfCards = new ProductCard [3] { card1, card2, card3 };
 
             decimal sumOfCard1 = 0;
             decimal sumOfCard2 = 0;
@@ -55,7 +56,7 @@ namespace homework16
 
             var thread1 = new Thread(x =>
             {
-                var sumOfCard1 = listOfCards
+                var sumOfCard1 = arrayOfCards
                     .Where(x => x.Name is "Product Card 1")
                     .SelectMany(x => x.Items)
                     .Sum(x => x.Price);
@@ -66,7 +67,7 @@ namespace homework16
 
             var thread2 = new Thread(x =>
             {
-                var sumOfCard2 = listOfCards
+                var sumOfCard2 = arrayOfCards
                     .Where(x => x.Name is "Product Card 2")
                     .SelectMany(x => x.Items)
                     .Sum(x => x.Price);
@@ -77,7 +78,7 @@ namespace homework16
 
             var thread3 = new Thread(x =>
             {
-                var sumOfCard3 = listOfCards
+                var sumOfCard3 = arrayOfCards
                     .Where(x => x.Name is "Product Card 3")
                     .SelectMany(x => x.Items)
                     .Sum(x => x.Price);
@@ -95,14 +96,13 @@ namespace homework16
             if (WaitHandle.WaitAll(new[] { flag1, flag2, flag3 }, TimeSpan.FromSeconds(5)))
             {
                 totalSumm = sumOfCard1 + sumOfCard2 + sumOfCard3;
-                Console.WriteLine("Сумма всех продуктов во всех корзинах: ");
-                Console.WriteLine(String.Join("\n", totalSumm));
             }
             else
             {
                 Console.WriteLine($"Не удалось посчитать сумму.");
             }
-
+            Console.WriteLine("Сумма всех продуктов во всех корзинах: ");
+            Console.WriteLine(String.Join("\n", totalSumm));
             Console.WriteLine(new string('-', 60));
         }
     }
