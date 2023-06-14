@@ -53,18 +53,18 @@ namespace homework16
             AutoResetEvent flag2 = new AutoResetEvent(false);
             AutoResetEvent flag3 = new AutoResetEvent(false);
 
-            var thread1 = new Thread(o =>
+            var thread1 = new Thread(x =>
             {
                 var sumOfCard1 = listOfCards
                     .Where(x => x.Name is "Product Card 1")
                     .SelectMany(x => x.Items)
                     .Sum(x => x.Price);
-                    //.ToString();
+                    //.ToString
 
-                flag1.Set();
+                    flag1.Set();
             });
 
-            var thread2 = new Thread(o =>
+            var thread2 = new Thread(x =>
             {
                 var sumOfCard2 = listOfCards
                     .Where(x => x.Name is "Product Card 2")
@@ -75,12 +75,12 @@ namespace homework16
                 flag2.Set();
             });
 
-            var thread3 = new Thread(o =>
+            var thread3 = new Thread(x =>
             {
                 var sumOfCard3 = listOfCards
                     .Where(x => x.Name is "Product Card 3")
                     .SelectMany(x => x.Items)
-                    .Sum(x => x.Price);
+                    .Sum(x => x.Price)
                     //.ToString();
 
                 flag3.Set();
@@ -92,7 +92,7 @@ namespace homework16
             
             //Thread.Sleep(5000);
 
-            if (WaitHandle.WaitAll(new[] { flag1, flag2, flag3 },TimeSpan.FromSeconds(10)))
+            if (WaitHandle.WaitAll(new[] { flag1, flag2, flag3 },TimeSpan.FromSeconds(5)))
             {
                 totalSumm = sumOfCard1 + sumOfCard2 + sumOfCard3;
             }
