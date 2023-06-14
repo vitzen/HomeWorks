@@ -57,24 +57,6 @@ public partial class TransportCard
     public event ReplenishmentDelegate? ReplenishementEvent;
     public event PaymentDelegate? PaymentEvent;
 
-    protected bool Equals(TransportCard other)
-    {
-        return _cardName == other._cardName && _moneyBalance == other._moneyBalance;
-    }
-
-    public override bool Equals(object? obj)
-    {
-        if (ReferenceEquals(null, obj)) return false;
-        if (ReferenceEquals(this, obj)) return true;
-        if (obj.GetType() != this.GetType()) return false;
-        return Equals((TransportCard)obj);
-    }
-
-    public override int GetHashCode()
-    {
-        return HashCode.Combine(_cardName, _moneyBalance);
-    }
-
     public override string ToString()
     {
         return $"CardName: {CardName}, MoneyBalance: {MoneyBalance}";
