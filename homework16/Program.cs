@@ -80,7 +80,7 @@ namespace homework16
                 var sumOfCard3 = listOfCards
                     .Where(x => x.Name is "Product Card 3")
                     .SelectMany(x => x.Items)
-                    .Sum(x => x.Price)
+                    .Sum(x => x.Price);
                     //.ToString();
 
                 flag3.Set();
