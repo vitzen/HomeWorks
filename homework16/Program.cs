@@ -93,7 +93,7 @@ namespace homework16
 
             //Thread.Sleep(5000);
 
-            if (WaitHandle.WaitAll(new[] { flag1, flag2, flag3 }, TimeSpan.FromSeconds(5)))
+            if (WaitHandle.WaitAll(new[] { flag1, flag2, flag3 }, TimeSpan.FromMilliseconds(1000)))
             {
                 totalSumm = sumOfCard1 + sumOfCard2 + sumOfCard3;
             }
