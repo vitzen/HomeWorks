@@ -42,67 +42,52 @@ namespace homework16
                 { goatMilk, beet, bellPepper, seasoning, onion, celery, carrot }, "Product Card 3");
 
             //Список продуктовых корзин
-            //var listOfCards = new List<ProductCard>() { card1, card2, card3 };
-            var arrayOfCards = new ProductCard [3] { card1, card2, card3 };
+            var listOfCards = new List<ProductCard>() { card1, card2, card3 };
 
-            decimal sumOfCard1 = 0;
-            decimal sumOfCard2 = 0;
-            decimal sumOfCard3 = 0;
             decimal totalSumm = 0;
+            int threadsCount = 3;
 
-            AutoResetEvent flag1 = new AutoResetEvent(false);
-            AutoResetEvent flag2 = new AutoResetEvent(false);
-            AutoResetEvent flag3 = new AutoResetEvent(false);
+            //Создаем флаги для потоков
 
-            var thread1 = new Thread(x =>
+            AutoResetEvent[] myFlags = new AutoResetEvent[threadsCount];
+
+            //Создаем массив потоков и передаем в массив 
+            Thread[] myThreads = new Thread[threadsCount];
+            for (int i = 0; i < threadsCount; i++)
             {
-                var sumOfCard1 = arrayOfCards
-                    .Where(x => x.Name is "Product Card 1")
-                    .SelectMany(x => x.Items)
-                    .Sum(x => x.Price);
-                //.ToString
+                int doubler = i; // дублер
+                myThreads[i] = new Thread(o =>
+                {
+                    var sum = listOfCards
+                        .Where((_, y) => y % threadsCount == doubler)
+                        .SelectMany(x => x.Items)
+                        .Sum(x => x.Price);
 
-                flag1.Set();
-            });
+                    totalSumm += sum;
+                    Console.WriteLine($"Сумма с итерации {sum}");
+                    myFlags[doubler].Set();
+                })
 
-            var thread2 = new Thread(x =>
+                {
+                    IsBackground = true
+                };
+                myFlags[i] = new AutoResetEvent(false);
+            }
+
+            for (int i = 0; i < 3; i++)
             {
-                var sumOfCard2 = arrayOfCards
-                    .Where(x => x.Name is "Product Card 2")
-                    .SelectMany(x => x.Items)
-                    .Sum(x => x.Price);
-                //.ToString();
+                myThreads[i].Start();
+            }
 
-                flag2.Set();
-            });
-
-            var thread3 = new Thread(x =>
+            if (WaitHandle.WaitAll(myFlags, TimeSpan.FromMilliseconds(1000)))
             {
-                var sumOfCard3 = arrayOfCards
-                    .Where(x => x.Name is "Product Card 3")
-                    .SelectMany(x => x.Items)
-                    .Sum(x => x.Price);
-                //.ToString();
-
-                flag3.Set();
-            });
-
-            thread1.Start();
-            thread2.Start();
-            thread3.Start();
-
-            //Thread.Sleep(5000);
-
-            if (WaitHandle.WaitAll(new[] { flag1, flag2, flag3 }, TimeSpan.FromMilliseconds(1000)))
-            {
-                totalSumm = sumOfCard1 + sumOfCard2 + sumOfCard3;
+                Console.WriteLine($"Сумма всех продуктов из продуктовых корзин равна: {totalSumm}");
             }
             else
             {
                 Console.WriteLine($"Не удалось посчитать сумму.");
             }
-            Console.WriteLine("Сумма всех продуктов во всех корзинах: ");
-            Console.WriteLine(String.Join("\n", totalSumm));
+
             Console.WriteLine(new string('-', 60));
         }
     }
