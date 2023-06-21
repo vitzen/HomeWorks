@@ -24,12 +24,6 @@ public partial class TransportCard
                               $"{_moneyBalance} рублей");
         }
 
-        void AddPaymentIntoHystoryList()
-        {
-            lock (Program._sync)
-            {
-                historyOfTransactions.Add(spendingCash);
-            }
-        }
+        HistoryLog.WritePaymentHistory(spendingCash);
     }
 }

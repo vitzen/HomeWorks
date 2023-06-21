@@ -16,18 +16,21 @@ namespace homework17
 
         public static void Main()
         {
-            var thread1 = new Thread(_addPaymentIntoHystory);
-            var thread2 = new Thread();
-            var thread3 = new Thread();
-            var thread4 = new Thread();
-            
-            thread1.Start();
-            thread2.Start();
-            thread3.Start();
-            thread4.Start();
-            
             decimal replenishmentAmount = 100M; //Сумма пополнения
             decimal paymentAmount = 30M; //Сумма оплаты проезда
+            int threadsCount = 4;
+
+            //ThreadStart writeInHistory = new ThreadStart(HistoryLog.WritePaymentHistory(paymentAmount));
+            Thread[] myThreads = new Thread[threadsCount];
+
+            for (int i = 0; i < threadsCount; i++)
+            {
+                myThreads[i] = new Thread(writeInHistory);
+            }
+            
+            Semaphore writePaymentSem = new Semaphore(2,2);
+            Semaphore readPaymentSem = new Semaphore(2,2);
+
 
             Console.WriteLine("Программа - ТРАНСПОРТНАЯ КАРТА\n".AddNewNotification());
             TransportCard transportCard = new TransportCard("Month bus ticket",
@@ -59,8 +62,7 @@ namespace homework17
 
             transportCard.ReplenishementEvent -= SubscribtionClass.ReplenishmentSubscription;
             transportCard.PaymentEvent -= SubscribtionClass.PaymentSubscription;
-
-            Console.WriteLine(String.Join(",", transportCard.HistoryOfTransactions));
+            
             Console.WriteLine(new string('-', 60));
         }
     }

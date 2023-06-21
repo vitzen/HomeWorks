@@ -44,15 +44,6 @@ public partial class TransportCard
         set => _extraCashback = value;
     }
 
-    //Создаем историю платежей
-    public static List<decimal> historyOfTransactions = new List<decimal>(); 
-
-    public List<decimal> HistoryOfTransactions
-    {
-        get => historyOfTransactions;
-        set => historyOfTransactions = value ?? throw new ArgumentNullException(nameof(value));
-    }
-
     //Создаем события
     public event ReplenishmentDelegate? ReplenishementEvent;
     public event PaymentDelegate? PaymentEvent;
