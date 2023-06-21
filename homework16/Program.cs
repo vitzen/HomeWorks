@@ -66,11 +66,8 @@ namespace homework16
                     totalSumm += sum;
                     Console.WriteLine($"Сумма с итерации {sum}");
                     myFlags[doubler].Set();
-                })
-
-                {
-                    IsBackground = true
-                };
+                });
+                
                 myFlags[i] = new AutoResetEvent(false);
             }
 
