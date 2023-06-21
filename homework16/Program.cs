@@ -76,6 +76,8 @@ namespace homework16
                 myThreads[i].Start();
             }
 
+            myThreads.Join();
+
             if (WaitHandle.WaitAll(myFlags, TimeSpan.FromMilliseconds(1000)))
             {
                 Console.WriteLine($"Сумма всех продуктов из продуктовых корзин равна: {totalSumm}");
