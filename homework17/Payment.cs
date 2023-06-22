@@ -2,8 +2,6 @@ namespace homework17;
 
 public partial class TransportCard
 {
-    public delegate void _addPaymentIntoHystory();
-
     /// <summary>
     /// Метод совершения покупки или списания средств
     /// </summary>
@@ -24,6 +22,10 @@ public partial class TransportCard
                               $"{_moneyBalance} рублей");
         }
 
-        HistoryLog.WritePaymentHistory(spendingCash);
+        //Запись платежа в историю
+        lock (_sync)
+        {
+            historyOfTransactions.Add(spendingCash);
+        }
     }
 }

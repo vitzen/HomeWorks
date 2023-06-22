@@ -2,6 +2,12 @@ namespace homework17;
 
 public partial class TransportCard
 {
+    //Создаем объект синхронизации для работы потоков
+    public static object _sync = new object();
+    
+    //Создаем историю платежей
+    public static List<decimal> historyOfTransactions = new List<decimal>();
+    
     public delegate void ReplenishmentDelegate(decimal replParam,
         decimal balanceAfterReplenishement, decimal balanceAfterCashbackGift);
 

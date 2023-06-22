@@ -11,8 +11,7 @@ namespace homework17
 {
     public class Program
     {
-        //Создаем объект синхронизации
-        public static object _sync = new object();
+        
 
         public static void Main()
         {
@@ -20,28 +19,7 @@ namespace homework17
             decimal paymentAmount = 30M; //Сумма оплаты проезда
             int threadsCount = 4;
             
-            Thread[] myThreads = new Thread[threadsCount];
-
-            for (int i = 0; i < threadsCount/2; i++)
-            {
-                myThreads[i] = new Thread(() =>
-                {
-                    HistoryLog.WritePaymentHistory();
-                });
-            }
-
-            for (int i = threadsCount/2; i < threadsCount; i++)
-            {
-                myThreads[i] = new Thread(() =>
-                {
-                    HistoryLog.ReadPaymentHystory();
-                });
-            }
-
-            for (int i = 0; i < threadsCount; i++)
-            {
-                myThreads[i].Start();
-            }
+            
 
             Console.WriteLine("Программа - ТРАНСПОРТНАЯ КАРТА\n".AddNewNotification());
             TransportCard transportCard = new TransportCard("Month bus ticket",
@@ -53,6 +31,29 @@ namespace homework17
             //Подписки
             transportCard.ReplenishementEvent += SubscribtionClass.ReplenishmentSubscription;
             transportCard.PaymentEvent += SubscribtionClass.PaymentSubscription;
+            
+            Thread[] myThreads = new Thread[threadsCount];
+
+            for (int i = 0; i < threadsCount/2; i++)
+            {
+                myThreads[i] = new Thread(() =>
+                {
+                    transportCard.Payment(paymentAmount);;
+                });
+            }
+
+            for (int i = threadsCount/2; i < threadsCount; i++)
+            {
+                myThreads[i] = new Thread(() =>
+                {
+                    TransportCard.historyOfTransactions.ToList();
+                });
+            }
+
+            for (int i = 0; i < threadsCount; i++)
+            {
+                myThreads[i].Start();
+            }
 
             transportCard.Replenishment(replenishmentAmount);
             transportCard.Payment(paymentAmount);
