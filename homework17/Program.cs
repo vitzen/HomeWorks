@@ -11,43 +11,37 @@ namespace homework17
 {
     public class Program
     {
-        
-
         public static void Main()
         {
             decimal replenishmentAmount = 100M; //Сумма пополнения
             decimal paymentAmount = 30M; //Сумма оплаты проезда
             int threadsCount = 4;
-            
-            
 
             Console.WriteLine("Программа - ТРАНСПОРТНАЯ КАРТА\n".AddNewNotification());
             TransportCard transportCard = new TransportCard("Month bus ticket",
                 0M,
                 30M,
-                0.1M, 
+                0.1M,
                 30M);
 
             //Подписки
             transportCard.ReplenishementEvent += SubscribtionClass.ReplenishmentSubscription;
             transportCard.PaymentEvent += SubscribtionClass.PaymentSubscription;
-            
+
             Thread[] myThreads = new Thread[threadsCount];
 
-            for (int i = 0; i < threadsCount/2; i++)
+            for (int i = 0; i < threadsCount / 2; i++)
             {
                 myThreads[i] = new Thread(() =>
                 {
-                    transportCard.Payment(paymentAmount);;
+                    transportCard.Payment(paymentAmount);
+                    ;
                 });
             }
 
-            for (int i = threadsCount/2; i < threadsCount; i++)
+            for (int i = threadsCount / 2; i < threadsCount; i++)
             {
-                myThreads[i] = new Thread(() =>
-                {
-                    transportCard.historyOfTransactions.ToArray();
-                });
+                myThreads[i] = new Thread(() => { transportCard.historyOfTransactions.ToArray(); });
             }
 
             for (int i = 0; i < threadsCount; i++)
@@ -75,7 +69,7 @@ namespace homework17
 
             transportCard.ReplenishementEvent -= SubscribtionClass.ReplenishmentSubscription;
             transportCard.PaymentEvent -= SubscribtionClass.PaymentSubscription;
-            
+
             Console.WriteLine(new string('-', 60));
         }
     }
