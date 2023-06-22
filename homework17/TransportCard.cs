@@ -6,7 +6,7 @@ public partial class TransportCard
     public static object _sync = new object();
     
     //Создаем историю платежей
-    public static List<decimal> historyOfTransactions = new List<decimal>();
+    public List<decimal> historyOfTransactions = new List<decimal>();
     
     public delegate void ReplenishmentDelegate(decimal replParam,
         decimal balanceAfterReplenishement, decimal balanceAfterCashbackGift);

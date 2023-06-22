@@ -46,7 +46,7 @@ namespace homework17
             {
                 myThreads[i] = new Thread(() =>
                 {
-                    TransportCard.historyOfTransactions.ToList();
+                    transportCard.historyOfTransactions.ToArray();
                 });
             }
 
