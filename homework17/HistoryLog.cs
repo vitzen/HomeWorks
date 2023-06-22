@@ -27,14 +27,4 @@ public static class HistoryLog
             historyOfTransactions.ToList();
         }
     }
-
-    // public static void WritePaymentHistory(object? obj)
-    // {
-    //     historyOfTransactions.Add(spendingcash);
-    // }
-}
-
-public class A
-{
-    
 }

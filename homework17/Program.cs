@@ -19,29 +19,36 @@ namespace homework17
             decimal replenishmentAmount = 100M; //Сумма пополнения
             decimal paymentAmount = 30M; //Сумма оплаты проезда
             int threadsCount = 4;
-
-            ParameterizedThreadStart writeInHistory = new ParameterizedThreadStart(HistoryLog.WritePaymentHistory);
+            
             Thread[] myThreads = new Thread[threadsCount];
 
-            for (int i = 0; i < threadsCount; i++)
+            for (int i = 0; i < threadsCount/2; i++)
             {
-                myThreads[i] = new Thread(writeInHistory);
+                myThreads[i] = new Thread(() =>
+                {
+                    HistoryLog.WritePaymentHistory();
+                });
+            }
+
+            for (int i = threadsCount/2; i < threadsCount; i++)
+            {
+                myThreads[i] = new Thread(() =>
+                {
+                    HistoryLog.ReadPaymentHystory();
+                });
             }
 
             for (int i = 0; i < threadsCount; i++)
             {
                 myThreads[i].Start();
             }
-            
-            // Semaphore writePaymentSem = new Semaphore(2,2);
-            // Semaphore readPaymentSem = new Semaphore(2,2);
-
 
             Console.WriteLine("Программа - ТРАНСПОРТНАЯ КАРТА\n".AddNewNotification());
             TransportCard transportCard = new TransportCard("Month bus ticket",
                 0M,
                 30M,
-                0.1M, 30M);
+                0.1M, 
+                30M);
 
             //Подписки
             transportCard.ReplenishementEvent += SubscribtionClass.ReplenishmentSubscription;
