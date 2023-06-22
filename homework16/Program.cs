@@ -47,8 +47,10 @@ namespace homework16
             decimal totalSumm = 0;
             int threadsCount = 3;
 
-            //Создаем флаги для потоков
+            //Создаем объект синхронизации
+            object _sync = new object();
 
+            //Создаем флаги для потоков
             AutoResetEvent[] myFlags = new AutoResetEvent[threadsCount];
 
             //Создаем массив потоков и передаем в массив 
@@ -63,11 +65,15 @@ namespace homework16
                         .SelectMany(x => x.Items)
                         .Sum(x => x.Price);
 
-                    totalSumm += sum;
+                    lock (_sync)
+                    {
+                        totalSumm += sum;
+                    }
+
                     Console.WriteLine($"Сумма с итерации {sum}");
                     myFlags[doubler].Set();
                 });
-                
+
                 myFlags[i] = new AutoResetEvent(false);
             }
 
@@ -75,8 +81,6 @@ namespace homework16
             {
                 myThreads[i].Start();
             }
-
-            myThreads.Join();
 
             if (WaitHandle.WaitAll(myFlags, TimeSpan.FromMilliseconds(1000)))
             {
