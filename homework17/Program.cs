@@ -35,7 +35,6 @@ namespace homework17
                 myThreads[i] = new Thread(() =>
                 {
                     transportCard.Payment(paymentAmount);
-                    ;
                 });
             }
 
