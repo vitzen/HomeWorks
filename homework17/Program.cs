@@ -34,13 +34,27 @@ namespace homework17
             {
                 myThreads[i] = new Thread(() =>
                 {
-                    transportCard.Payment(paymentAmount);
+                    lock (_sync)
+                    {
+                        transportCard.Payment(replenishmentAmount);
+                        Console.WriteLine($"Поток {i} отвечает за платеж");
+                    }
                 });
             }
 
             for (int i = threadsCount / 2; i < threadsCount; i++)
             {
-                myThreads[i] = new Thread(() => { transportCard.historyOfTransactions.ToArray(); });
+                myThreads[i] = new Thread(() =>
+                {
+                    //Thread.Sleep(1000);
+                    lock (_sync)
+                    {
+                        Console.WriteLine("Чтение платежа из истории");
+                        var a = transportCard.historyOfTransactions
+                            .Select(x => x.ToString());
+                        Console.WriteLine(String.Join(",", a));
+                    }
+                });
             }
 
             for (int i = 0; i < threadsCount; i++)
@@ -55,11 +69,11 @@ namespace homework17
             transportCard.Payment(paymentAmount);
             transportCard.Payment(paymentAmount);
             transportCard.Payment(paymentAmount);
-
+            
             transportCard.Replenishment(replenishmentAmount);
             transportCard.Payment(paymentAmount);
             transportCard.Payment(paymentAmount);
-
+            
             transportCard.Replenishment(replenishmentAmount);
             transportCard.Replenishment(replenishmentAmount);
             transportCard.Replenishment(replenishmentAmount);

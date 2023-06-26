@@ -23,9 +23,6 @@ public partial class TransportCard
         }
 
         //Запись платежа в историю
-        lock (_sync)
-        {
-            historyOfTransactions.Add(spendingCash);
-        }
+        historyOfTransactions.Add(spendingCash);
     }
 }

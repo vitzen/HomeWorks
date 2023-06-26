@@ -4,20 +4,20 @@ public partial class TransportCard
 {
     //Создаем объект синхронизации для работы потоков
     public static object _sync = new object();
-    
+
     //Создаем историю платежей
     public List<decimal> historyOfTransactions = new List<decimal>();
-    
+
     public delegate void ReplenishmentDelegate(decimal replParam,
         decimal balanceAfterReplenishement, decimal balanceAfterCashbackGift);
 
     public delegate void PaymentDelegate(decimal payParam, decimal balanceAfterPayment);
 
     //Предикат проверки возможности оплаты
-    public Predicate<decimal> _possibleToPayPredicate; 
-    
+    public Predicate<decimal> _possibleToPayPredicate;
+
     //Func для расчета кэшбека при каждом пополнении карты
-    public Func<decimal, decimal> _calculateCashback; 
+    public Func<decimal, decimal> _calculateCashback;
 
     private readonly string _cardName;
     private decimal _moneyBalance = 0;
