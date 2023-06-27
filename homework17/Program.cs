@@ -28,6 +28,9 @@ namespace homework17
             transportCard.ReplenishementEvent += SubscribtionClass.ReplenishmentSubscription;
             transportCard.PaymentEvent += SubscribtionClass.PaymentSubscription;
 
+            //Создаем объект синхронизации для работы потоков
+            object _sync = new object();
+
             Thread[] myThreads = new Thread[threadsCount];
 
             for (int i = 0; i < threadsCount / 2; i++)
@@ -37,7 +40,7 @@ namespace homework17
                     lock (_sync)
                     {
                         transportCard.Payment(replenishmentAmount);
-                        Console.WriteLine($"Поток {i} отвечает за платеж");
+                        Console.WriteLine($"Поток {myThreads[i].CurrentCulture} отвечает за платеж");
                     }
                 });
             }
@@ -46,10 +49,11 @@ namespace homework17
             {
                 myThreads[i] = new Thread(() =>
                 {
-                    //Thread.Sleep(1000);
+                    Thread.Sleep(1000);
+                    Console.WriteLine("Чтение платежа из истории");
+                    
                     lock (_sync)
                     {
-                        Console.WriteLine("Чтение платежа из истории");
                         var a = transportCard.historyOfTransactions
                             .Select(x => x.ToString());
                         Console.WriteLine(String.Join(",", a));
@@ -69,11 +73,11 @@ namespace homework17
             transportCard.Payment(paymentAmount);
             transportCard.Payment(paymentAmount);
             transportCard.Payment(paymentAmount);
-            
+
             transportCard.Replenishment(replenishmentAmount);
             transportCard.Payment(paymentAmount);
             transportCard.Payment(paymentAmount);
-            
+
             transportCard.Replenishment(replenishmentAmount);
             transportCard.Replenishment(replenishmentAmount);
             transportCard.Replenishment(replenishmentAmount);

@@ -2,9 +2,6 @@ namespace homework17;
 
 public partial class TransportCard
 {
-    //Создаем объект синхронизации для работы потоков
-    public static object _sync = new object();
-
     //Создаем историю платежей
     public List<decimal> historyOfTransactions = new List<decimal>();
 
