@@ -29,4 +29,12 @@ class Mathematics
 
         return number * GetFactorialFromNumbers(number - 1);
     }
+
+    // public static void TestParams(params int[] x)
+    // {
+    //     foreach (var VARIABLE in x)
+    //     {
+    //         Console.WriteLine("Строка" + VARIABLE);
+    //     }
+    // }
 }

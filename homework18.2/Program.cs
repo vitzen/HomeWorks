@@ -37,21 +37,33 @@ namespace homework18._2
             Console.WriteLine("Расчет факториала для каждого числа из рандомной последовательности:");
 
             //Создаем Tasks
+
+            var tasks = new List<Task>();
             for (int i = 0; i < tasksCount; i++)
             {
-                Task.Factory.StartNew(() =>
+                var task = Task.Factory.StartNew(() =>
                 {
-                    //lock (_sync)
+                    for (int i = 0; i < FibonachiNumbers.Count; i++)
                     {
-                        for (int i = 0; i < FibonachiNumbers.Count; i++)
+                        int queuNumber;
+                        lock (_sync)
                         {
                             FibonachiNumbers.TryDequeue(out int num);
-                            int res = Mathematics.GetFactorialFromNumbers(num);
-                            Console.WriteLine($"!{num} = {res}");
+                            queuNumber = num;
                         }
+
+                        int res = Mathematics.GetFactorialFromNumbers(queuNumber);
+                        Console.WriteLine($"!{queuNumber} = {res}");
                     }
                 });
+                tasks.Add(task);
             }
+
+            // Mathematics.TestParams(1);
+            // Mathematics.TestParams(1, 2, 3);
+            // Mathematics.TestParams(new [] {5,5});
+
+            Task.WaitAll(tasks.ToArray());
         }
     }
 }
