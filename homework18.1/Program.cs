@@ -29,11 +29,11 @@ namespace homework18._1
             //Создаем объект синхронизации для работы потоков
             object _sync = new object();
 
-            Thread[] myThreads = new Thread[threadsCount];
+            Task<>[] myThreads = new Task[threadsCount];
 
             for (int i = 0; i < threadsCount / 2; i++)
             {
-                myThreads[i] = new Thread(() =>
+                myThreads[i] = new Task(() =>
                 {
                     lock (_sync)
                     {
@@ -45,7 +45,7 @@ namespace homework18._1
 
             for (int i = threadsCount / 2; i < threadsCount; i++)
             {
-                myThreads[i] = new Thread(() =>
+                myThreads[i] = new Task(() =>
                 {
                     Thread.Sleep(1000);
                     Console.WriteLine("Чтение платежа из истории");
