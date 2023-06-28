@@ -11,6 +11,8 @@ namespace homework17
 {
     public class Program
     {
+        public static object _sync = new object();
+        
         public static void Main()
         {
             decimal replenishmentAmount = 100M; //Сумма пополнения
@@ -27,9 +29,6 @@ namespace homework17
             //Подписки
             transportCard.ReplenishementEvent += SubscribtionClass.ReplenishmentSubscription;
             transportCard.PaymentEvent += SubscribtionClass.PaymentSubscription;
-
-            //Создаем объект синхронизации для работы потоков
-            object _sync = new object();
 
             Thread[] myThreads = new Thread[threadsCount];
 
@@ -50,11 +49,13 @@ namespace homework17
             {
                 myThreads[i] = new Thread(() =>
                 {
-                    Thread.Sleep(1000);
-                    Console.WriteLine("Чтение платежа из истории");
+                    //Thread.Sleep(1000);
+                    
 
                     lock (_sync)
                     {
+                        Console.WriteLine("Чтение платежа из истории");
+                        
                         var a = transportCard.historyOfTransactions
                             .Select(x => x.ToString());
                         Console.WriteLine(String.Join(",", a));
