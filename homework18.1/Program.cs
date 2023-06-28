@@ -40,7 +40,9 @@ namespace homework18._1
                     lock (_sync)
                     {
                         transportCard.Payment(replenishmentAmount);
-                        Console.WriteLine($"Таска отвечает за платеж");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine($"<<<Таска отвечает за платеж");
+                        Console.ForegroundColor = ConsoleColor.White;
                     }
                 });
             }
@@ -52,12 +54,13 @@ namespace homework18._1
                     
                     lock (_sync)
                     {
-                        Console.WriteLine("Чтение платежа из истории");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine(">>>Чтение платежа из истории");
+                        Console.ForegroundColor = ConsoleColor.White;
 
                         var a = transportCard.historyOfTransactions
                             .Select(x => x.ToString());
                         Console.WriteLine(String.Join(",", a));
-                        //Thread.Sleep(1000);
                     }
                 });
             }
@@ -67,6 +70,8 @@ namespace homework18._1
                 myTasks[i].Start();
             }
 
+            Task.WaitAll(myTasks);
+            
             transportCard.Replenishment(replenishmentAmount);
             transportCard.Payment(paymentAmount);
             transportCard.Payment(paymentAmount);

@@ -59,10 +59,6 @@ namespace homework18._2
                 tasks.Add(task);
             }
 
-            // Mathematics.TestParams(1);
-            // Mathematics.TestParams(1, 2, 3);
-            // Mathematics.TestParams(new [] {5,5});
-
             Task.WaitAll(tasks.ToArray());
         }
     }
