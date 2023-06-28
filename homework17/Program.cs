@@ -37,10 +37,11 @@ namespace homework17
             {
                 myThreads[i] = new Thread(() =>
                 {
+                    int doubler = i;
                     lock (_sync)
                     {
                         transportCard.Payment(replenishmentAmount);
-                        Console.WriteLine($"Поток {myThreads[i].CurrentCulture} отвечает за платеж");
+                        Console.WriteLine($"Поток отвечает за платеж");
                     }
                 });
             }
@@ -51,7 +52,7 @@ namespace homework17
                 {
                     Thread.Sleep(1000);
                     Console.WriteLine("Чтение платежа из истории");
-                    
+
                     lock (_sync)
                     {
                         var a = transportCard.historyOfTransactions
