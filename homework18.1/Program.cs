@@ -4,16 +4,20 @@ using System.Collections.Generic;
 using System.Text;
 using static homework18._1.TransportCard;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace homework18._1
 {
     public class Program
     {
+        //Создаем объект синхронизации для работы потоков
+        public static object _sync = new object();
+
         public static void Main()
         {
             decimal replenishmentAmount = 100M; //Сумма пополнения
             decimal paymentAmount = 30M; //Сумма оплаты проезда
-            int threadsCount = 4;
+            int tasksCount = 4;
 
             Console.WriteLine("Программа - ТРАНСПОРТНАЯ КАРТА\n".AddNewNotification());
             TransportCard transportCard = new TransportCard("Month bus ticket",
@@ -26,42 +30,41 @@ namespace homework18._1
             transportCard.ReplenishementEvent += SubscribtionClass.ReplenishmentSubscription;
             transportCard.PaymentEvent += SubscribtionClass.PaymentSubscription;
 
-            //Создаем объект синхронизации для работы потоков
-            object _sync = new object();
 
-            Task<>[] myThreads = new Task[threadsCount];
+            var myTasks = new Task[tasksCount];
 
-            for (int i = 0; i < threadsCount / 2; i++)
+            for (int i = 0; i < tasksCount / 2; i++)
             {
-                myThreads[i] = new Task(() =>
+                myTasks[i] = new Task(() =>
                 {
                     lock (_sync)
                     {
                         transportCard.Payment(replenishmentAmount);
-                        Console.WriteLine($"Поток {myThreads[i].CurrentCulture} отвечает за платеж");
+                        Console.WriteLine($"Таска отвечает за платеж");
                     }
                 });
             }
 
-            for (int i = threadsCount / 2; i < threadsCount; i++)
+            for (int i = tasksCount / 2; i < tasksCount; i++)
             {
-                myThreads[i] = new Task(() =>
+                myTasks[i] = new Task(() =>
                 {
-                    Thread.Sleep(1000);
-                    Console.WriteLine("Чтение платежа из истории");
                     
                     lock (_sync)
                     {
+                        Console.WriteLine("Чтение платежа из истории");
+
                         var a = transportCard.historyOfTransactions
                             .Select(x => x.ToString());
                         Console.WriteLine(String.Join(",", a));
+                        //Thread.Sleep(1000);
                     }
                 });
             }
 
-            for (int i = 0; i < threadsCount; i++)
+            for (int i = 0; i < tasksCount; i++)
             {
-                myThreads[i].Start();
+                myTasks[i].Start();
             }
 
             transportCard.Replenishment(replenishmentAmount);
