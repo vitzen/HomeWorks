@@ -65,7 +65,6 @@ namespace homework18._2
             }
            
             Task.WaitAll(tasks.ToArray());
-            
         }
     }
 }
