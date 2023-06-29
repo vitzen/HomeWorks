@@ -5,6 +5,7 @@
 // Измерить время выполнения для однопоточной обработки списка(N=1) и для N=4(степень параллелизма) 
 
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -39,10 +40,12 @@ namespace homework18._2
             //Создаем Tasks
 
             var tasks = new List<Task>();
+           
             for (int i = 0; i < tasksCount; i++)
             {
                 var task = Task.Factory.StartNew(() =>
                 {
+                    var time = Stopwatch.StartNew();
                     for (int i = 0; i < FibonachiNumbers.Count; i++)
                     {
                         int queuNumber;
@@ -55,11 +58,14 @@ namespace homework18._2
                         int res = Mathematics.GetFactorialFromNumbers(queuNumber);
                         Console.WriteLine($"!{queuNumber} = {res}");
                     }
+                    time.Stop();
+                    Console.WriteLine($"Таска отработала за {time.ElapsedMilliseconds} ms");
                 });
                 tasks.Add(task);
             }
-
+           
             Task.WaitAll(tasks.ToArray());
+            
         }
     }
 }
