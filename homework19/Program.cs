@@ -16,7 +16,8 @@ namespace homework19
     public class Program
     {
         //Создаем объект синхронизации для работы потоков
-        public static object _sync = new object();
+        private static object _sync = new object();
+        private static CancellationTokenSource _cancellationTokenSource;
 
         public static void Main()
         {
@@ -36,6 +37,7 @@ namespace homework19
             transportCard.PaymentEvent += SubscribtionClass.PaymentSubscription;
 
 
+            _cancellationTokenSource = new CancellationTokenSource();
             var myTasks = new Task[tasksCount];
 
             for (int i = 0; i < tasksCount / 2; i++)
