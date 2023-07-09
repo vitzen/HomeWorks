@@ -18,13 +18,22 @@ public partial class TransportCard
 
     private readonly string _cardName;
     private decimal _moneyBalance = 0;
+    private decimal _minimalBalance;
+    private decimal _maximalBalance;
     private static decimal _extraCashback;
 
-    public TransportCard(string cardName, decimal moneyBalance, decimal minBalance, decimal calculateCashback,
+    public TransportCard(string cardName, 
+        decimal moneyBalance, 
+        decimal minBalance, 
+        decimal minimalBalance,
+        decimal maximalBalance, 
+        decimal calculateCashback,
         decimal extraCashback)
     {
         _cardName = cardName;
         _moneyBalance = moneyBalance;
+        _minimalBalance = minimalBalance;
+        _maximalBalance = maximalBalance;
         _extraCashback = extraCashback;
         _possibleToPayPredicate = (balance) => balance > minBalance;
         _calculateCashback = (balance) => { return balance *= calculateCashback; };
@@ -39,6 +48,18 @@ public partial class TransportCard
     {
         get => _moneyBalance;
         set => _moneyBalance = value;
+    }
+
+    public decimal MinimalBalance
+    {
+        get => _minimalBalance;
+        set => _minimalBalance = value;
+    }
+
+    public decimal MaximalBalance
+    {
+        get => _maximalBalance;
+        set => _maximalBalance = value;
     }
 
     public static decimal ExtraCashback
