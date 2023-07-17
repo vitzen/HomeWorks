@@ -17,7 +17,7 @@ namespace homework19
     {
         //Создаем объект синхронизации для работы потоков
         private static object _sync = new object();
-        private static CancellationTokenSource _cancellationTokenSource;
+        private static bool _cancellationTokenSource;
 
         public static void Main()
         {
@@ -47,8 +47,13 @@ namespace homework19
             {
                 myTasks[i] = new Task(() =>
                 {
+                    if (_cancellationTokenSource)
+                    {
+                        return;
+                    }
                     lock (_sync)
                     {
+                       
                         transportCard.Payment(replenishmentAmount);
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine($"<<<Таска отвечает за платеж");
