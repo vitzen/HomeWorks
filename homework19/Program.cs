@@ -48,16 +48,7 @@ namespace homework19
                 {
                     lock (_sync)
                     {
-                        try
-                        {
-                            transportCard.Payment(paymentAmount);
-                        }
-
-                        catch (LowBalanceException e)
-                        {
-                            Console.WriteLine(e.Message);
-                        }
-
+                        transportCard.Payment(paymentAmount);
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine($"<<<Таска отвечает за платеж");
                         Console.ForegroundColor = ConsoleColor.White;

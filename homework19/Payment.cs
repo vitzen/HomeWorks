@@ -8,6 +8,7 @@ public partial class TransportCard
     /// <param name="balance"></param>
     /// <param name="spendingCash"></param>
     /// <returns></returns>
+    
     public void Payment(decimal spendingCash)
     {
         if (_possibleToPayPredicate(_moneyBalance))
