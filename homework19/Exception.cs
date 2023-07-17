@@ -1,16 +1,11 @@
 namespace homework19;
 
-public class BalanceRangeException : Exception
+public class LowBalanceException : Exception
 {
-    private decimal _modelVacuum;
-
-    public BalanceRangeException(decimal modelVacuum)
-    {
-        _modelVacuum = modelVacuum;
-    }
-
+    //Console.WriteLine("++++++++++++++++++++++++++++++++++++++++++++");
+    
     public override string ToString()
     {
-        return $"У пылесоса: {_modelVacuum} объема резервуара не достаточно чтобы убрать эту комнату!!!";
+        return $"ДЕНЕГ НЕТ, НО ВЫ ДЕРЖИТЕСЬ!!!";
     }
 }

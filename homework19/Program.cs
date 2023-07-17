@@ -39,7 +39,6 @@ namespace homework19
             transportCard.ReplenishementEvent += SubscribtionClass.ReplenishmentSubscription;
             transportCard.PaymentEvent += SubscribtionClass.PaymentSubscription;
 
-
             //_cancellationTokenSource = new CancellationTokenSource();
             var myTasks = new Task[tasksCount];
 
@@ -49,7 +48,16 @@ namespace homework19
                 {
                     lock (_sync)
                     {
-                        transportCard.Payment(paymentAmount);
+                        try
+                        {
+                            transportCard.Payment(paymentAmount);
+                        }
+
+                        catch (LowBalanceException e)
+                        {
+                            Console.WriteLine(e.Message);
+                        }
+
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine($"<<<Таска отвечает за платеж");
                         Console.ForegroundColor = ConsoleColor.White;
@@ -85,16 +93,20 @@ namespace homework19
             transportCard.Payment(paymentAmount);
             transportCard.Payment(paymentAmount);
             transportCard.Payment(paymentAmount);
-
-            transportCard.Replenishment(replenishmentAmount);
+            transportCard.Payment(paymentAmount);
+            transportCard.Payment(paymentAmount);
             transportCard.Payment(paymentAmount);
             transportCard.Payment(paymentAmount);
 
-            transportCard.Replenishment(replenishmentAmount);
-            transportCard.Replenishment(replenishmentAmount);
-            transportCard.Replenishment(replenishmentAmount);
-            transportCard.Replenishment(replenishmentAmount);
-            transportCard.Replenishment(replenishmentAmount);
+            // transportCard.Replenishment(replenishmentAmount);
+            // transportCard.Payment(paymentAmount);
+            // transportCard.Payment(paymentAmount);
+            //
+            // transportCard.Replenishment(replenishmentAmount);
+            // transportCard.Replenishment(replenishmentAmount);
+            // transportCard.Replenishment(replenishmentAmount);
+            // transportCard.Replenishment(replenishmentAmount);
+            // transportCard.Replenishment(replenishmentAmount);
 
             transportCard.ReplenishementEvent -= SubscribtionClass.ReplenishmentSubscription;
             transportCard.PaymentEvent -= SubscribtionClass.PaymentSubscription;
