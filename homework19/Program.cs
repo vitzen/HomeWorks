@@ -23,7 +23,7 @@ namespace homework19
         {
             decimal replenishmentAmount = 100M; //Сумма пополнения
             decimal paymentAmount = 30M; //Сумма оплаты проезда
-            int tasksCount = 4;
+            int tasksCount = 2;
 
             Console.WriteLine("Программа - ТРАНСПОРТНАЯ КАРТА\n".AddNewNotification());
             TransportCard transportCard = new TransportCard("Month bus ticket",
@@ -40,21 +40,16 @@ namespace homework19
             transportCard.PaymentEvent += SubscribtionClass.PaymentSubscription;
 
 
-            _cancellationTokenSource = new CancellationTokenSource();
+            //_cancellationTokenSource = new CancellationTokenSource();
             var myTasks = new Task[tasksCount];
 
-            for (int i = 0; i < tasksCount / 2; i++)
+            for (int i = 0; i < myTasks.Length / 2; i++)
             {
                 myTasks[i] = new Task(() =>
                 {
-                    if (_cancellationTokenSource)
-                    {
-                        return;
-                    }
                     lock (_sync)
                     {
-                       
-                        transportCard.Payment(replenishmentAmount);
+                        transportCard.Payment(paymentAmount);
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine($"<<<Таска отвечает за платеж");
                         Console.ForegroundColor = ConsoleColor.White;
@@ -62,19 +57,16 @@ namespace homework19
                 });
             }
 
-            for (int i = tasksCount / 2; i < tasksCount; i++)
+            for (int i = 1; i < myTasks.Length; i++)
             {
                 myTasks[i] = new Task(() =>
                 {
                     lock (_sync)
                     {
+                        transportCard.Replenishment(replenishmentAmount);
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine(">>>Чтение платежа из истории");
+                        Console.WriteLine(">>>Таска отвечает за пополнение");
                         Console.ForegroundColor = ConsoleColor.White;
-
-                        var a = transportCard.historyOfTransactions
-                            .Select(x => x.ToString());
-                        Console.WriteLine(String.Join(",", a));
                     }
                 });
             }
@@ -86,31 +78,23 @@ namespace homework19
 
             Task.WaitAll(myTasks);
 
-            try
-            {
-                transportCard.Replenishment(replenishmentAmount);
-                transportCard.Payment(paymentAmount);
-                transportCard.Payment(paymentAmount);
-                transportCard.Payment(paymentAmount);
-                transportCard.Payment(paymentAmount);
-                transportCard.Payment(paymentAmount);
-                transportCard.Payment(paymentAmount);
+            transportCard.Replenishment(replenishmentAmount);
+            transportCard.Payment(paymentAmount);
+            transportCard.Payment(paymentAmount);
+            transportCard.Payment(paymentAmount);
+            transportCard.Payment(paymentAmount);
+            transportCard.Payment(paymentAmount);
+            transportCard.Payment(paymentAmount);
 
-                transportCard.Replenishment(replenishmentAmount);
-                transportCard.Payment(paymentAmount);
-                transportCard.Payment(paymentAmount);
+            transportCard.Replenishment(replenishmentAmount);
+            transportCard.Payment(paymentAmount);
+            transportCard.Payment(paymentAmount);
 
-                transportCard.Replenishment(replenishmentAmount);
-                transportCard.Replenishment(replenishmentAmount);
-                transportCard.Replenishment(replenishmentAmount);
-                transportCard.Replenishment(replenishmentAmount);
-                transportCard.Replenishment(replenishmentAmount);
-            }
-
-            catch (BalanceRangeException e)
-            {
-                Console.WriteLine(e);
-            }
+            transportCard.Replenishment(replenishmentAmount);
+            transportCard.Replenishment(replenishmentAmount);
+            transportCard.Replenishment(replenishmentAmount);
+            transportCard.Replenishment(replenishmentAmount);
+            transportCard.Replenishment(replenishmentAmount);
 
             transportCard.ReplenishementEvent -= SubscribtionClass.ReplenishmentSubscription;
             transportCard.PaymentEvent -= SubscribtionClass.PaymentSubscription;
