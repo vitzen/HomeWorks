@@ -48,10 +48,18 @@ namespace homework19
                 {
                     lock (_sync)
                     {
-                        transportCard.Payment(paymentAmount);
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine($"<<<Таска отвечает за платеж");
-                        Console.ForegroundColor = ConsoleColor.White;
+                        try
+                        {
+                            transportCard.Payment(paymentAmount);
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine($"<<<Таска отвечает за платеж");
+                            Console.ForegroundColor = ConsoleColor.White;
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine($"ОШИБКА {e.Message}");
+                        }
+                        
                     }
                 });
             }

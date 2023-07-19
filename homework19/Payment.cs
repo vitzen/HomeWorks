@@ -9,6 +9,8 @@ public partial class TransportCard
     /// <param name="spendingCash"></param>
     /// <returns></returns>
     
+    
+    
     public void Payment(decimal spendingCash)
     {
         if (_possibleToPayPredicate(_moneyBalance))
@@ -18,7 +20,7 @@ public partial class TransportCard
         }
         else
         {
-            Console.WriteLine($"Недостаточно денег для оплаты проезда, " +
+            throw new Exception($"Недостаточно денег для оплаты проезда, " +
                               $"так как баланс вашей карты составляет: " +
                               $"{_moneyBalance} рублей");
         }
