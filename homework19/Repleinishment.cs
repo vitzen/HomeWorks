@@ -8,14 +8,31 @@ public partial class TransportCard
     /// <param name="???"></param>
     public void Replenishment(decimal addSomeCash)
     {
-        _moneyBalance += addSomeCash;
-        decimal cashbackAmount = _calculateCashback(_moneyBalance);
-        _moneyBalance += cashbackAmount;
+        if (_moneyBalance < _maximalBalance)
+        {
+            _moneyBalance += addSomeCash;
 
-        this.AddSuperCashback(); //Вызываем метод расширения
+            if (_moneyBalance < _maximalBalance)
+            {
+                decimal cashbackAmount = _calculateCashback(_moneyBalance);
+                _moneyBalance += cashbackAmount;
 
-        ReplenishementEvent?.Invoke(addSomeCash,
-            _moneyBalance,
-            cashbackAmount);
+                this.AddSuperCashback(); //Вызываем метод расширения
+
+                ReplenishementEvent?.Invoke(addSomeCash,
+                    _moneyBalance,
+                    cashbackAmount);
+            }
+            else
+            {
+                throw new Exception($"Превышен максимальный лимит вместимости карты" +
+                                    $"Карта не может быть пополнена больше чем на {_maximalBalance} рублей");
+            }
+        }
+        else
+        {
+            throw new Exception($"Превышен максимальный лимит вместимоти карты" +
+                                $"{_moneyBalance} рублей");
+        }
     }
 }

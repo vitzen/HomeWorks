@@ -17,7 +17,7 @@ namespace homework19
     {
         //Создаем объект синхронизации для работы потоков
         private static object _sync = new object();
-        private static bool _cancellationTokenSource;
+        private static CancellationTokenSource _cancellationTokenSource;
 
         public static void Main()
         {
@@ -35,31 +35,38 @@ namespace homework19
                 30M
             );
 
+            _cancellationTokenSource = new CancellationTokenSource();
+
             //Подписки
             transportCard.ReplenishementEvent += SubscribtionClass.ReplenishmentSubscription;
             transportCard.PaymentEvent += SubscribtionClass.PaymentSubscription;
 
-            //_cancellationTokenSource = new CancellationTokenSource();
             var myTasks = new Task[tasksCount];
 
             for (int i = 0; i < myTasks.Length / 2; i++)
             {
                 myTasks[i] = new Task(() =>
                 {
-                    lock (_sync)
+                    if (_cancellationTokenSource.IsCancellationRequested)
                     {
-                        try
+                        return;
+                    }
+                    else
+                    {
+                        lock (_sync)
                         {
-                            transportCard.Payment(paymentAmount);
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine($"<<<Таска отвечает за платеж");
-                            Console.ForegroundColor = ConsoleColor.White;
+                            try
+                            {
+                                transportCard.Payment(paymentAmount);
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine($"<<<Таска отвечает за платеж");
+                                Console.ForegroundColor = ConsoleColor.White;
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine($"ОШИБКА {e.Message}");
+                            }
                         }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine($"ОШИБКА {e.Message}");
-                        }
-                        
                     }
                 });
             }
@@ -68,12 +75,26 @@ namespace homework19
             {
                 myTasks[i] = new Task(() =>
                 {
-                    lock (_sync)
+                    if (_cancellationTokenSource.IsCancellationRequested)
                     {
-                        transportCard.Replenishment(replenishmentAmount);
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine(">>>Таска отвечает за пополнение");
-                        Console.ForegroundColor = ConsoleColor.White;
+                        return;
+                    }
+                    else
+                    {
+                        lock (_sync)
+                        {
+                            try
+                            {
+                                transportCard.Replenishment(replenishmentAmount);
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine(">>>Таска отвечает за пополнение");
+                                Console.ForegroundColor = ConsoleColor.White;
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine($"ОШИБКА {e.Message}");
+                            }
+                        }
                     }
                 });
             }
@@ -87,25 +108,26 @@ namespace homework19
 
             transportCard.Replenishment(replenishmentAmount);
             transportCard.Payment(paymentAmount);
-            transportCard.Payment(paymentAmount);
-            transportCard.Payment(paymentAmount);
-            transportCard.Payment(paymentAmount);
-            transportCard.Payment(paymentAmount);
-            transportCard.Payment(paymentAmount);
-            transportCard.Payment(paymentAmount);
-            transportCard.Payment(paymentAmount);
-            transportCard.Payment(paymentAmount);
-            transportCard.Payment(paymentAmount);
-
-            // transportCard.Replenishment(replenishmentAmount);
+            // transportCard.Payment(paymentAmount);
+            // transportCard.Payment(paymentAmount);
+            // transportCard.Payment(paymentAmount);
+            // transportCard.Payment(paymentAmount);
+            // transportCard.Payment(paymentAmount);
+            // transportCard.Payment(paymentAmount);
+            // transportCard.Payment(paymentAmount);
             // transportCard.Payment(paymentAmount);
             // transportCard.Payment(paymentAmount);
             //
             // transportCard.Replenishment(replenishmentAmount);
-            // transportCard.Replenishment(replenishmentAmount);
-            // transportCard.Replenishment(replenishmentAmount);
-            // transportCard.Replenishment(replenishmentAmount);
-            // transportCard.Replenishment(replenishmentAmount);
+            // transportCard.Payment(paymentAmount);
+            // transportCard.Payment(paymentAmount);
+
+            transportCard.Replenishment(replenishmentAmount);
+            transportCard.Replenishment(replenishmentAmount);
+            transportCard.Replenishment(replenishmentAmount);
+            transportCard.Replenishment(replenishmentAmount);
+            transportCard.Replenishment(replenishmentAmount);
+            transportCard.Replenishment(replenishmentAmount);
 
             transportCard.ReplenishementEvent -= SubscribtionClass.ReplenishmentSubscription;
             transportCard.PaymentEvent -= SubscribtionClass.PaymentSubscription;
