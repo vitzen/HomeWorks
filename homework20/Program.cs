@@ -21,12 +21,12 @@ namespace homework20
 {
     class Program
     {
+        private static CancellationTokenSource _cancellationTokenSource;
+
         static void Main(string[] args)
         {
             //Создаем объект Cancelation Token
-            CancellationTokenSource _cts = new CancellationTokenSource();
-
-            
+            _cancellationTokenSource = new CancellationTokenSource();
 
             string[] _url = new string[]
             {
@@ -58,21 +58,21 @@ namespace homework20
             {
                 StringBuilder sb = new StringBuilder();
                 var time = Stopwatch.StartNew();
-            
+
                 foreach (var url in _url)
                 {
-                    if (_cts.IsCancellationRequested)
+                    if (_cancellationTokenSource.IsCancellationRequested)
                     {
                         sb.AppendLine("Была запрошена отмена операции.");
                         break;
                     }
-            
+
                     var result = await LoadDataAsync(url);
                     sb.AppendLine($"{url}: {result}");
                 }
-            
+
                 time.Stop();
-            
+
                 sb.AppendLine($"TOTAL time: {time.ElapsedMilliseconds} ms");
                 return sb.ToString();
             }
