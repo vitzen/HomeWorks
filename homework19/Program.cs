@@ -15,7 +15,7 @@ namespace homework19
 {
     public class Program
     {
-        //Создаем объект синхронизации для работы потоков
+        //Создаем объект синхронизации и Cancelation Token для работы потоков
         private static object _sync = new object();
         private static CancellationTokenSource _cancellationTokenSource;
 
@@ -24,6 +24,7 @@ namespace homework19
             decimal replenishmentAmount = 100M; //Сумма пополнения
             decimal paymentAmount = 30M; //Сумма оплаты проезда
             int tasksCount = 2;
+            bool inputFromUser = false;
 
             Console.WriteLine("Программа - ТРАНСПОРТНАЯ КАРТА\n".AddNewNotification());
             TransportCard transportCard = new TransportCard("Month bus ticket",
@@ -40,6 +41,39 @@ namespace homework19
             //Подписки
             transportCard.ReplenishementEvent += SubscribtionClass.ReplenishmentSubscription;
             transportCard.PaymentEvent += SubscribtionClass.PaymentSubscription;
+
+            do
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Для отмены  одной из Task's нажмите 1 \n" +
+                                  "Для отмены всех Task's нажмите 2 \n");
+                Console.ForegroundColor = ConsoleColor.White;
+
+                string inputSymbol = Console.ReadLine();
+                bool input = Int32.TryParse(inputSymbol, out int outputElement);
+                if (!input)
+                {
+                    break;
+                }
+                else
+                {
+                    switch (outputElement)
+                    {
+                        case 1: break;
+                        case 2: break;
+                        default: break;
+                    }
+                }
+            } while (inputFromUser == false);
+
+            while (expression)
+            {
+                
+            }
+            
+            
+            
+
 
             var myTasks = new Task[tasksCount];
 
@@ -108,21 +142,12 @@ namespace homework19
 
             transportCard.Replenishment(replenishmentAmount);
             transportCard.Payment(paymentAmount);
-            // transportCard.Payment(paymentAmount);
-            // transportCard.Payment(paymentAmount);
-            // transportCard.Payment(paymentAmount);
-            // transportCard.Payment(paymentAmount);
-            // transportCard.Payment(paymentAmount);
-            // transportCard.Payment(paymentAmount);
-            // transportCard.Payment(paymentAmount);
-            // transportCard.Payment(paymentAmount);
-            // transportCard.Payment(paymentAmount);
-            //
-            // transportCard.Replenishment(replenishmentAmount);
-            // transportCard.Payment(paymentAmount);
-            // transportCard.Payment(paymentAmount);
-
-            transportCard.Replenishment(replenishmentAmount);
+            transportCard.Payment(paymentAmount);
+            transportCard.Payment(paymentAmount);
+            transportCard.Payment(paymentAmount);
+            transportCard.Payment(paymentAmount);
+            transportCard.Payment(paymentAmount);
+            transportCard.Payment(paymentAmount);
             transportCard.Replenishment(replenishmentAmount);
             transportCard.Replenishment(replenishmentAmount);
             transportCard.Replenishment(replenishmentAmount);
