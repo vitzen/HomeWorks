@@ -13,6 +13,7 @@ using System;
 using System.IO;
 using System.Net.Mime;
 using System.Reflection;
+using System.Text;
 
 namespace homework21
 {
@@ -46,14 +47,19 @@ namespace homework21
             }
 
 
-            static void WriteByStreem()
+            async Task WriteByStream(string fileName)
             {
-                using (FileStream filestream = File.Open())
+                string content = "my super content";
+                using (FileStream stream = File.Open(fileName, FileMode.OpenOrCreate))
                 {
+                    var bytes = Encoding.Default.GetBytes(content);
+                    var myBytes = new byte[] { 19, 54, 23, 4, 5 };
+
+                    var buffer = myBytes.Concat(bytes.Concat(myBytes)).ToArray();
+
+                    await stream.WriteAsync(buffer, 0, buffer.Length);
                 }
             }
-
-            // Console.WriteLine(String.Join(",", Content.));
         }
     }
 }
