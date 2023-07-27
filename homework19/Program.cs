@@ -37,6 +37,7 @@ namespace homework19
             );
 
             _cancellationTokenSource = new CancellationTokenSource();
+            CancellationToken token = _cancellationTokenSource.Token;
 
             //Подписки
             transportCard.ReplenishementEvent += SubscribtionClass.ReplenishmentSubscription;
@@ -68,12 +69,7 @@ namespace homework19
 
             while (expression)
             {
-                
             }
-            
-            
-            
-
 
             var myTasks = new Task[tasksCount];
 
@@ -81,12 +77,13 @@ namespace homework19
             {
                 myTasks[i] = new Task(() =>
                 {
-                    if (_cancellationTokenSource.IsCancellationRequested)
+                    
+                    
                     {
-                        return;
-                    }
-                    else
-                    {
+                        do
+                        {
+                            
+                        } while (_cancellationTokenSource.IsCancellationRequested);
                         lock (_sync)
                         {
                             try
@@ -109,14 +106,11 @@ namespace homework19
             {
                 myTasks[i] = new Task(() =>
                 {
-                    if (_cancellationTokenSource.IsCancellationRequested)
-                    {
-                        return;
-                    }
-                    else
+                    do
                     {
                         lock (_sync)
                         {
+                            Task.Delay(5000);
                             try
                             {
                                 transportCard.Replenishment(replenishmentAmount);
@@ -128,9 +122,12 @@ namespace homework19
                             {
                                 Console.WriteLine($"ОШИБКА {e.Message}");
                             }
+                            
+                            
                         }
-                    }
+                    } while (token.IsCancellationRequested);
                 });
+                
             }
 
             for (int i = 0; i < tasksCount; i++)
@@ -140,19 +137,19 @@ namespace homework19
 
             Task.WaitAll(myTasks);
 
-            transportCard.Replenishment(replenishmentAmount);
-            transportCard.Payment(paymentAmount);
-            transportCard.Payment(paymentAmount);
-            transportCard.Payment(paymentAmount);
-            transportCard.Payment(paymentAmount);
-            transportCard.Payment(paymentAmount);
-            transportCard.Payment(paymentAmount);
-            transportCard.Payment(paymentAmount);
-            transportCard.Replenishment(replenishmentAmount);
-            transportCard.Replenishment(replenishmentAmount);
-            transportCard.Replenishment(replenishmentAmount);
-            transportCard.Replenishment(replenishmentAmount);
-            transportCard.Replenishment(replenishmentAmount);
+            // transportCard.Replenishment(replenishmentAmount);
+            // transportCard.Payment(paymentAmount);
+            // transportCard.Payment(paymentAmount);
+            // transportCard.Payment(paymentAmount);
+            // transportCard.Payment(paymentAmount);
+            // transportCard.Payment(paymentAmount);
+            // transportCard.Payment(paymentAmount);
+            // transportCard.Payment(paymentAmount);
+            // transportCard.Replenishment(replenishmentAmount);
+            // transportCard.Replenishment(replenishmentAmount);
+            // transportCard.Replenishment(replenishmentAmount);
+            // transportCard.Replenishment(replenishmentAmount);
+            // transportCard.Replenishment(replenishmentAmount);
 
             transportCard.ReplenishementEvent -= SubscribtionClass.ReplenishmentSubscription;
             transportCard.PaymentEvent -= SubscribtionClass.PaymentSubscription;
