@@ -36,6 +36,7 @@ namespace homework19
                 30M
             );
 
+            //Создаем объект cancelation token
             _cancellationTokenSource = new CancellationTokenSource();
             CancellationToken token = _cancellationTokenSource.Token;
 
@@ -55,7 +56,7 @@ namespace homework19
                     {
                         lock (_sync)
                         {
-                            Task.Delay(5000);
+                            Task.Delay(5);
                             try
                             {
                                 transportCard.Replenishment(replenishmentAmount);
@@ -68,10 +69,10 @@ namespace homework19
                                 Console.WriteLine($"ОШИБКА {e.Message}");
                             }
                         }
-
+                        
                         lock (_sync)
                         {
-                            Task.Delay(5000);
+                            Task.Delay(5);
                             try
                             {
                                 transportCard.Payment(paymentAmount);
@@ -85,7 +86,7 @@ namespace homework19
                             }
                         }
                     } while (token.IsCancellationRequested);
-                });
+                }, token);
             }
 
             for (int i = 0; i < tasksCount; i++)
