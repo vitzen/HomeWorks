@@ -36,7 +36,7 @@ namespace homework19
                 30M
             );
 
-            //Создаем объект cancelation token
+            //Создаем объект cancelation token и сам токен
             _cancellationTokenSource = new CancellationTokenSource();
             CancellationToken token = _cancellationTokenSource.Token;
 
@@ -54,9 +54,39 @@ namespace homework19
                 {
                     do
                     {
+                        do
+                        {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine("Для отмены  одной из Task's нажмите 1 \n" +
+                                              "Для отмены всех Task's нажмите 2 \n");
+                            Console.ForegroundColor = ConsoleColor.White;
+
+                            var tokenStatus = false;
+
+                            string inputSymbol = Console.ReadLine();
+                            bool input = Int32.TryParse(inputSymbol, out int outputElement);
+                            if (!input)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                switch (outputElement)
+                                {
+                                    case 1:
+                                        tokenStatus = token.IsCancellationRequested == true;
+                                        break;
+                                    case 2: tokenStatus = token.IsCancellationRequested == true;
+                                        break;
+                                    default: break;
+                                }
+                            }
+                        } while (inputFromUser == false);
+
                         lock (_sync)
                         {
-                            Task.Delay(5);
+                            //Создаем задержку для имитации долго работы таски
+                            Task.Delay(5000);
                             try
                             {
                                 transportCard.Replenishment(replenishmentAmount);
@@ -69,10 +99,11 @@ namespace homework19
                                 Console.WriteLine($"ОШИБКА {e.Message}");
                             }
                         }
-                        
+
                         lock (_sync)
                         {
-                            Task.Delay(5);
+                            //Создаем задержку для имитации долго работы таски
+                            Task.Delay(5000);
                             try
                             {
                                 transportCard.Payment(paymentAmount);
@@ -85,14 +116,20 @@ namespace homework19
                                 Console.WriteLine($"ОШИБКА {e.Message}");
                             }
                         }
-                    } while (token.IsCancellationRequested);
+                    } while (!token.IsCancellationRequested);
                 }, token);
             }
 
-            for (int i = 0; i < tasksCount; i++)
+            for (int i = 0;
+                 i < tasksCount;
+                 i++)
             {
                 myTasks[i].Start();
             }
+
+            //Отмена всех тасок
+            _cancellationTokenSource.Cancel();
+            _cancellationTokenSource.Dispose();
 
             Task.WaitAll(myTasks);
 
