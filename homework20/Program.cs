@@ -27,6 +27,7 @@ namespace homework20
         {
             //Создаем объект Cancelation Token
             _cancellationTokenSource = new CancellationTokenSource();
+            CancellationToken token = _cancellationTokenSource.Token;
 
             string[] _url = new string[]
             {
@@ -36,29 +37,13 @@ namespace homework20
                 "http://msdn.com"
             };
 
-            // string LoadAllData()
-            // {
-            //     StringBuilder sb = new StringBuilder();
-            //     var time = Stopwatch.StartNew();
-            //
-            //     // sync var 1
-            //     foreach (var url in _url)
-            //     {
-            //         var result = LoadData(url);
-            //         sb.AppendLine($"{url}: {result}");
-            //     }
-            //
-            //     time.Stop();
-            //     sb.AppendLine($"TOTAL time: {time.ElapsedMilliseconds}ms");
-            //     return sb.ToString();
-            // }
-
-
+            var resultString = "";
+            
             async Task<string> LoadAllDataByTasks()
             {
                 StringBuilder sb = new StringBuilder();
                 var time = Stopwatch.StartNew();
-
+            
                 foreach (var url in _url)
                 {
                     if (_cancellationTokenSource.IsCancellationRequested)
@@ -66,54 +51,43 @@ namespace homework20
                         sb.AppendLine("Была запрошена отмена операции.");
                         break;
                     }
-
-                    var result = await LoadDataAsync(url);
-                    sb.AppendLine($"{url}: {result}");
+            
+                    resultString = await LoadDataAsync(url);
+                    sb.AppendLine($"{url}: {resultString}");
                 }
-
+            
                 time.Stop();
-
+            
                 sb.AppendLine($"TOTAL time: {time.ElapsedMilliseconds} ms");
                 return sb.ToString();
             }
-
-
-            // Метод загрузки данных по URL
-            // string LoadData(string url)
-            // {
-            //     var time = Stopwatch.StartNew();
-            //     var webClient = new WebClient();
-            //     try
-            //     {
-            //         var result = webClient.DownloadString(url);
-            //         time.Stop();
-            //         return $"SIZE:{result.Length}. TIME:{time.ElapsedMilliseconds} ms";
-            //     }
-            //     catch (WebException e)
-            //     {
-            //         return $"Error load {url}. {e.Message}";
-            //     }
-            // }
-
+            
+            //Отмена всех тасок
+            _cancellationTokenSource.Cancel();
+            _cancellationTokenSource.Dispose();
+            
+            
             async Task<string> LoadDataAsync(string url)
             {
                 var time = Stopwatch.StartNew();
                 var webClient = new WebClient();
                 try
                 {
-                    var result = await webClient.DownloadStringTaskAsync(url);
+                    resultString = await webClient.DownloadStringTaskAsync(url);
                     time.Stop();
-                    return $"SIZE:{result.Length}. TIME:{time.ElapsedMilliseconds} ms";
+                    return $"SIZE:{resultString.Length}. TIME:{time.ElapsedMilliseconds} ms";
                 }
                 catch (WebException e)
                 {
                     return $"Error load {url}. {e.Message}";
                 }
             }
-
+            
             var a = LoadAllDataByTasks();
             Console.WriteLine(String.Join(",", a));
             Console.ReadKey();
+
+            
         }
     }
 }
