@@ -46,159 +46,91 @@ namespace homework19
 
             //Создаем массив Тасок, оборачиваем таски в LOCK, обрабатываем исключения,
             //и передаем Cancelation Token в каждую таску
-            // var myTasks = new Task[tasksCount];
-            //
-            // for (int i = 0; i < tasksCount; i++)
-            // {
-            //     myTasks[i] = new Task(() =>
-            //     {
-            //         do
-            //         {
-            //             do
-            //             {
-            //                 Console.ForegroundColor = ConsoleColor.Yellow;
-            //                 Console.WriteLine("Для отмены  одной из Task's нажмите 1 \n" +
-            //                                   "Для отмены всех Task's нажмите 2 \n");
-            //                 Console.ForegroundColor = ConsoleColor.White;
-            //
-            //                 var tokenStatus = false;
-            //
-            //                 string inputSymbol = Console.ReadLine();
-            //                 bool input = Int32.TryParse(inputSymbol, out int outputElement);
-            //                 if (!input)
-            //                 {
-            //                     break;
-            //                 }
-            //                 else
-            //                 {
-            //                     switch (outputElement)
-            //                     {
-            //                         case 1:
-            //                             tokenStatus = token.IsCancellationRequested == true;
-            //                             break;
-            //                         case 2: tokenStatus = token.IsCancellationRequested == true;
-            //                             break;
-            //                         default: break;
-            //                     }
-            //                 }
-            //             } while (inputFromUser == false);
-            //
-            //             lock (_sync)
-            //             {
-            //                 //Создаем задержку для имитации долго работы таски
-            //                 Task.Delay(5000);
-            //                 try
-            //                 {
-            //                     transportCard.Replenishment(replenishmentAmount);
-            //                     Console.ForegroundColor = ConsoleColor.Green;
-            //                     Console.WriteLine(">>>Таска отвечает за пополнение");
-            //                     Console.ForegroundColor = ConsoleColor.White;
-            //                 }
-            //                 catch (Exception e)
-            //                 {
-            //                     Console.WriteLine($"ОШИБКА {e.Message}");
-            //                 }
-            //             }
-            //
-            //             lock (_sync)
-            //             {
-            //                 //Создаем задержку для имитации долго работы таски
-            //                 Task.Delay(5000);
-            //                 try
-            //                 {
-            //                     transportCard.Payment(paymentAmount);
-            //                     Console.ForegroundColor = ConsoleColor.Red;
-            //                     Console.WriteLine($"<<<Таска отвечает за платеж");
-            //                     Console.ForegroundColor = ConsoleColor.White;
-            //                 }
-            //                 catch (Exception e)
-            //                 {
-            //                     Console.WriteLine($"ОШИБКА {e.Message}");
-            //                 }
-            //             }
-            //         } while (!token.IsCancellationRequested);
-            //     }, token);
-            // }
-            //
-            // for (int i = 0;
-            //      i < tasksCount;
-            //      i++)
-            // {
-            //     myTasks[i].Start();
-            // }
-            //
-            // //Отмена всех тасок
-            // _cancellationTokenSource.Cancel();
-            // _cancellationTokenSource.Dispose();
-            //
-            // Task.WaitAll(myTasks);
             var myTasks = new Task[tasksCount];
-            Parallel.ForEach(myTasks, task =>
+
+            for (int i = 0; i < tasksCount; i++)
             {
-                do
+                myTasks[i] = new Task(() =>
                 {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine("Для отмены  одной из Task's нажмите 1 \n" +
-                                      "Для отмены всех Task's нажмите 2 \n");
-                    Console.ForegroundColor = ConsoleColor.White;
-                
-                    var tokenStatus = false;
-                
-                    string inputSymbol = Console.ReadLine();
-                    bool input = Int32.TryParse(inputSymbol, out int outputElement);
-                    if (!input)
+                    do
                     {
-                        break;
-                    }
-                    else
-                    {
-                        switch (outputElement)
+                        lock (_sync)
                         {
-                            case 1:
-                                tokenStatus = token.IsCancellationRequested == true;
-                                break;
-                            case 2: tokenStatus = token.IsCancellationRequested == true;
-                                break;
-                            default: break;
+                            //Создаем задержку для имитации долго работы таски
+                            Task.Delay(5000);
+                            try
+                            {
+                                transportCard.Replenishment(replenishmentAmount);
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine(">>>Таска отвечает за пополнение");
+                                Console.ForegroundColor = ConsoleColor.White;
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine($"ОШИБКА {e.Message}");
+                            }
                         }
-                    }
-                } while (inputFromUser == false);
-                
-                lock (_sync)
+
+                        lock (_sync)
+                        {
+                            //Создаем задержку для имитации долго работы таски
+                            Task.Delay(5000);
+                            try
+                            {
+                                transportCard.Payment(paymentAmount);
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine($"<<<Таска отвечает за платеж");
+                                Console.ForegroundColor = ConsoleColor.White;
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine($"ОШИБКА {e.Message}");
+                            }
+                        }
+                    } while (!token.IsCancellationRequested);
+                }, token);
+            }
+
+            for (int i = 0; i < tasksCount; i++)
+            {
+                myTasks[i].Start();
+            }
+
+            //Отмена всех тасок
+            _cancellationTokenSource.Cancel();
+            _cancellationTokenSource.Dispose();
+
+            Task.WaitAll(myTasks);
+
+
+            do
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Для отмены  одной из Task's нажмите 1 \n" +
+                                  "Для отмены всех Task's нажмите 2 \n");
+                Console.ForegroundColor = ConsoleColor.White;
+            
+                var tokenStatus = false;
+            
+                string inputSymbol = Console.ReadLine();
+                bool input = Int32.TryParse(inputSymbol, out int outputElement);
+                if (!input)
                 {
-                    //Создаем задержку для имитации долго работы таски
-                    Task.Delay(5000);
-                    try
+                    break;
+                }
+                else
+                {
+                    switch (outputElement)
                     {
-                        transportCard.Replenishment(replenishmentAmount);
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine(">>>Таска отвечает за пополнение");
-                        Console.ForegroundColor = ConsoleColor.White;
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine($"ОШИБКА {e.Message}");
+                        case 1:
+                            tokenStatus = token.IsCancellationRequested == true;
+                            break;
+                        case 2: tokenStatus = token.IsCancellationRequested == true;
+                            break;
+                        default: break;
                     }
                 }
-                
-                lock (_sync)
-                {
-                    //Создаем задержку для имитации долго работы таски
-                    Task.Delay(5000);
-                    try
-                    {
-                        transportCard.Payment(paymentAmount);
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine($"<<<Таска отвечает за платеж");
-                        Console.ForegroundColor = ConsoleColor.White;
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine($"ОШИБКА {e.Message}");
-                    }
-                }
-                
-            });
+            } while (inputFromUser == false);
 
             transportCard.ReplenishementEvent -= SubscribtionClass.ReplenishmentSubscription;
             transportCard.PaymentEvent -= SubscribtionClass.PaymentSubscription;
