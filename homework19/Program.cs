@@ -102,7 +102,7 @@ namespace homework19
 
             Task.WaitAll(myTasks);
 
-
+            // Блок кода для ожидания вызова cancelation token
             do
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
