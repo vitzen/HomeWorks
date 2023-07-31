@@ -17,7 +17,6 @@ namespace homework19
     {
         //Создаем объект синхронизации и Cancelation Token для работы потоков
         private static object _sync = new object();
-        private static CancellationTokenSource _cancellationTokenSource;
 
         public static void Main()
         {
@@ -37,8 +36,10 @@ namespace homework19
             );
 
             //Создаем объект cancelation token и сам токен
-            _cancellationTokenSource = new CancellationTokenSource();
-            CancellationToken token = _cancellationTokenSource.Token;
+            using var cancellationTokenSourceOfPayment = new CancellationTokenSource();
+            using var cancellationTokenSourceOfReplenishment = new CancellationTokenSource();
+            CancellationToken paymentToken = cancellationTokenSourceOfPayment.Token;
+            CancellationToken replenishmentToken = cancellationTokenSourceOfReplenishment.Token;
 
             //Подписки
             transportCard.ReplenishementEvent += SubscribtionClass.ReplenishmentSubscription;
@@ -48,7 +49,7 @@ namespace homework19
             //и передаем Cancelation Token в каждую таску
             var myTasks = new Task[tasksCount];
 
-            for (int i = 0; i < tasksCount; i++)
+            for (int i = 0; i < tasksCount / 2; i++)
             {
                 myTasks[i] = new Task(() =>
                 {
@@ -57,7 +58,9 @@ namespace homework19
                         lock (_sync)
                         {
                             //Создаем задержку для имитации долго работы таски
-                            Task.Delay(5000);
+                            //Console.WriteLine(new string('1', 60));
+                            Task.Delay(5000).Wait();
+                            //Console.WriteLine(new string('2', 60));
                             try
                             {
                                 transportCard.Replenishment(replenishmentAmount);
@@ -70,11 +73,23 @@ namespace homework19
                                 Console.WriteLine($"ОШИБКА {e.Message}");
                             }
                         }
+                        
+                    } while (!replenishmentToken.IsCancellationRequested);
+                }, replenishmentToken);
+            }
 
+            for (int i = tasksCount / 2; i < tasksCount; i++)
+            {
+                myTasks[i] = new Task(() =>
+                {
+                    do
+                    {
                         lock (_sync)
                         {
                             //Создаем задержку для имитации долго работы таски
-                            Task.Delay(5000);
+                            //Console.WriteLine(new string('3', 60));
+                            Task.Delay(5000).Wait();
+                            //Console.WriteLine(new string('4', 60));
                             try
                             {
                                 transportCard.Payment(paymentAmount);
@@ -87,31 +102,24 @@ namespace homework19
                                 Console.WriteLine($"ОШИБКА {e.Message}");
                             }
                         }
-                    } while (!token.IsCancellationRequested);
-                }, token);
+                    } while (!paymentToken.IsCancellationRequested);
+                }, paymentToken);
             }
-
+            
             for (int i = 0; i < tasksCount; i++)
             {
                 myTasks[i].Start();
             }
 
-            //Отмена всех тасок
-            _cancellationTokenSource.Cancel();
-            _cancellationTokenSource.Dispose();
-
-            Task.WaitAll(myTasks);
-
             // Блок кода для ожидания вызова cancelation token
             do
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("Для отмены  одной из Task's нажмите 1 \n" +
-                                  "Для отмены всех Task's нажмите 2 \n");
+                Console.WriteLine("Для отмены  платежной таски нажмите 1 \n" +
+                                  "Для отмены таски пополнения нажмите 2 \n" +
+                                  "Для отмены обоих тасок");
                 Console.ForegroundColor = ConsoleColor.White;
-            
-                var tokenStatus = false;
-            
+
                 string inputSymbol = Console.ReadLine();
                 bool input = Int32.TryParse(inputSymbol, out int outputElement);
                 if (!input)
@@ -123,14 +131,21 @@ namespace homework19
                     switch (outputElement)
                     {
                         case 1:
-                            tokenStatus = token.IsCancellationRequested == true;
+                            cancellationTokenSourceOfPayment.Cancel();
                             break;
-                        case 2: tokenStatus = token.IsCancellationRequested == true;
+                        case 2:
+                            cancellationTokenSourceOfReplenishment.Cancel();
+                            break;
+                        case 3:
+                            cancellationTokenSourceOfPayment.Cancel();
+                            cancellationTokenSourceOfReplenishment.Cancel();
                             break;
                         default: break;
                     }
                 }
-            } while (inputFromUser == false);
+            } while (true);
+            
+            Task.WaitAll(myTasks);
 
             transportCard.ReplenishementEvent -= SubscribtionClass.ReplenishmentSubscription;
             transportCard.PaymentEvent -= SubscribtionClass.PaymentSubscription;
