@@ -29,7 +29,7 @@ namespace homework20
             _cancellationTokenSource = new CancellationTokenSource();
             CancellationToken token = _cancellationTokenSource.Token;
 
-            string[] _url = new string[]
+            string[] urlsToDownloads = new string[]
             {
                 "http://yandex.ru",
                 "http://google.ru",
@@ -37,13 +37,14 @@ namespace homework20
                 "http://msdn.com"
             };
 
-            
-            async Task<string> LoadAllDataByTasks()
+            string LoadAllDataByTasks(string[] urls)
             {
                 StringBuilder sb = new StringBuilder();
                 var time = Stopwatch.StartNew();
 
-                foreach (var url in _url)
+                List<Task<string>> listOfTasks = new List<Task<string>>();
+
+                foreach (var url in urls)
                 {
                     if (_cancellationTokenSource.IsCancellationRequested)
                     {
@@ -51,26 +52,36 @@ namespace homework20
                         break;
                     }
 
-                    var result = await LoadDataAsync(url);
-                    sb.AppendLine($"{url}: {result}");
+                    using var resultTask = LoadDataAsync(url, token);
+                    listOfTasks.Add(resultTask);
+                    resultTask.Start();
+                    //sb.AppendLine($"{url}:");
                 }
 
+                var indexOfTask = Task.WaitAny(listOfTasks.ToArray());
+                _cancellationTokenSource.Cancel();
+
                 time.Stop();
+
+
+                var result = listOfTasks[indexOfTask].Result;
+                sb.AppendLine(($"{result}"));
 
                 sb.AppendLine($"TOTAL time: {time.ElapsedMilliseconds} ms");
                 return sb.ToString();
             }
 
-
-            async Task<string> LoadDataAsync(string url)
+            async Task<string> LoadDataAsync(string url, CancellationToken token)
             {
                 var time = Stopwatch.StartNew();
                 var webClient = new WebClient();
                 try
                 {
+                    token.Register(webClient.CancelAsync);
                     var result = await webClient.DownloadStringTaskAsync(url);
+
                     time.Stop();
-                    return $"SIZE:{result.Length}. TIME:{time.ElapsedMilliseconds} ms";
+                    return $"SIZE:{result.Length}. TIME:{time.ElapsedMilliseconds} ms {url}";
                 }
                 catch (WebException e)
                 {
@@ -78,7 +89,7 @@ namespace homework20
                 }
             }
 
-            var a = LoadAllDataByTasks().ToString();
+            //var a = LoadAllDataByTasks().ToString();
             // Console.WriteLine(String.Join(",", a));
             // Console.ReadKey();
 
