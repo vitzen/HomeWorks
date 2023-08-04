@@ -57,10 +57,7 @@ namespace homework19
                     {
                         lock (_sync)
                         {
-                            //Создаем задержку для имитации долго работы таски
-                            //Console.WriteLine(new string('1', 60));
                             Task.Delay(5000).Wait();
-                            //Console.WriteLine(new string('2', 60));
                             try
                             {
                                 transportCard.Replenishment(replenishmentAmount);
@@ -73,7 +70,6 @@ namespace homework19
                                 Console.WriteLine($"ОШИБКА {e.Message}");
                             }
                         }
-                        
                     } while (!replenishmentToken.IsCancellationRequested);
                 }, replenishmentToken);
             }
@@ -86,10 +82,7 @@ namespace homework19
                     {
                         lock (_sync)
                         {
-                            //Создаем задержку для имитации долго работы таски
-                            //Console.WriteLine(new string('3', 60));
                             Task.Delay(5000).Wait();
-                            //Console.WriteLine(new string('4', 60));
                             try
                             {
                                 transportCard.Payment(paymentAmount);
@@ -105,19 +98,19 @@ namespace homework19
                     } while (!paymentToken.IsCancellationRequested);
                 }, paymentToken);
             }
-            
+
             for (int i = 0; i < tasksCount; i++)
             {
                 myTasks[i].Start();
             }
 
-            // Блок кода для ожидания вызова cancelation token
+            // Блок кода для ожидания вызова с клавиатуры cancelation token
             do
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("Для отмены  платежной таски нажмите 1 \n" +
-                                  "Для отмены таски пополнения нажмите 2 \n" +
-                                  "Для отмены обоих тасок");
+                Console.WriteLine("Для отмены платежной таски введите с клавиатуры 1 \n" +
+                                  "Для отмены таски пополнения введите с клавиатуры 2 \n" +
+                                  "Для отмены обоих тасок введите с клавиатуры 3");
                 Console.ForegroundColor = ConsoleColor.White;
 
                 string inputSymbol = Console.ReadLine();
@@ -144,7 +137,7 @@ namespace homework19
                     }
                 }
             } while (true);
-            
+
             Task.WaitAll(myTasks);
 
             transportCard.ReplenishementEvent -= SubscribtionClass.ReplenishmentSubscription;
