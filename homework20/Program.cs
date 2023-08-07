@@ -52,10 +52,10 @@ namespace homework20
                         break;
                     }
 
-                    using var resultTask = LoadDataAsync(url, token);
+                    var resultTask = LoadDataAsync(url, token);
 
                     listOfTasks.Add(resultTask);
-                    resultTask.Start();
+                    //resultTask.Start();
 
                     sb.AppendLine($"{url}:");
                 }
@@ -76,7 +76,7 @@ namespace homework20
             async Task<string> LoadDataAsync(string url, CancellationToken token)
             {
                 var time = Stopwatch.StartNew();
-                var webClient = new WebClient();
+                using var webClient = new WebClient();
                 try
                 {
                     token.Register(webClient.CancelAsync);
@@ -91,7 +91,9 @@ namespace homework20
                 }
             }
 
-            LoadAllDataByTasks(urlsToDownloads);
+
+            var result = LoadAllDataByTasks(urlsToDownloads);
+            Console.WriteLine(result);
         }
     }
 }
