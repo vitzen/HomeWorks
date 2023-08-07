@@ -53,9 +53,11 @@ namespace homework20
                     }
 
                     using var resultTask = LoadDataAsync(url, token);
+
                     listOfTasks.Add(resultTask);
                     resultTask.Start();
-                    //sb.AppendLine($"{url}:");
+
+                    sb.AppendLine($"{url}:");
                 }
 
                 var indexOfTask = Task.WaitAny(listOfTasks.ToArray());
@@ -89,13 +91,7 @@ namespace homework20
                 }
             }
 
-            //var a = LoadAllDataByTasks().ToString();
-            // Console.WriteLine(String.Join(",", a));
-            // Console.ReadKey();
-
-            //Отмена всех тасок
-            _cancellationTokenSource.Cancel();
-            _cancellationTokenSource.Dispose();
+            LoadAllDataByTasks(urlsToDownloads);
         }
     }
 }
