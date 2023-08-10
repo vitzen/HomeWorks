@@ -55,16 +55,14 @@ namespace homework20
                     var resultTask = LoadDataAsync(url, token);
 
                     listOfTasks.Add(resultTask);
-                    //resultTask.Start();
 
-                    sb.AppendLine($"{url}:");
+                    sb.AppendLine($"{url} --> TIME:{time.ElapsedMilliseconds} ms ");
                 }
 
                 var indexOfTask = Task.WaitAny(listOfTasks.ToArray());
                 _cancellationTokenSource.Cancel();
 
                 time.Stop();
-
 
                 var result = listOfTasks[indexOfTask].Result;
                 sb.AppendLine(($"{result}"));
@@ -90,7 +88,6 @@ namespace homework20
                     return $"Error load {url}. {e.Message}";
                 }
             }
-
 
             var result = LoadAllDataByTasks(urlsToDownloads);
             Console.WriteLine(result);
