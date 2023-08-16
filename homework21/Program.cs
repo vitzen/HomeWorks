@@ -35,31 +35,39 @@ namespace homework21
             {
                 var info = new DirectoryInfo(currentPath);
                 var createdDirectory = info.CreateSubdirectory("MyDirectory");
-                File.Create(Path.Combine(createdDirectory.FullName, "text.txt"));
+
+
                 if (createdDirectory.Exists)
                 {
-                    Console.WriteLine("Директория успешно создана");
+                    Console.WriteLine($"Папка |{createdDirectory.Name}| успешно создана по пути: {currentPath} ");
                 }
+
+                File.Create(Path.Combine(createdDirectory.FullName, "file1.txt"));
+
             }
             catch (Exception e)
             {
-                throw new Exception("Не удалось создать директорию");
+                throw new Exception("Не удалось создать директорию по указанному пути");
             }
 
+            //WriteByStream(arrayExample.ToString());
 
-            async Task WriteByStream(string fileName)
-            {
-                string content = "my super content";
-                using (FileStream stream = File.Open(fileName, FileMode.OpenOrCreate))
-                {
-                    var bytes = Encoding.Default.GetBytes(content);
-                    var myBytes = new byte[] { 19, 54, 23, 4, 5 };
 
-                    var buffer = myBytes.Concat(bytes.Concat(myBytes)).ToArray();
-
-                    await stream.WriteAsync(buffer, 0, buffer.Length);
-                }
-            }
+            // async Task WriteByStream(string fileName)
+            // {
+            //     string content = "my super content";
+            //     using (FileStream stream = File.Open(fileName, FileMode.OpenOrCreate))
+            //     {
+            //         var bytes = Encoding.Default.GetBytes(content);
+            //         var myBytes = new byte[] { 19, 54, 23, 4, 5 };
+            //
+            //         var buffer = myBytes.Concat(bytes.Concat(myBytes)).ToArray();
+            //
+            //         await stream.WriteAsync(buffer, 0, buffer.Length);
+            //
+            //         return buffer;
+            //     }
+            // }
         }
     }
 }
