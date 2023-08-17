@@ -21,52 +21,50 @@ namespace homework21
     {
         public static void Main()
         {
-            int[] arrayExample = Enumerable.Range(1, 100).ToArray(); // Массив для записи в файл 1
-            DateTime dateTime = new DateTime(); //Date Time для записи в файл 2
-
             var drives = DriveInfo.GetDrives();
             var drive = drives.First();
+            DateTime dateTime = new DateTime();
+            
+            var collection = new List<string?>();
+            collection.Add(Enumerable.Range(1, 100).ToString()); // Массив для записи в файл 1
+            collection.Add(dateTime.ToString()); //Date Time для записи в файл 2
+            collection.Add(Directory.GetDirectories(drive.RootDirectory.FullName).ToString()); //Список всех директорий для записи в файл 3
 
-            var directories = Directory.GetDirectories(drive.RootDirectory.FullName);
-            var currentPath = System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+            //var result = collection.ToString();
+            Console.WriteLine(collection[0].ToString());
 
-            //Создаем дириекторию в каталоге проекта
-            try
-            {
-                var info = new DirectoryInfo(currentPath);
-                var createdDirectory = info.CreateSubdirectory("MyDirectory");
-
-
-                if (createdDirectory.Exists)
-                {
-                    Console.WriteLine($"Папка |{createdDirectory.Name}| успешно создана по пути: {currentPath} ");
-                }
-
-                File.Create(Path.Combine(createdDirectory.FullName, "file1.txt"));
-
-            }
-            catch (Exception e)
-            {
-                throw new Exception("Не удалось создать директорию по указанному пути");
-            }
-
-            //WriteByStream(arrayExample.ToString());
-
-
-            // async Task WriteByStream(string fileName)
+            
+            //
+            // var directories = Directory.GetDirectories(drive.RootDirectory.FullName);
+            // var currentPath = System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+            //
+            // //Создаем дириекторию в каталоге проекта
+            // try
             // {
-            //     string content = "my super content";
-            //     using (FileStream stream = File.Open(fileName, FileMode.OpenOrCreate))
+            //     var info = new DirectoryInfo(currentPath);
+            //     var createdDirectory = info.CreateSubdirectory("MyDirectory");
+            //
+            //
+            //     if (createdDirectory.Exists)
             //     {
-            //         var bytes = Encoding.Default.GetBytes(content);
-            //         var myBytes = new byte[] { 19, 54, 23, 4, 5 };
-            //
-            //         var buffer = myBytes.Concat(bytes.Concat(myBytes)).ToArray();
-            //
-            //         await stream.WriteAsync(buffer, 0, buffer.Length);
-            //
-            //         return buffer;
+            //         Console.WriteLine($"Папка |{createdDirectory.Name}| успешно создана по пути: {currentPath} ");
             //     }
+            //
+            //     File.Create(Path.Combine(createdDirectory.FullName, "file1.txt"));
+            //
+            // }
+            // catch (Exception e)
+            // {
+            //     throw new Exception("Не удалось создать директорию по указанному пути");
+            // }
+            //
+            //
+            // FileStream CreateFile(string name)
+            // {
+            //     var fileInfo = new FileInfo(name);
+            //     if (!fileInfo.Exists)
+            //         return fileInfo.Create();
+            //     return File.Open(name, FileMode.Open);
             // }
         }
     }
