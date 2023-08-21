@@ -57,12 +57,9 @@ namespace homework22
 
             //Преобразование объектов - пользователей в JSON
             string objectsToJson = JsonConvert.SerializeObject(enrolleeList);
-            
+
             //Преобразование из JSON в объектов - пользователей
             var jsonToObjects = JsonConvert.DeserializeObject(objectsToJson);
-
-
         }
     }
 }
-
