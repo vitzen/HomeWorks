@@ -29,9 +29,7 @@ namespace homework21
             collection.Add(Enumerable.Range(1, 100).ToString()); // Массив для записи в файл 1
             collection.Add(dateTime.ToString()); //Date Time для записи в файл 2
             collection.Add(Directory.GetDirectories(drive.RootDirectory.FullName).ToString()); //Список всех директорий для записи в файл 3
-
-            //var result = collection.ToString();
-            Console.WriteLine(collection[0].ToString());
+            
 
             
             //
