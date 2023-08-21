@@ -1,3 +1,3 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿// С помощью Newtonsoft.Json превратить в JSON несколько объектов из прошлых домашек.
+// И вернуть из джейсона в объект
 
-Console.WriteLine("Hello, World!");
